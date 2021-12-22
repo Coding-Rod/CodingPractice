@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>Typewriter</h1>
+
+<button onclick="typeWriter()">Write</button>
+<p id="demo"></p>
+
+<script>
+var i = 0;
+var txt = 'Lorem ipsum dummy text blabla.';
+var speed = 150;
+
+function typeEraser() {
+  if (i > 0) {
+    document.getElementById("demo").innerHTML = document.getElementById("demo").innerHTML.slice(0, -2);
+    document.getElementById("demo").innerHTML += '|';
+    i--;
+    setTimeout(typeEraser, speed);
+  }else
+    typeWriter();
+}
+
+function typeWriter() {
+  document.getElementById("demo").innerHTML = document.getElementById("demo").innerHTML == '|'? '' : document.getElementById("demo").innerHTML;
+        
+  if (i < txt.length) {
+  	if (i == 0){
+    	document.getElementById("demo").innerHTML +=txt[i]+'|';
+    	i++;
+    	setTimeout(typeWriter, speed);
+    }
+    else{
+    	document.getElementById("demo").innerHTML = document.getElementById("demo").innerHTML.slice(0, -1);
+    	document.getElementById("demo").innerHTML +=txt[i]+'|';
+    	i++;
+    	setTimeout(typeWriter, speed);
+    }
+  }else
+      typeEraser();
+}
+
+
+</script>
+
+</body>
+</html>
