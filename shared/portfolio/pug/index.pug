@@ -1,0 +1,31 @@
+//- TODO: Maquetado
+//- TODO: assets
+
+mixin iconButton(icon)
+    a
+        i(class="fa" class=icon)
+
+mixin card(icon_path, title, description)
+    .card
+        img(src= icon_path, alt="alt")
+        h4= title
+        p= description
+
+mixin bulletButton(li_class)
+    a(href="" onclick="change_comment(this.id)") 
+        li(class = li_class)
+
+doctype html
+html(lang="en")
+head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible" content="IE-edge")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    link(rel="stylesheet", href="style.css")
+    link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
+    title Portfolio
+body
+    include layouts/header.pug
+    include layouts/main.pug
+    include layouts/sections.pug
+//- script(src="https://use.fontawesome.com/e219faacba.js%22%3E")

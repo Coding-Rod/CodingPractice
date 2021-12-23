@@ -1,0 +1,15 @@
+- var icons = ["fa-linkedin", "fa-github", "fa-instagram"]
+
+main
+    .main-title
+        h5
+        h1
+        each icon in icons
+            +iconButton(icon)
+        figure.main-person
+            img(src="#", alt="person")
+        .main-description
+            h2
+            p
+            a(href="#") Email Me
+            a(href="#") Download CV
