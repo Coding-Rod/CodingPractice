@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head> 
+    <title>Hello world</title>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <li class="nav-1 active">0:1</li>
+          <li class="nav-2">1:2</li>
+          <li class="nav-3">2:3</li>
+          <li class="nav-4">3:4</li>
+          <li class="nav-a">4:a</li>
+          <li class="nav-b">5:b</li>
+          <li class="nav-c">6:c</li>
+          <li class="nav-5.5">7:5.5</li>
+          <li class="nav-6.6">8:6.6</li>
+          <li class="nav-undefined">9:undefined</li>
+          <li class="nav-true">10:true</li>
+          <li class="nav-null">11:null</li>
+        </ul>
+      </nav>
+    </header>
+  </body>
+  <div class="search">
+    <h2 class="class1 class2"></h2>
+  </div>
+  <div class="form"> 
+    <input type="text" name="q" autofocus>
+  </div>
+  <div id="pag"><a id="text" href="#" onclick="changeStyle()" style="background-color: red;color:white;">Click me|</a>
+  </div>
+  <script>
+    function changeStyle(){
+        document.getElementById("text").style.background = document.getElementById("text").style.background == "red"? "green" : "red"
+    }
+  </script>
+</html>
