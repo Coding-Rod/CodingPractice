@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+    <script>
+        // Check performance
+        
+        let startAt = performance.now();
+        
+        for (let index = 0; index < 21920; index++) {
+            console.log(index);    
+        }
+        
+        let endAt = performance.now();
+        
+        console.log(`Took ${endAt - startAt} miliseconds`);
+
+    </script>
+</html>
