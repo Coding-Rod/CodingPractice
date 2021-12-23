@@ -30,3 +30,8 @@ sass --version
 ~~~bash
 sass -w ./<input directory>:./<output directory>
 ~~~
+
+### Figma Proyecto Portafolio
+
+[Figma Project](https://www.figma.com/file/OOpjoiqAnc95ZSqMcEAGOV/personal-portfolio-website?node-id=572%3A0 "Figma Project")
+
