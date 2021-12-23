@@ -1,0 +1,21 @@
+- var pag = 0
+doctype html
+html
+    head 
+        title Hello world
+    body
+        block header
+            include layouts/header.pug
+    .search
+        h2.class1.class2
+    .form 
+        input(type="text" name="q"  autofocus)|
+    div#pag
+        if pag1 
+            a#text(href="#" onclick="changeStyle()" style="background-color: green;color:white;") Click me|
+        else
+            a#text(href="#" onclick="changeStyle()" style="background-color: red;color:white;") Click me|
+    script.
+        function changeStyle(){
+            document.getElementById("text").style.background = document.getElementById("text").style.background == "red"? "green" : "red"
+        }
