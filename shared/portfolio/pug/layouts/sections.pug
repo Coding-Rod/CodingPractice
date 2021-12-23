@@ -12,8 +12,8 @@ section.works
             h6
             h2
         .works-buttons
-            +iconButton("fa-arrow-left")
-            +iconButton("fa-arrow-right")
+            +iconButton("fa-arrow-left", true, "change_page(0)")
+            +iconButton("fa-arrow-right", true, "change_page(1)")
     .works-container
         .works-card
             img(src="", alt="")
@@ -52,9 +52,3 @@ section.feedback
         .feedback-buttons
             button See More Projects
             button Hire Me
-
-footer
-    each icon in icons
-        +iconButton(icon)
-    p
-        a(href="mailto:") elpepe@gmail.com
