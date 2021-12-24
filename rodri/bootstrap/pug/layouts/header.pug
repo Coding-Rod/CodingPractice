@@ -1,12 +1,12 @@
 header
   nav.navbar.navbar-expand-lg.navbar-dark.bg-dark#header
-    .container-fluid
-      a.navbar-brand(href='#')
-        img(src="assets/images/platzi-logo.png", alt="Platzi logo")
-      button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
-        span.navbar-toggler-icon
-      #navbarSupportedContent.collapse.navbar-collapse
-        ul.navbar-nav.ms-auto
-          each val,index in header_items
-            +navItem(val,index)
-          
+    .container
+        a.navbar-brand(href='#')
+            img(src="assets/images/platzi-logo.png", alt="Platzi logo")
+        button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
+            span.navbar-toggler-icon
+        #navbarSupportedContent.collapse.navbar-collapse
+            ul.navbar-nav.ms-auto
+            each val,index in header_items
+                +navItem(val,index)
+            

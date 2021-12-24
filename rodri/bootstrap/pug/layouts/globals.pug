@@ -1,6 +1,8 @@
 //- Variables
--var footer_items = {"#1":"Preguntas frecuentes","#2":"Contáctanos","#3":"Prensa","#4":"Términos y condiciones","#5":"Privacidad","#6":"Estudiantes"}
+-var footer_items = {"#1":"Preguntas frecuentes","#2":"Contáctanos","#3":"Prensa","#4":"Conferencias","#5":"Términos y condiciones","#6":"Privacidad","#7":"Estudiantes"}
 -var header_items = {"#1":"La conferencia","#2":"Los oradores","#3":"El lugar y la fecha","#4":"Conviértete en orador","#5":"Comprar tickets"}
+-var hawai_images = ["assets/images/hawaii.jpg","assets/images/hawaii2.jpg","assets/images/hawaii3.jpeg"]
+
 //- Mixins
 
 mixin navItem(val,index)
@@ -16,3 +18,11 @@ mixin navItem(val,index)
 mixin navButton(val,index)
 	.col
 		a(href=index)=val
+
+mixin carouselImage(val,index)
+	if index == 0
+		.carousel-item.active
+			img.d-block.w-100(src=val alt='hawai'+(index+1))
+	else
+		.carousel-item
+			img.d-block.w-100(src=val alt='hawai'+(index+1))
