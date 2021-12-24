@@ -1,0 +1,18 @@
+//- Variables
+-var footer_items = {"#1":"Preguntas frecuentes","#2":"Contáctanos","#3":"Prensa","#4":"Términos y condiciones","#5":"Privacidad","#6":"Estudiantes"}
+-var header_items = {"#1":"La conferencia","#2":"Los oradores","#3":"El lugar y la fecha","#4":"Conviértete en orador","#5":"Comprar tickets"}
+//- Mixins
+
+mixin navItem(val,index)
+	li.nav-item
+		if index == "#1"
+			a.nav-link.active(aria-current='page' href=index)= val
+		else
+			if val == "Comprar tickets"
+				a.nav-link.text-platzi(aria-current='page' href=index)= val
+			else
+				a.nav-link(aria-current='page' href=index)= val
+
+mixin navButton(val,index)
+	.col
+		a(href=index)=val
