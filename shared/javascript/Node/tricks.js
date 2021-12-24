@@ -19,6 +19,7 @@ const numbers = [
     1
 ];
 
+// console.log(numbers);
 console.log(Array.from(new Set(numbers)));
 
 // dynamic parameters
@@ -44,6 +45,7 @@ console.log(ids);
 console.log(usersObject);
 
 var idUsersObject = {};
+// array.ForEach((val, index) => {})                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
 ids.forEach((key, i) => idUsersObject[key] = users[i]); // forEach sends value and index
 
 console.log(Object.keys(idUsersObject));
