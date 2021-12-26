@@ -1,5 +1,5 @@
 //- Variables
--var header_items = {"#1":"La conferencia","#2":"Los oradores","#3":"El lugar y la fecha","#4":"Conviértete en orador","#5":"Comprar tickets"}
+-var header_items = {"#main":"La conferencia","#speakers":"Los oradores","#place-time":"El lugar y la fecha","#become-speaker":"Conviértete en orador","#5":"Comprar tickets"}
 -var hawai_images = ["assets/images/hawaii.jpg","assets/images/hawaii2.jpg","assets/images/hawaii3.jpeg"]
 
 -var speaker_images = ["assets/speakers/cvander.jpeg","assets/speakers/freddy.jpeg","assets/speakers/leonidas2.jpeg","assets/speakers/sacha.jpg"]
@@ -11,14 +11,11 @@
 //- Mixins
 
 mixin navItem(val,index)
-	li.nav-item
-		if index == "#1"
-			a.nav-link.active(aria-current='page' href=index)= val
+	li.nav-item(style="display:flex;justify-content:center;")
+		if val == "Comprar tickets"
+			a.nav-link.text-platzi(aria-current='page' href=index)= val
 		else
-			if val == "Comprar tickets"
-				a.nav-link.text-platzi(aria-current='page' href=index)= val
-			else
-				a.nav-link(aria-current='page' href=index)= val
+			a.nav-link(aria-current='page' href=index)= val
 
 mixin navButton(val,index)
 	.col-12.col-lg
