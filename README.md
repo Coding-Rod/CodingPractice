@@ -37,7 +37,7 @@ sass -w ./<input directory>:./<output directory>
 
 ## React
 
-### Inicializar proyecto con React
+### Init React project
 
 ~~~bash
 npx create-react-app my-app
