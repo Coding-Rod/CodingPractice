@@ -13,7 +13,7 @@
 mixin navItem(val,index)
 	li.nav-item(style="display:flex;justify-content:center;")
 		if val == "Comprar tickets"
-			a.nav-link.text-platzi(aria-current='page' href=index)= val
+			a.nav-link.text-platzi(aria-current='page' href=index data-bs-toggle='modal' data-bs-target='#exampleModal')= val
 		else
 			a.nav-link(aria-current='page' href=index)= val
 

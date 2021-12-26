@@ -9,6 +9,8 @@ html(lang='')
 		include layouts/time_place.pug
 		include layouts/become_speaker.pug
 		include layouts/footer.pug
+		block modals
+			include layouts/modal.pug
 		block import_scripts
 			//- import jQuery
 			script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js")

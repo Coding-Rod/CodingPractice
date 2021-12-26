@@ -1,0 +1,19 @@
+// Modal
+#exampleModal.modal.fade(tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true')
+  .modal-dialog
+    .modal-content
+      .modal-header
+        h5#exampleModalLabel.modal-title Comprar tickets
+        button.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
+      .modal-body
+        form
+          .row
+            .col
+              .input-group.mb-3
+                span#basic-addon1.input-group-text @
+                input.form-control(type='text' placeholder='Username' aria-label='Username' aria-describedby='basic-addon1')
+        .alert.alert-warning(role="alert")
+          | Recibirás un correo de confirmación si sales sorteado
+      .modal-footer
+        button.btn.btn-secondary(type='button' data-bs-dismiss='modal') Cancelar
+        button.btn.btn-platzi(type='button') Comprar
