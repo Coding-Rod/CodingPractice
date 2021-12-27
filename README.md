@@ -31,6 +31,19 @@ sass --version
 sass -w ./<input directory>:./<output directory>
 ~~~
 
+
+
+
+
+
+# JavaScript
+
+### Install dependency for making request
+
+~~~bash
+ npm install xmlhttprequest --save
+~~~
+
 ### Figma Portfolio Project
 
 [Figma Project](https://www.figma.com/file/OOpjoiqAnc95ZSqMcEAGOV/personal-portfolio-website?node-id=572%3A0 "Figma Project")
@@ -43,10 +56,4 @@ sass -w ./<input directory>:./<output directory>
 npx create-react-app my-app
 cd my-app
 npm start
-~~~
-
-### Install dependency for making request
-
-~~~bash
- npm install xmlhttprequest --save
 ~~~
