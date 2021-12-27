@@ -1,0 +1,40 @@
+//- Variables
+-var header_items = {"#main":"La conferencia","#speakers":"Los oradores","#place-time":"El lugar y la fecha","#become-speaker":"Conviértete en orador","#5":"Comprar tickets"}
+-var hawai_images = ["assets/images/hawaii.jpg","assets/images/hawaii2.jpg","assets/images/hawaii3.jpeg"]
+
+-var speaker_images = ["assets/speakers/cvander.jpeg","assets/speakers/freddy.jpeg","assets/speakers/leonidas2.jpeg","assets/speakers/sacha.jpg"]
+-var speaker_titles = ["Cvander","Freddy","Leonidas","Sacha"]
+-var speaker_paragraphs = ["Paragraph 1", "Paragraph 2", "Paragraph 3", "Paragraph 4", "Paragraph 5"]
+
+-var footer_items = {"#1":"Preguntas frecuentes","#2":"Contáctanos","#3":"Prensa","#4":"Conferencias","#5":"Términos y condiciones","#6":"Privacidad","#7":"Estudiantes"}
+
+//- Mixins
+
+mixin navItem(val,index)
+	li.nav-item(style="display:flex;justify-content:center;")
+		if val == "Comprar tickets"
+			a.nav-link.text-platzi(aria-current='page' href=index data-bs-toggle='modal' data-bs-target='#exampleModal')= val
+		else
+			a.nav-link(aria-current='page' href=index)= val
+
+mixin navButton(val,index)
+	.col-12.col-lg
+		a(href=index)=val
+
+mixin carouselImage(val,index)
+	if index == 0
+		.carousel-item.active
+			img.d-block.w-100(src=val alt='hawai'+(index+1))
+	else
+		.carousel-item
+			img.d-block.w-100(src=val alt='hawai'+(index+1))
+
+mixin imgCard(img,title,text)
+	.card
+		img.card-img-top(src= img alt= title)
+		.card-body
+			.badges(style="text-align: right;")
+				span.badge.bg-warning Javascript
+				span.badge.bg-info React
+			h5(class= "card-title" class="mb-0")= title
+			p(class= "card-text")= text

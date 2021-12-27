@@ -1,0 +1,5 @@
+div[class^="col"]{
+    border: 1px solid #fff;
+    background-color: #feca57;
+    height: 100px;
+}
