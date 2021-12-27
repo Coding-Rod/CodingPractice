@@ -36,7 +36,7 @@ sass -w ./<input directory>:./<output directory>
 
 
 
-# JavaScript
+## JavaScript
 
 ### Install dependency for making request
 
