@@ -1,16 +1,20 @@
 {
-  "name": "asincronismo",
+  "name": "async",
   "version": "1.0.0",
-  "description": "Trabajar con asincronismo",
+  "description": "Work with async on Javascript",
   "main": "src/index.js",
   "scripts": {
-    "callback": "node src/callback/index.js"
+    "callback": "node src/callback/index.js",
+    "challenge": "node src/callback/challenge.js"
   },
   "keywords": [
     "callbacks",
     "promise",
     "async"
   ],
-  "author": "Ivan Sangueza",
-  "license": "ISC"
+  "author": "Rodrigo Fernandez",
+  "license": "ISC",
+  "dependencies": {
+    "xmlhttprequest": "^1.8.0"
+  }
 }
