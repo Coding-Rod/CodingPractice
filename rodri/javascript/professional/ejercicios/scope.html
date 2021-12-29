@@ -1,0 +1,47 @@
+<html>
+  <head>
+    <title>Scope</title>
+  </head>
+
+  <body>
+    <a href="/ejercicios/">Go back</a>
+    <p><em>Abre la consola</em></p>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+
+      // Global Scope
+      var message = "Hello, Platzi!";
+      var $ = function(message) {
+        console.log("Say: "+message);
+      };
+
+      // Function Scope
+      // function printNumbers(){
+      //   var i;
+      //   for (i = 0; i < 10; i++) {
+      //     function eventuallyPrintNumber(n) {
+      //       setTimeout(function(){
+      //         console.log(n);
+      //       }, 100);
+      //     }
+
+      //     eventuallyPrintNumber(i);
+      //   }       
+      // }
+
+      // printNumbers();
+      
+      // Block Scope
+      function printNumbers2(){
+        for (let i = 0; i < 10; i++) {
+          setTimeout(function(){
+              console.log(n);
+            }, 100);
+        }       
+      }
+
+      // Module Scope
+      printNumbers2();
+    </script>
+  </body>
+</html>
