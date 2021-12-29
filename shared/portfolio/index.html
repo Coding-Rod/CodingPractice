@@ -11,18 +11,18 @@
     <!-- Fuentes -->
 
     <!-- Stylesheet Main -->
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="css/style.css" />
     <title>Portfolio</title>
   </head>
   <body>
         <header>
-            <div class="container-fluid">
+            <div class="container-fluid pe-5">
                 <div class="row">
                     <div class="col ms-auto">
                         <nav class="navbar navbar-expand-lg navbar-light bg-light">
                             <div class="container-fluid">
                               <a class="navbar-brand" href="#">
-                                  <img src="assets/logo.png" alt="Logo">
+                                  <img src="assets/png/logo.png" alt="Logo">
                               </a>
                               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                                 <span class="navbar-toggler-icon"></span>
@@ -33,13 +33,16 @@
                                     <a class="nav-link active" aria-current="page" href="#">Home</a>
                                   </li>
                                   <li class="nav-item">
-                                    <a class="nav-link" href="#">Features</a>
+                                    <a class="nav-link" href="#">About</a>
                                   </li>
                                   <li class="nav-item">
-                                    <a class="nav-link" href="#">Pricing</a>
+                                    <a class="nav-link" href="#">Projects</a>
                                   </li>
                                   <li class="nav-item">
-                                    <a class="nav-link disabled">Disabled</a>
+                                    <a class="nav-link">Services</a>
+                                  </li>
+                                  <li class="nav-item">
+                                    <a class="nav-link">Podcast</a>
                                   </li>
                                 </ul>
                               </div>
@@ -51,20 +54,32 @@
         </header>
 
         <main>
-            <div class="main-title">
-                <h5>Hi, I am</h5>
-                <h1>Ivan <br> Sangueza</h1>
-                <a href="#"><i class="fa fa-linkedin"></i></a>
-                <a href="#"><i class="fa fa-github-alt"></i></a>
-                <a href="#"><i class="fa fa-instagram"></i></a>
-                <figure class="main-person">
-                    <img src="#" alt="person">
-                </figure>
-                <div class="main-description">
-                        <h2></h2>
-                        <p></p>
-                        <a href="#">Email Me</a>
-                        <a href="#">Download CV</a>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col">
+                        <h5>Hi, we are</h5>
+                            <h1>Ivan <br> and Rodrigo</h1>
+                            <a href="#"><i class="fa fa-linkedin"></i></a>
+                            <a href="#"><i class="fa fa-github-alt"></i></a>
+                            <a href="#"><i class="fa fa-instagram"></i></a>
+                    </div>
+                    <div class="col">
+                        <figure class="main-person">
+                            <img src="assets/png/avatar.png" alt="person">
+                        </figure>
+                    </div>
+                    <div class="col">
+                        <div class="main-description">
+                                <h2>Web Developer and UI Designer, based in Yogyakarta, Indonesia.</h2>
+                                <p>I am a “half-blood” Web Developer and UI Designer who has experience creating many projects in a various industry. In other words, I understand how to build an aesthetic, powerful, and lightweight website at once.</p>
+                                <button class="btn" href="#">
+                                    <i class="fa fa-envelope"></i> Email Me
+                                </button>
+                                <button class="btn" href="#">
+                                    <i class="fa fa-download"></i> Download CV
+                                </button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </main>
@@ -73,13 +88,22 @@
 
         <!-- About -->
         <section class="about">
-            <figure class="about-image">
-                <img src="#" alt="image-about">
-            </figure>
-            <div class="about-description">
-                <h3></h3>
-                <h1></h1>
-                <p></p>
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <figure class="about-image">
+                            <img src="#" alt="image-about">
+                        </figure>
+                    </div>
+                    <div class="col">
+                        <span>About Me</span>
+                        <h2>Why hire me for your next project?</h2>
+                        <p>
+                            Currently I am working as a fulltime freelancer. Before that I’ve worked at <span>Nutrination Pte. Ltd (Bubays)</span>, Singapore as a Fullstack Engineer.
+
+                            I find my self as  a creative, reliable and detailed freelancer who can work independently without too many detailed instructions. I have a principle that is <span>"stay simple and stay humble"</span>. I believe that in simplicity there is a complexity and  very deep thoroughness. I see every project as a process of solving a problem. Then it is time for your problems to be resolved in detail, in depth, and of course in simplicity.</p>
+                    </div>
+                </div>
             </div>
         </section>    
 

@@ -7,14 +7,10 @@
     }
   }
 
-div{
-    p{
-        color: white;
-        background-color: red;
+.navbar{
+  &-brand{
+    img{
+      width:36px;
     }
-    span{
-        color: yellow;
-        background-color: purple;
-        width: 100%;
-    }
+  }
 }
