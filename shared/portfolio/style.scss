@@ -1,5 +1,6 @@
 $primary-color: #ED7D31;
 $secondary-color:#45577B;
+$text-color: #7A8391;
 
 $dark-color: #46434E;
 $light-color: #fff;
@@ -38,15 +39,49 @@ $primary-font: "Poppins";
         font-weight: 700;
         // font-family: $primary-font;
       }
+      .line{
+        margin-top: 28px;
+        background-color: $primary-color;
+        width: 44px;
+        height: 10px;
+      }
       .social{ 
-        margin-top: 110px;
+        margin-top: 72px;
         i{
           color: $secondary-color;
-          width: 32px;
-          height: 32px;
-          padding: 0;
+          font-size: 32px;
+          margin-right: 24px;
+        }
+        .fa-linkedin{
+          background-color: $secondary-color;
+          color: $light-color;
+          font-size: 26px;
+          padding: 4px 6px;
+          border-radius: 2px;
         }
       }
+    }
+    &-right{
+      h2{
+        margin-top: 177px;
+        color: $secondary-color;
+      } 
+      p{
+        margin-top: 20px;
+        color: $text-color;
+      }
+      .btn-mail{
+        background-color: $primary-color;
+        color: $light-color;
+        padding: 19px 27px;
+        i{
+          margin-right: 9.35px;
+        }
+      }
+      .btn-download{
+        color: $text-color;
+      }
+      margin-bottom: 86px;
     }
   }
 }

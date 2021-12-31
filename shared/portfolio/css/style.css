@@ -11,13 +11,39 @@
     color: #45577B;
     font-size: 72px;
     font-weight: 700; }
+  #main .main-left .line {
+    margin-top: 28px;
+    background-color: #ED7D31;
+    width: 44px;
+    height: 10px; }
   #main .main-left .social {
-    margin-top: 110px; }
+    margin-top: 72px; }
     #main .main-left .social i {
       color: #45577B;
-      width: 32px;
-      height: 32px;
-      padding: 0; }
+      font-size: 32px;
+      margin-right: 24px; }
+    #main .main-left .social .fa-linkedin {
+      background-color: #45577B;
+      color: #fff;
+      font-size: 26px;
+      padding: 4px 6px;
+      border-radius: 2px; }
+  #main .main-right {
+    margin-bottom: 86px; }
+    #main .main-right h2 {
+      margin-top: 177px;
+      color: #45577B; }
+    #main .main-right p {
+      margin-top: 20px;
+      color: #7A8391; }
+    #main .main-right .btn-mail {
+      background-color: #ED7D31;
+      color: #fff;
+      padding: 19px 27px; }
+      #main .main-right .btn-mail i {
+        margin-right: 9.35px; }
+    #main .main-right .btn-download {
+      color: #7A8391; }
 
 #feedback .container {
   background-color: #46434E; }
