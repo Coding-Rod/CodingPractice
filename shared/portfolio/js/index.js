@@ -37,7 +37,6 @@ const card3 = document.querySelector("#card-3");
 
 const cardCarousel = new CardCarousel(data, card1, card2, card3);
 
-
 button1.addEventListener("click",function(){
     cardCarousel.prevPage();
 });

@@ -1,7 +1,25 @@
 .navbar-brand img {
   width: 36px; }
 
-.feedback .container {
+#main {
+  margin-top: 50px; }
+  #main .main-left h5 {
+    margin-top: 80px;
+    color: #ED7D31; }
+  #main .main-left h1 {
+    margin-top: 24px;
+    color: #45577B;
+    font-size: 72px;
+    font-weight: 700; }
+  #main .main-left .social {
+    margin-top: 110px; }
+    #main .main-left .social i {
+      color: #45577B;
+      width: 32px;
+      height: 32px;
+      padding: 0; }
+
+#feedback .container {
   background-color: #46434E; }
 
 /*# sourceMappingURL=style.css.map */
