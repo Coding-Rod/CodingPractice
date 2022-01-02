@@ -28,6 +28,15 @@
       font-size: 26px;
       padding: 4px 6px;
       border-radius: 2px; }
+  #main .main-center {
+    width: 573px;
+    height: 609px; }
+    #main .main-center img {
+      width: 573px;
+      height: 609px;
+      margin: 0;
+      object-fit: cover;
+      object-position: 0 30px; }
   #main .main-right {
     margin-bottom: 86px; }
     #main .main-right h2 {
@@ -44,6 +53,54 @@
         margin-right: 9.35px; }
     #main .main-right .btn-download {
       color: #7A8391; }
+
+#about .container {
+  border-radius: 20px;
+  background-color: #46434E; }
+  #about .container figure {
+    margin: 95.78px 0 127.3px 65.28px; }
+  #about .container .about-text {
+    padding-top: 96px; }
+    #about .container .about-text h2 {
+      margin-top: 8px;
+      margin-bottom: 16px; }
+    #about .container .about-text .text-secondary {
+      color: #c4c4c4 !important; }
+      #about .container .about-text .text-secondary strong {
+        color: #ED7D31; }
+
+#works h6 {
+  margin-top: 100px;
+  color: #ED7D31; }
+#works h2 {
+  color: #45577B; }
+#works .btn-left {
+  height: 45px;
+  width: 45px;
+  border: 1px solid #ED7D31;
+  margin: 0;
+  outline: 0;
+  border-radius: 5px 0px 0px 5px;
+  box-sizing: border-box;
+  background-color: #fff; }
+  #works .btn-left i {
+    width: 16px;
+    height: 9px;
+    color: #7A8391; }
+#works .btn-right {
+  box-sizing: border-box;
+  outline: 0;
+  border-radius: 0px 5px 5px 0px;
+  border: 1px solid #ED7D31;
+  height: 45px;
+  width: 45px;
+  background-color: #ED7D31;
+  margin: 0;
+  color: #fff; }
+#works .card-container {
+  margin-top: 48px; }
+  #works .card-container .row {
+    gap: 38px; }
 
 #feedback .container {
   background-color: #46434E; }
