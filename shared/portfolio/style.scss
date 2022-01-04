@@ -61,6 +61,7 @@ $primary-font: "Poppins";
         }
       }
     }
+    
     &-right{
       h2{
         margin-top: 177px;
@@ -90,4 +91,7 @@ $primary-font: "Poppins";
   .container{
   background-color: #46434E;
   }
+}
+.main-person{
+  margin: 0 !important;
 }
