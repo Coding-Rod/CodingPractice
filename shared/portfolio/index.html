@@ -15,18 +15,25 @@
     <title>Portfolio</title>
   </head>
   <body>
-        <header>
+        <header class="header">
             <div class="container fixed-top">
                 <div class="row">
                     <div class="col ms-auto">
                         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                            <div class="container-fluid">
+                            <div class="container">
+
+                              <!-- LOGO -->
                               <a class="navbar-brand" href="#">
                                   <img src="assets/png/logo.png" alt="Logo">
                               </a>
+
+                              <!-- Hamburguer Menu  -->
+
                               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                                 <span class="navbar-toggler-icon"></span>
                               </button>
+
+                              <!-- Menu navegación -->
                               <div class="collapse navbar-collapse" id="navbarNav">
                                 <ul class="navbar-nav ms-auto">
                                   <li class="nav-item">
@@ -54,7 +61,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col main-left">
-                        <h5>Hi, I am</h5>
+                        <h5 md-center>Hi, I am</h5>
                         <h1>Hani <br>Husam.</h1>
                         <div class="line"></div>
                         <div class="social">
@@ -64,18 +71,22 @@
                         </div>
                     </div>
                     <div class="col main-center">
-                        <img src="assets/png/avatar.png" alt="person">
+                        <img class="rounded mx-auto d-block" src="assets/png/avatar.png" alt="person">
                     </div>
                     <div class="col main-right">
                         <div class="main-description">
-                            <h2>Web Developer and UI Designer, based in Yogyakarta, Indonesia.</h2>
-                            <p>I am a “half-blood ” Web Developer and UI Designer who has experience creating many projects in a various industry. In other words, I understand how to build an aesthetic, powerful, and lightweight website at once.</p>
-                            <button class="btn btn-mail" href="#">
-                                <i class="fa fa-envelope"></i> Email Me
-                            </button>
-                            <button class="btn btn-download" href="#">
-                                <i class="fa fa-download"></i> Download CV
-                            </button>
+                            <h2 class="text-center text-lg-start">Web Developer and UI Designer, based in Yogyakarta, Indonesia.</h2>
+                            <p class="text-center text-lg-start">I am a “half-blood ” Web Developer and UI Designer who has experience creating many projects in a various industry. In other words, I understand how to build an aesthetic, powerful, and lightweight website at once.</p>
+                            <div class="text-center text-lg-start">
+                                <div class="btn-group gap-2 ">
+                                    <button class="btn btn-mail" href="#">
+                                        <i class="fa fa-envelope"></i> Email Me
+                                    </button>
+                                    <button class="btn btn-download" href="#">
+                                        <i class="fa fa-download"></i> Download CV
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -88,12 +99,10 @@
         <section id="about" class="about">
             <div class="container text-white">
                 <div class="row">
-                    <div class="col">
-                        <figure class="about-image">
-                            <img src="assets/svg/illustration.svg" alt="image-about">
-                        </figure>
+                    <div class="col-12 col-lg">
+                        <img class="img-fluid mx-auto d-block" src="assets/svg/illustration.svg" alt="image-about">
                     </div>
-                    <div class="col about-text">
+                    <div class="col-lg about-text">
                         <span>About Me</span>
                         <h2>Why hire me for your next project?</h2>
                         <p class="text-secondary">
@@ -110,35 +119,34 @@
 
         <!-- works -->
         <section id="works">
-            <div class="container">
+            <div class="container text-center text-lg-start mb-5">
                 <div class="row">
                     <h6>Projects</h6>
                 </div>
-                <div class="row">
-                    <div class="col-10">
+                <div class="row mb-2">
+                    <div class="col-12 col-lg">
                         <h2>Latest works.</h2>
                     </div>
-                    <div class="col">
-                        <button class="btn-left" type="button" id="button-card-left"><i class="fa fa-arrow-left"></i></button>
-                        <button class="btn-right" type="button" id="button-card-right"><i class="fa fa-arrow-right"></i></button>
+                    <div class="col-lg text-lg-end">
+                        <div class="btn-group" role="group">
+                            <button class="btn-left" type="button" id="button-card-left"><i class="fa fa-arrow-left"></i></button>
+                            <button class="btn-right" type="button" id="button-card-right"><i class="fa fa-arrow-right"></i></button>
+                        </div>
                     </div>
                 </div>
-                <div class="row card-container">
-                    <div class="col">
+                <div class="card-group gap-3">
                         <div id="card-1" class="card" style="width: 18rem;">
                             
                         </div>
-                    </div>
-                    <div class="col">
                         <div id="card-2" class="card" style="width: 18rem;">
                             
                         </div>
-                    </div>
-                    <div class="col">
                         <div id="card-3" class="card" style="width: 18rem;">
                             
                         </div>
                     </div>
+                    </div>
+                </div>
                 </div>
             </div>
         </section>
@@ -148,31 +156,29 @@
         <section id="services">
             <div class="container">
                 <div class="row">
-                    <div class="col">
+                    <div class="col-lg col-12">
                         <h6>Services</h6>
                         <h2>Best solutions to
                             boost your creative project.</h2>
                         <p>Are you a professional who needs an attractive website for your business or service? Does your current website looks like it "old-fashioned"? Is it not mobile responsive? It doesn't have a modern look and optimal user experience across various devices, and browsers? <strong>You're in the right place!</strong></p>
                     </div>
                     <div class="col">
-                        <div class="row">
-                            <div class="col">
-                                <div class="card border-light mb-3" style="max-width: 18rem;">
-                                    <div class="card-body">
-                                      <h5 class="card-title">Light card title</h5>
-                                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                    </div>
-                                  </div>
+                        <div class="card-group gap-3">
+                            <div class="card text-center text-lg-start">
+                              <div class="card-body">
+                                <i class="fa fa-laptop"></i>
+                                <h5 class="card-title">Frontend<br>Developer.</h5>
+                                <p class="card-text">Good communication, details in the code and verbose documentation. I guaranteed free session until you can run my code on your system.</p>
+                              </div>
                             </div>
-                            <div class="col">
-                                <div class="card border-light mb-3" style="max-width: 18rem;">
-                                    <div class="card-body">
-                                      <h5 class="card-title">Light card title</h5>
-                                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                    </div>
-                                  </div>
+                            <div class="card text-center text-lg-start">
+                                <div class="card-body">
+                                <i class="fa fa-paint-brush"></i>
+                                <h5 class="card-title">UI/UX<br>Designer.</h5>
+                                <p class="card-text">I look at every UI design project as a process in solving a problem. I am considering all the aspects until the UI design is “work”.</p>
+                              </div>
                             </div>
-                        </div>
+                          </div>
                     </div>
                 </div>
             </div>
@@ -190,27 +196,27 @@
                               <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
                               <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
                             </div>
-                            <div class="carousel-inner">
+                            <div class="carousel-inner pt-3">
                               <div class="carousel-item active">
-                                <img src="assets/jpg/unplash.jpg" class="d-block w-100" alt="...">
+                                <img src="assets/png/backPeople.png" class="d-block w-100" alt="...">
                                 <div class="carousel-caption d-none d-md-block">
-                                    <figure><img src="assets/png/avatar.png" alt="avatar"></figure>
+                                    <img src="assets/jpg/usuarioPeople.jpeg" alt="avatar">
                                   <h5>First slide label</h5>
                                   <p>Some representative placeholder content for the first slide.</p>
                                 </div>
                               </div>
                               <div class="carousel-item">
-                                <img src="assets/jpg/unplash.jpg" class="d-block w-100" alt="...">
+                                <img src="assets/png/backPeople.png" class="d-block w-100" alt="...">
                                 <div class="carousel-caption d-none d-md-block">
-                                    <figure><img src="assets/png/avatar.png" alt="avatar"></figure>
+                                    <img src="assets/jpg/usuarioPeople.jpeg" alt="avatar">
                                   <h5>Second slide label</h5>
                                   <p>Some representative placeholder content for the second slide.</p>
                                 </div>
                               </div>
                               <div class="carousel-item">
-                                <img src="assets/jpg/unplash.jpg" class="d-block w-100" alt="...">
+                                <img src="assets/png/backPeople.png" class="d-block w-100" alt="...">
                                 <div class="carousel-caption d-none d-md-block">
-                                    <figure><img src="assets/png/avatar.png" alt="avatar"></figure>
+                                    <img src="assets/jpg/usuarioPeople.jpeg" alt="avatar">
                                   <h5>Third slide label</h5>
                                   <p>Some representative placeholder content for the third slide.</p>
                                 </div>
@@ -235,14 +241,14 @@
         <section class="feedback">
             <div class="container pt-5 pb-5">
                 <div class="row">
-                    <div class="col-8">
+                    <div class="col-lg col-12 text-lg-start text-center">
                         <h2 class="text-white">Interested working<br> with me?</h2>
                     </div>
-                    <div class="col-2">
-                        <button class="btn btn-outline-secondary">See More Projects</button>
-                    </div>
-                    <div class="col-2">
-                        <button class="btn btn-warning">Hire me</button>
+                    <div class="col-lg col-12 text-lg-end text-center">
+                        <div class="btn-group gap-4">
+                            <button class="btn btn-1 btn-outline-secondary">See More Projects</button>
+                            <button class="btn btn-2 btn-warning">Hire me</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -252,12 +258,16 @@
         <!-- Footer -->
 
         <footer>
-            <div class="container bg-dark text-white">
+            <div class="container text-white">
+                <div class="row pb-2">
+                    <div class="col text-center">
+                        <a href="#"><i class="fa fs-4 fa-linkedin"></i></a>
+                        <a href="#"><i class="fa fs-4 fa-github-alt"></i></a>
+                        <a href="#"><i class="fa fs-4 fa-instagram"></i></a>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col text-center">
-                        <a href="#"><i class="fa fa-linkedin"></i></a>
-                        <a href="#"><i class="fa fa-github-alt"></i></a>
-                        <a href="#"><i class="fa fa-instagram"></i></a>
                         <p>For business inquiry please send email to <a href="#">hani.husam@gmail.com</a><br>© 2020 hanihusam, all rights reserved.</p>
                     </div>
                 </div>

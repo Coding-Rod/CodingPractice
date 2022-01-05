@@ -17,10 +17,17 @@ CardCarousel.prototype.innerContent = function(data, div){
     img.src = data.img;
 
     for(const key in data){
-        if (key != 'img') {
-            const child = document.createElement(key);
-            child.innerText = data[key];
-            body.appendChild(child);
+        if (key != 'img' && key!='src') {
+            if (key == 'a'){
+                const child = document.createElement(key);
+                child.innerText = data[key];
+                child.href = data['src'];
+                body.appendChild(child);
+            }else{
+                const child = document.createElement(key);
+                child.innerText = data[key];
+                body.appendChild(child);
+            }
         }
     }
     div.appendChild(img);

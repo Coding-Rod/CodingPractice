@@ -1,0 +1,41 @@
+#works{
+    h6{
+      margin-top: 100px;
+      color: $primary-color;
+    }
+    h2{
+      color: $secondary-color;
+    }
+    .btn-left{
+      height: 45px;
+      width: 45px;
+      border: 1px solid $primary-color;
+      margin: 0;
+      outline: 0;
+      border-radius: 5px 0px 0px 5px;
+      box-sizing: border-box;
+      background-color: $light-color;
+      i{
+        width: 16px;
+        height: 9px;
+        color: $text-color;
+      }
+    }
+    .btn-right{
+      box-sizing: border-box;
+      outline: 0;
+      border-radius: 0px 5px 5px 0px;
+      border: 1px solid $primary-color;
+      height: 45px;
+      width: 45px;
+      background-color: $primary-color;
+      margin: 0;
+      color: $light-color;
+    }
+    .card-container{
+      margin-top: 48px;
+      .row{
+        gap: 38px;
+      }
+    }
+  }

@@ -1,0 +1,23 @@
+#about {
+  .container {
+    padding: 50px 20px;
+    border-radius: 20px;
+    background-color: $dark-color;
+    .about-text {
+      
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      h2 {
+        margin-top: 8px;
+        margin-bottom: 16px;
+      }
+      .text-secondary {
+        color: $text-color2 !important;
+        strong {
+          color: $primary-color;
+        }
+      }
+    }
+  }
+}
