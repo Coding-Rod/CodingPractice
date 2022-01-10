@@ -1,0 +1,40 @@
+/*
+ Practice 1
+*/
+/* 
+.contenedor {
+  border: 5px solid #e1bee7;
+  background-color: #fff1ff;
+  display: grid;
+  grid-template-rows: 100px 200px;
+  grid-auto-columns: 150px;
+  grid-auto-flow: column;
+  row-gap: 15px;
+  column-gap: 30px;
+  gap: 40px;
+}
+
+.item {
+  border: 5px solid #00bcd4;
+  font-size: 4rem;
+} */
+
+/*
+ Practice 2
+*/
+
+.contenedor {
+  border: 5px solid #e1bee7;
+  background-color: #fff1ff;
+  display: grid;
+  grid-template-rows: 100px 100px 100px;
+  grid-auto-columns: 100px;
+  grid-auto-flow: column;
+  gap: 20px; 
+  background-color: azure;
+}
+
+.item {
+  border: 5px solid #00bcd4;
+  font-size: 4rem;
+}
