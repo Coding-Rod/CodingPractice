@@ -1,0 +1,22 @@
+@import "_globals";
+
+#people{
+    background-color: $dark-color;
+    height: fit-content;
+    .carousel-caption{
+        img{
+            width: 58px;
+            border-radius: 58px;
+        }
+    }
+    .carousel-indicators{
+        button{
+            width: 8px;
+            height: 8px;
+            border-radius: 5px !important;
+        }
+        .active{
+            background-color: $primary-color;
+        }
+    }
+}

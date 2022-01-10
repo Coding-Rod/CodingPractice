@@ -1,0 +1,24 @@
+footer{
+    background-color: $dark-color;
+    
+    
+    .container{
+        border-top: 0.3px solid #f2f2f2;
+        padding: 66px 0px 30px;
+    }
+    i{
+        color: $light-color;
+        // margin: 0 16px;
+        width: auto;
+    }
+    p{
+        text-align: center;
+        font-size: 14px;
+        color: #C4C4C4;
+        width: auto;
+    }
+    a{
+        text-decoration: underline;
+        color: #f2f2f2;
+    }
+}
