@@ -90,3 +90,30 @@ function areaCirculo(radio){
 
 
 console.groupEnd();
+
+//Aqui interactuamos con el HTML
+
+function calcularPerimetroCuadrado(){
+    const input = document.getElementById("inputCuadrado");
+    const value = input.value;
+
+    const perimetro = perimetroCuadrado(value);
+    alert(perimetro);
+}
+
+function calcularAreaCuadrado(){
+    const input = document.getElementById("inputCuadrado");
+    const value = input.value;
+
+    const area = areaCuadrado(value);
+    alert(area);
+}
+
+function calcularPerimetroTriangulo(){
+    const input1 = document.getElementById("inputTriangulo");
+    const value = input1.value;
+
+    const perimetroTriangulo = perimetroTriangulo(value, value, value);
+    alert(perimetroTriangulo);
+
+}
