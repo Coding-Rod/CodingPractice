@@ -48,6 +48,13 @@ sass -w ./<input directory>:./<output directory>
 
 [Figma Project](https://www.figma.com/file/OOpjoiqAnc95ZSqMcEAGOV/personal-portfolio-website?node-id=572%3A0 "Figma Project")
 
+## Init TypeScript
+
+~~~bash
+ npm uninstall parcel-bundler
+ npm i --save-dev parcel-bundler@1.12.3
+~~~
+
 ## React
 
 ### Init React project

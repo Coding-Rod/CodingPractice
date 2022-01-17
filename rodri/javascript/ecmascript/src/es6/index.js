@@ -24,7 +24,7 @@ let lorem = "Qui consequetur aksndoiansjlan dvai jakjniud kjasb duawñbd aha du 
 + "otra frase epica que necesitamos";
 
 let lorem2 = `Qui consequetur aksndoiansjlan dvai jakjniud kjasb duawñbd aha du ak
-+ "otra frase epica que necesitamos`;
+"otra frase epica que necesitamos"`;
 
 console.log(lorem)
 console.log(lorem2)
@@ -112,7 +112,7 @@ const helloPromise = () => {
             reject('Ups!');
         }
     });
-}
+};
 
 helloPromise()
     .then(response => console.log(response))
