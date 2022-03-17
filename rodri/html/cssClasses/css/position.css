@@ -1,0 +1,51 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html{
+    font-size: 62.5%;
+}
+/* .parent {
+    border: 2px black dotted;
+    display: inline-block;
+}
+
+.box {
+    display: inline-block;
+    background-color: red;
+    width: 100px;
+    height: 100px;
+}
+
+#two {
+    background-color: green;
+} */
+
+.container {
+    margin: 0 auto;
+    width: 70%;
+}
+
+.title {
+    background-color: red;
+    border-radius: 10px;
+    width: 150px;
+    height: 40px;
+    border: 0.5px solid gray;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    margin-top: -25px;
+    left: calc(50% - 75px)
+}
+
+.paragraph {
+    margin-top: 30%;
+    border-radius: 20px;
+    background-color: lightgray;
+    padding: 20px;
+    border: 0.5px solid gray;
+}
