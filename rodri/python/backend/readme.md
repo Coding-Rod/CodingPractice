@@ -44,7 +44,7 @@ Digital Ocean
 
 > Shared hosting es más barato y VPS(Virtual Private Server) más caro
 
-### PaaS: Platform as a service 
+### PaaS: Platform as a service
 
 Firebase
 Heroku
