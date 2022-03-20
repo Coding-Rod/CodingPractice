@@ -125,3 +125,39 @@ def mensaje(nombre):
 
 print(mensaje('Cesar'))
 ~~~
+
+## Sets
+
+Una colección desordenada de elementos únicos e inmutables.
+
+### Operaciones básicas de sets
+
+* Unión: |
+* Intersección: &
+* Diferencia: -
+* Diferencia simétrica: ^
+
+## Datetime
+
+### Abreviaciones
+
+|Código|Significado|
+|------|-----------|
+|%Y|Year|
+|%m|Month|
+|%d|Day|
+|%H|Hour|
+|%M|Minute|
+|%S|Second|
+
+### Ejemplo
+
+~~~python
+from datetime import datetime
+
+my_datetime = datetime.now()
+print(my_datetime)
+
+my_str = my_datetime.strftime("%d/%m/%Y")
+print(my_str)
+~~~
