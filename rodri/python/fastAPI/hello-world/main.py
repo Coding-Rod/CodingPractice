@@ -3,15 +3,15 @@ from typing import Optional
 from enum import Enum
 
 # Pylantic
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field # type: ignore
 
 # FastAPI
-from fastapi import FastAPI
+from fastapi import FastAPI # type: ignore
 from fastapi import Body, Query, Path
 
 app = FastAPI()
 
-# Models
+#! Models
 class HairColor(Enum): # Hair color model validator
     white = "white"
     brown = "brown"
@@ -19,7 +19,6 @@ class HairColor(Enum): # Hair color model validator
     blonde = "blonde"
     red = "red"
     
-
 class Person(BaseModel):
     first_name: str = Field(
         ...,
@@ -41,7 +40,7 @@ class Person(BaseModel):
     )
     hair_color: Optional[HairColor] = Field(default=None, example="brown")
     is_married: Optional[bool] = Field(default=None, example=False)
-    
+    #region class config
     # class Config:
     #     schema_extra = {
     #         "example": {
@@ -52,14 +51,17 @@ class Person(BaseModel):
     #             "is_married": False
     #         }
     #     }
+    #endregion class config
 
 class Location(BaseModel):
     city: str = Field(default=None, example="La Paz")
     state: str = Field(default=None, example="Murillo")
     country: str = Field(default=None, example="Bolivia")
 
+#! Operations
+
 @app.get("/") # Path operation decorator
-def home(): # Path operation function
+def home() -> dict: # Path operation function
     return {"Hello":"world"}
 
 # Request and Response Body
@@ -68,7 +70,7 @@ def home(): # Path operation function
 def create_person(person: Person = Body(...)) -> Person: # (...) = obligatorio
     return person
 
-# Validaciones: Query Parameters
+# Valitions: Query Parameters
 
 @app.get("/person/detail")
 def show_person(
@@ -86,16 +88,16 @@ def show_person(
         description = "This is the person's age. It is required",
         example=25
         ) 
-):
+) -> dict:
     return {
         "name": name,
         "age": age
     }
     
-# Validaciones: Path Parameters
+# Valitions: Path Parameters
 
 @app.get("/person/detail/{person_id}")
-def show_person(
+def show_person_by_id(
     person_id: int = Path(
         ...,
         gt=0,
@@ -103,11 +105,10 @@ def show_person(
         description = "This is the person's id. It is required",
         example=123
         )
-):
+) -> dict:
     return {person_id: "It exists!"}
 
-
-# Validaciones: Body Parameters
+# Valitions: Body Parameters
 @app.put("/person/{person_id}")
 def update_person(
     person_id: int = Path(
@@ -119,7 +120,6 @@ def update_person(
     ),
     person: Person = Body(...),
     location: Location = Body(...)
-):
+) -> dict:
     return person.dict() | location.dict()
     # return person
-    
