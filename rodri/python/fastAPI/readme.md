@@ -144,3 +144,10 @@ Todos estos tipos de datos corresponden a Pydantic, se pueden importar al igual 
 * PositiveInt → Valida si el cliente ingresa un número entero positivo
 
 > Para más tipos de datos se puede revisar la [documentación de Pydantic](https://pydantic-docs.helpmanual.io/usage/types/)
+
+## Notas adicionales
+
+* **Path parameter ->** obligatorio.
+* **Query parameter ->** opcional
+* **Request body ->** El body de una Petición HTTP
+* **Response body ->** El body de una Respuesta.
