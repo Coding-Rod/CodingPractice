@@ -107,3 +107,40 @@ Query(
     title="ID del usuario", 
     description="El ID se consigue entrando a las configuraciones del perfil")
 ~~~
+
+## Diferencia Path, Query Parameters and Request Body
+
+1. usamos Path Parameters cuando por ejemplo se trata de un id y esas cosas, como una variable etc.
+2. Usamos los Query Parameters para solicitar infomación opcional del servidor.
+3. Usamos los Requests Body para enviar información que tiene formato de un modelo.
+
+## Validacions Models
+
+Para validar modelos tomamos uso de la clase de Pydantic Field, que funciona igual a las validaciones que ya hemos hecho con Path, Query y Body.
+
+## Pydantic
+
+Todos estos tipos de datos corresponden a Pydantic, se pueden importar al igual que Field.
+
+### Tipos de datos clásicos
+
+* str → Cadena de texto
+* int → Número entero
+* float → Número flotante (decimal)
+* bool → Booleano
+
+### Tipos de datos exóticos
+
+* Enum → Enumerar caracteres
+* HttpUrl → Revisa si una URL es valida (***https://myapp.com***, *www.google.com*)
+* FilePath → Valida si la ruta que envía el cliente es un archivo (*c:/windows/system32/432.dll*)
+* DirectoryPath → Valida si la ruta que envía el cliente es un directorio (***/mnt/c/someFolder***)
+* EmailStr → Valida si el cliente ingresa un email (*hola@email.com*)
+* PaymentCardNumber → Valida si el cliente ingresa un número de tarjeta
+* IPvAnyAdress → Valida si el cliente ingresa una dirección IP
+* NegativeFloat → Valida si el cliente ingresa un número negativo de tipo flotante
+* PositiveFloat → Valida si el cliente ingresa un número positivo de tipo flotante
+* NegativeInt → Valida si el cliente ingresa un número entero negativo
+* PositiveInt → Valida si el cliente ingresa un número entero positivo
+
+> Para más tipos de datos se puede revisar la [documentación de Pydantic](https://pydantic-docs.helpmanual.io/usage/types/)
