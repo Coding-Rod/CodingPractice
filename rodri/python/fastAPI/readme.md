@@ -133,21 +133,20 @@ Todos estos tipos de datos corresponden a Pydantic, se pueden importar al igual 
 
 * Enum → Enumerar caracteres
 * HttpUrl → Revisa si una URL es valida (***https://myapp.com***, *www.google.com*)
-* FilePath → Valida si la ruta que envía el cliente es un archivo (*c:/windows/system32/432.dll*)
-* DirectoryPath → Valida si la ruta que envía el cliente es un directorio (***/mnt/c/someFolder***)
-* EmailStr → Valida si el cliente ingresa un email (*hola@email.com*)
-* PaymentCardNumber → Valida si el cliente ingresa un número de tarjeta
-* IPvAnyAdress → Valida si el cliente ingresa una dirección IP
-* NegativeFloat → Valida si el cliente ingresa un número negativo de tipo flotante
-* PositiveFloat → Valida si el cliente ingresa un número positivo de tipo flotante
-* NegativeInt → Valida si el cliente ingresa un número entero negativo
-* PositiveInt → Valida si el cliente ingresa un número entero positivo
-
-> Para más tipos de datos se puede revisar la [documentación de Pydantic](https://pydantic-docs.helpmanual.io/usage/types/)
-
-## Notas adicionales
-
-* **Path parameter ->** obligatorio.
+, response_model=PersonOutligatorio
 * **Query parameter ->** opcional
 * **Request body ->** El body de una Petición HTTP
-* **Response body ->** El body de una Respuesta.
+* **Response body ->** El body de una Respuesta
+
+## Status codes
+
+Los status code o codigos de estado son respuestas http los cuales indican el el estado de finalizacion de una solicitud especifica:
+
+* Respuestas informativas (100-199)
+* Respuestas Satisfactorias (200-299)
+* Redirecciones (300-399)
+* Errores de los clientes (400-499)
+* Errores de los servidores (500-599)
+
+> [Más información](https://developer.mozilla.org/es/docs/Web/HTTP/Status)
+> [Errores explicados con gatos](https://http.cat/)

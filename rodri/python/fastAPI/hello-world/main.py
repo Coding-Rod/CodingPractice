@@ -8,6 +8,7 @@ from pydantic import BaseModel, Field # type: ignore
 # FastAPI
 from fastapi import FastAPI # type: ignore
 from fastapi import Body, Query, Path
+from fastapi import status # HTTP status codes
 
 app = FastAPI()
 
@@ -19,13 +20,18 @@ class HairColor(Enum): # Hair color model validator
     blonde = "blonde"
     red = "red"
     
-class Person(BaseModel):
+class PersonBase(BaseModel):
+    person_id: int = Field(
+        ...,
+        gt=0,
+        example = 123
+    )
     first_name: str = Field(
         ...,
         min_length=1,
         max_length=50,
         example="Rodrigo"
-        )
+    )
     last_name: str = Field(
         ...,
         min_length=1,
@@ -53,6 +59,12 @@ class Person(BaseModel):
     #     }
     #endregion class config
 
+class Person(PersonBase):
+    password: str = Field(..., min_length=8)
+    
+class PersonOut(PersonBase):
+    pass
+
 class Location(BaseModel):
     city: str = Field(default=None, example="La Paz")
     state: str = Field(default=None, example="Murillo")
@@ -60,19 +72,28 @@ class Location(BaseModel):
 
 #! Operations
 
-@app.get("/") # Path operation decorator
+@app.get(
+    path="/",
+    status_code=status.HTTP_200_OK
+    ) # Path operation decorator
 def home() -> dict: # Path operation function
     return {"Hello":"world"}
 
 # Request and Response Body
-
-@app.post("/person/new")
+#// @app.post("/person/new", response_model=Person, response_model_exclude={"password"})
+@app.post(
+    path="/person/new", 
+    response_model=PersonOut,
+    status_code=status.HTTP_201_CREATED
+    )
 def create_person(person: Person = Body(...)) -> Person: # (...) = obligatorio
     return person
 
 # Valitions: Query Parameters
-
-@app.get("/person/detail")
+@app.get(
+    path="/person/detail",
+    status_code=status.HTTP_200_OK
+    )
 def show_person(
     name: Optional[str] = Query(
         None, 
@@ -95,8 +116,10 @@ def show_person(
     }
     
 # Valitions: Path Parameters
-
-@app.get("/person/detail/{person_id}")
+@app.get(
+    path="/person/detail/{person_id}",
+    status_code=status.HTTP_200_OK
+    )
 def show_person_by_id(
     person_id: int = Path(
         ...,
@@ -109,7 +132,10 @@ def show_person_by_id(
     return {person_id: "It exists!"}
 
 # Valitions: Body Parameters
-@app.put("/person/{person_id}")
+@app.put(
+    path="/person/{person_id}",
+    status_code=status.HTTP_202_ACCEPTED
+    )
 def update_person(
     person_id: int = Path(
         ...,
