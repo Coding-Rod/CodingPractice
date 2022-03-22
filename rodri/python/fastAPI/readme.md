@@ -132,7 +132,7 @@ Todos estos tipos de datos corresponden a Pydantic, se pueden importar al igual 
 ### Tipos de datos exóticos
 
 * Enum → Enumerar caracteres
-* HttpUrl → Revisa si una URL es valida (***https://myapp.com***, *www.google.com*)
+* HttpUrl → Revisa si una URL es valida (***<https://myapp.com>***, ***<www.google.com>***)
 , response_model=PersonOutligatorio
 * **Query parameter ->** opcional
 * **Request body ->** El body de una Petición HTTP
@@ -150,3 +150,56 @@ Los status code o codigos de estado son respuestas http los cuales indican el el
 
 > [Más información](https://developer.mozilla.org/es/docs/Web/HTTP/Status)
 > [Errores explicados con gatos](https://http.cat/)
+
+## Formularios
+
+~~~bash
+# instalar libreria
+pip install python-multipart
+~~~
+
+## Cookies
+
+Una pieza de código que un servidor mete en tu computadora cuando estas navegando en la web
+
+## Headers
+
+Una parte de una petición o respuesta HTTP que contiene datos sobre la petición o la respuesta, como el formato, quien la hizo, el contenido, etc…
+
+## Archivos
+
+Entrada de datos que se refiere a los archivos FastAPI, por ejemplo una imagen o un video, se utilizan dos clases File y UploadFile
+
+### UploadFile
+
+Esta clase tiene una serie de parametros, se refiere a la clase donde se guardará el archivo
+
+* filename: se refiere al nombre del archivo, con esto tenemos el control sobre el nombre del archivo que suba el cliente a la aplicación
+* content_type: formato del archivo por ejemplo JPEG, MP4, GIF…
+* file: se refiere al archivo en si mismo, los bytes del mismo
+
+### File
+
+Hereda de Form y funciona similar a las clases Query, Path y Body, se encarga de guardar los bytes del archivo.  
+Ventajas de usar UploadFile en lugar de solo File o Bytes:
+
+* El archivo se guardará en la memoria hasta que supere un tamaño máximo, al pasar ese límite se guardara en el disco, esto quiere decir que funciona mucho mejor con archivos grandes sin consumir toda la memoria RAM
+* Puedes obtener metadata del archivo
+* funciona como un file-like async interface.
+* Usa metodo Asincronos como write, read, seek y close
+
+> [Más información sobre Request Files - Fas API](https://fastapi.tiangolo.com/tutorial/request-files/)
+
+## Deprecar
+
+Deprecar una pieza de código sucede cuando:
+
+1. Se encuentra un mejor método mas eficiente para resolver un problema que nosotros ya tenemos. Lo que hacemos no es eliminar dicho método si no la dejamos sin efecto. Para aprovechar el código posteriormente si lo requerimos nuevamente.
+2. Una funcionalidad diferente de nuestro código a la que ya tenemos definidos.
+3. Cuando se esta realizando una refactorización profunda del código, debido a que no tiene las mejores practicas, se define deprecar las path operation que se tienen por otras nuevas y se reemplazan. Nota: Siempre es mejor mantener el código que modificarlo desde cero.
+
+---
+
+## Twitter API
+
+![Twitter API Base](./assets/twitter_api.png)

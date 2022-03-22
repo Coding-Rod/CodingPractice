@@ -3,10 +3,11 @@ from typing import Optional
 from enum import Enum
 
 # Pylantic
-from pydantic import BaseModel, Field # type: ignore
+from pydantic import BaseModel, EmailStr, Field # type: ignore
 
 # FastAPI
-from fastapi import FastAPI # type: ignore
+from fastapi import FastAPI, File, Form, Header, Cookie, UploadFile # type: ignore
+from fastapi import HTTPException
 from fastapi import Body, Query, Path
 from fastapi import status # HTTP status codes
 
@@ -20,6 +21,7 @@ class HairColor(Enum): # Hair color model validator
     blonde = "blonde"
     red = "red"
     
+#region Person
 class PersonBase(BaseModel):
     person_id: int = Field(
         ...,
@@ -64,17 +66,23 @@ class Person(PersonBase):
     
 class PersonOut(PersonBase):
     pass
+#endregion Person
 
 class Location(BaseModel):
     city: str = Field(default=None, example="La Paz")
     state: str = Field(default=None, example="Murillo")
     country: str = Field(default=None, example="Bolivia")
 
+class LoginOut(BaseModel):
+    username: str = Field(..., example="miguel2022", max_length=20)
+    message: str = Field(default="Login successfully")
+
 #! Operations
 
 @app.get(
     path="/",
-    status_code=status.HTTP_200_OK
+    status_code=status.HTTP_200_OK,
+    tags=["Home"]
     ) # Path operation decorator
 def home() -> dict: # Path operation function
     return {"Hello":"world"}
@@ -84,15 +92,41 @@ def home() -> dict: # Path operation function
 @app.post(
     path="/person/new", 
     response_model=PersonOut,
-    status_code=status.HTTP_201_CREATED
+    status_code=status.HTTP_201_CREATED,
+    tags=["Persons"],
+    summary="Create Person in the app"
     )
-def create_person(person: Person = Body(...)) -> Person: # (...) = obligatorio
+def create_person(person: Person = Body(...)) -> Person: # (...) = obligatorio    
+    """
+    Create Person
+
+    This path operation creates a person in the app and save the information in the database  
+    
+    Args:
+    - Request body path:
+        - **person: Person ->** A person model with:
+            - First name
+            - Last name
+            - Age
+            - Hair color
+            - Marital status
+
+    Returns:
+    - Person model with:
+        - First name
+        - Last name
+        - Age
+        - Hair color
+        - Marital status
+    """    
     return person
 
-# Valitions: Query Parameters
+# Validations: Query Parameters
 @app.get(
     path="/person/detail",
-    status_code=status.HTTP_200_OK
+    status_code=status.HTTP_200_OK,
+    tags=["Persons"],
+    deprecated=True
     )
 def show_person(
     name: Optional[str] = Query(
@@ -108,33 +142,42 @@ def show_person(
         title = "Person Age",
         description = "This is the person's age. It is required",
         example=25
-        ) 
+        ),
 ) -> dict:
     return {
         "name": name,
         "age": age
     }
     
-# Valitions: Path Parameters
+# Validations: Path Parameters
+persons = [1, 2, 3, 4, 5]
+
 @app.get(
     path="/person/detail/{person_id}",
-    status_code=status.HTTP_200_OK
+    status_code=status.HTTP_200_OK,
+    tags=["Persons"]
     )
-def show_person_by_id(
+def show_person( 
     person_id: int = Path(
         ...,
         gt=0,
         title = "Person id",
         description = "This is the person's id. It is required",
         example=123
-        )
+        ) 
 ) -> dict:
+    if person_id not in persons:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="This person doesn't exist!"
+        )
     return {person_id: "It exists!"}
 
-# Valitions: Body Parameters
+# Validations: Body Parameters
 @app.put(
     path="/person/{person_id}",
-    status_code=status.HTTP_202_ACCEPTED
+    status_code=status.HTTP_202_ACCEPTED,
+    tags=["Persons"]
     )
 def update_person(
     person_id: int = Path(
@@ -149,3 +192,55 @@ def update_person(
 ) -> dict:
     return person.dict() | location.dict()
     # return person
+
+# Forms
+@app.post(
+    path="/login",
+    response_model=LoginOut,
+    status_code=status.HTTP_200_OK,
+    tags=["Persons"]
+)
+def login(username: str = Form(...), password: str = Form(...)):
+    return LoginOut(username=username)
+
+# Cookies and Headers Parameters
+@app.post(
+    path="/contact",
+    status_code=status.HTTP_200_OK,
+    tags=["Contact"]
+)
+def contact(
+    first_name: str = Form(
+        ...,
+        max_length=20,
+        min_length=1
+    ),
+    last_name: str = Form(
+        ...,
+        max_length=20,
+        min_length=1
+    ),
+    email: EmailStr = Form(...),
+    message: str = Form(
+        ...,
+        min_length=20
+    ),
+    user_agent: Optional[str] = Header(default=None),
+    ads: Optional[str] = Cookie(default=None)
+):
+    return user_agent
+
+# Files
+
+@app.post(
+    path="/post-image",
+    tags=["Files"]
+)
+def post_image(
+    image: UploadFile = File(...)
+):
+    return {
+        "filename": image.filename,
+        "Format": image.content_type,
+        "Size(kb)": round(len(image.file.read())/1024, ndigits=2)
+    }

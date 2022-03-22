@@ -1,0 +1,41 @@
+[
+    {
+        "tweet_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+        "content": "This is the first tweet in the history",
+        "created_at": "2022-03-22 11:28:38.831686",
+        "updated_at": "2022-03-22 15:28:48.399000+00:00",
+        "by": {
+            "user_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+            "email": "rodrigo@example.com",
+            "first_name": "Rodrigo",
+            "last_name": "Fernandez",
+            "birth_date": "2022-03-22"
+        }
+    },
+    {
+        "tweet_id": "3fa85f64-5717-4562-b3fc-2c963f66afa7",
+        "content": "This is the second tweet in the history",
+        "created_at": "2022-03-22 11:28:38.831686",
+        "updated_at": "2022-03-22 15:28:48.399000+00:00",
+        "by": {
+            "user_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+            "email": "rodrigo@example.com",
+            "first_name": "Rodrigo",
+            "last_name": "Fernandez",
+            "birth_date": "2022-03-22"
+        }
+    },
+    {
+        "tweet_id": "3fa85f64-5717-4562-b3fc-2c963f66afa7",
+        "content": "This is my last tweet",
+        "created_at": "2022-03-22 11:28:38.831686",
+        "updated_at": "2022-03-22 15:28:48.399000+00:00",
+        "by": {
+            "user_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+            "email": "ivan@example.com",
+            "first_name": "Ivan",
+            "last_name": "Sangueza",
+            "birth_date": "2022-03-22"
+        }
+    }
+]
