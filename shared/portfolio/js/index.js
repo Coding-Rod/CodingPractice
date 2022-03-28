@@ -1,4 +1,4 @@
-import CardCarousel from './CardCarousel.js'
+import CardCarousel from './modules/CardCarousel.js'
 
 const data = {
     1: {

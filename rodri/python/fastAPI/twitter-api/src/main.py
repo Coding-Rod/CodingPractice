@@ -1,6 +1,7 @@
 # Python
 import json
 from datetime import date, datetime
+from re import U
 from typing import List, Optional
 from enum import Enum
 from uuid import UUID
@@ -17,14 +18,6 @@ from fastapi import status # HTTP status codes
 app = FastAPI()
 
 #region Models
-
-#region Enums
-class UserKeys(Enum):
-    first_name = "first_name"
-    last_name = "last_name"
-    birth_date = "birth_date"
-
-#endregion Enums
 
 class UserBase(BaseModel):
     user_id: UUID = Field(...)
@@ -152,12 +145,14 @@ def show_all_users():
     summary="Show a User",
     tags=["Users"]
 )
-def show_a_user(user_id: str = Path(
-    ..., 
-    title = "Show a user",
-    description = "This functions shows a user based on a unique user id",
-    example = "3fa85f64-5717-4562-b3fc-2c963f66afa6"
-)):
+def show_a_user(
+    user_id: str = Path(
+        ..., 
+        title = "Show a user",
+        description = "This functions shows a user based on a unique user id",
+        example = "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+    )
+):
     with open("./data/users.json", "r", encoding="utf-8") as f:
         results = json.loads(f.read())
         
@@ -180,8 +175,35 @@ def show_a_user(user_id: str = Path(
     summary="Delete a User",
     tags=["Users"]
 )
-def delete_a_user():
-    pass
+def delete_a_user(
+    user_id: str = Path(
+        ..., 
+        title = "Modify a user ",
+        description = "This functions modifies a user based on a unique user id",
+        example = "3fa85f64-5717-4562-b3fc-2c963f66afa8"
+    )
+):
+    with open("./data/users.json", "r+", encoding="utf-8") as f:
+        results = json.loads(f.read())
+        
+        user_index: int = None
+        
+        for i,j in enumerate(results):
+            if user_id == str(j['user_id']):
+                user_index = i
+                break
+        
+        if user_index >= 0:
+            deleted = dict(results[user_index])
+            del results[user_index]
+        else:
+            raise HTTPException(status.HTTP_404_NOT_FOUND, "User not found")
+        
+        f.seek(0)
+        f.write(json.dumps(results))
+        f.truncate()        
+        
+        return deleted
 
 @app.put(
     path="/users/{user_id}/update",
@@ -197,50 +219,30 @@ def update_a_user(
         description = "This functions modifies a user based on a unique user id",
         example = "3fa85f64-5717-4562-b3fc-2c963f66afa6"
     ),
-    attr: UserKeys = Query(
-        ...,
-        title = "Attribute to change",
-        description = "This function modifies a user based on an attribute",
-        example="first_name"
-    ),
-    value = Query(...)
+    user: User = Body(...)
 ):
-    with open("./data/users.json", "r", encoding="utf-8") as f:
+    with open("./data/users.json", "r+", encoding="utf-8") as f:
         results = json.loads(f.read())
         
-        user: int = None
-        previous: str = None
+        user_index: int = None
         
         for i,j in enumerate(results):
             if user_id == str(j['user_id']):
-                user = i
+                user_index = i
                 break
-            
-        if user >= 0:
-            if attr == 'birth_date':
-                value = date.fromisoformat(value)
-            else:
-                value = str(value)
-            results[user][attr] = value
-            previous = str(results[user][attr])
+        
+        if user_index >= 0:
+            results[user_index]['first_name'] = user.dict()['first_name']
+            results[user_index]['last_name'] = user.dict()['last_name']
+            results[user_index]['birth_date'] = str(user.dict()['birth_date'])
         else:
             raise HTTPException(status.HTTP_404_NOT_FOUND, "User not found")
         
-        # File operations
         f.seek(0)
         f.write(json.dumps(results))
+        f.truncate()        
         
-        return {
-            "user": user_id,
-            "previous": {
-                "field": attr,
-                "value": previous
-            },
-            "actual":{
-                "field": attr,
-                "value": value
-            }
-        }
+        return results[user_index]
 
 #endregion Users
 
@@ -326,8 +328,30 @@ def post(tweet: Tweet = Body(...)):
     summary="Show a tweet",
     tags=["Tweets"]
     )
-def show_a_tweet():
-    pass
+def show_a_tweet(
+    tweet_id: str = Path(
+        ..., 
+        title = "Show a user",
+        description = "This functions shows a user based on a unique user id",
+        example = "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+    )
+):
+    with open("./data/tweets.json", "r", encoding="utf-8") as f:
+        results = json.loads(f.read())
+        
+        tweet_index: int = None
+        
+        print(results)
+        
+        for i,j in enumerate(results):
+            if tweet_id == str(j['tweet_id']):
+                tweet_index = i
+                break
+            
+        try:
+            return results[tweet_index]
+        except:
+            raise HTTPException(status.HTTP_404_NOT_FOUND, "User not found")
 
 @app.delete(
     path="/tweets/{tweet_id}/delete",
@@ -336,8 +360,35 @@ def show_a_tweet():
     summary="Delete a tweet",
     tags=["Tweets"]
     )
-def delete_a_tweet():
-    pass
+def delete_a_tweet(
+    tweet_id: str = Path(
+        ..., 
+        title = "Delete a tweet ",
+        description = "This functions modifies a tweet based on a unique user id",
+        example = "3fa85f64-5717-4562-b3fc-2c963f66afa8"
+    )
+):
+    with open("./data/tweets.json", "r+", encoding="utf-8") as f:
+        results = json.loads(f.read())
+        
+        tweet_index: int = None
+        
+        for i,j in enumerate(results):
+            if tweet_id == str(j['tweet_id']):
+                tweet_index = i
+                break
+        
+        if tweet_index >= 0:
+            deleted = dict(results[tweet_index])
+            del results[tweet_index]
+        else:
+            raise HTTPException(status.HTTP_404_NOT_FOUND, "Tweet not found")
+        
+        f.seek(0)
+        f.write(json.dumps(results))
+        f.truncate()        
+        
+        return deleted
 
 @app.put(
     path="/tweets/{tweet_id}/update",
@@ -346,8 +397,40 @@ def delete_a_tweet():
     summary="Update a tweet",
     tags=["Tweets"]
     )
-def update_a_tweet():
-    pass
+def update_a_tweet(
+    tweet_id: str = Path(
+        ..., 
+        title = "Modify a tweet ",
+        description = "This functions modifies a tweet based on a unique tweet id",
+        example = "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+    ),
+    content: str = Query(
+        ...,
+        min_length=1,
+        max_length=256
+    )
+):
+    with open("./data/tweets.json", "r+", encoding="utf-8") as f:
+        results = json.loads(f.read())
+        
+        tweet_index: int = None
+        
+        for i,j in enumerate(results):
+            if tweet_id == str(j['tweet_id']):
+                tweet_index = i
+                break
+        
+        if tweet_index >= 0:
+            results[tweet_index]['content'] = content
+            results[tweet_index]['updated_at'] = str(datetime.now())
+        else:
+            raise HTTPException(status.HTTP_404_NOT_FOUND, "Tweet not found")
+        
+        f.seek(0)
+        f.write(json.dumps(results))
+        f.truncate()        
+        
+        return results[tweet_index]
 
 #endregion Tweets
 

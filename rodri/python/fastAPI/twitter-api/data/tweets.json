@@ -3,7 +3,7 @@
         "tweet_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
         "content": "This is the first tweet in the history",
         "created_at": "2022-03-22 11:28:38.831686",
-        "updated_at": "2022-03-22 15:28:48.399000+00:00",
+        "updated_at": "2022-03-22 17:45:25.890974",
         "by": {
             "user_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
             "email": "rodrigo@example.com",
@@ -26,10 +26,10 @@
         }
     },
     {
-        "tweet_id": "3fa85f64-5717-4562-b3fc-2c963f66afa7",
-        "content": "This is my last tweet",
+        "tweet_id": "3fa85f64-5717-4562-b3fc-2c963f66afa8",
+        "content": "Me gusta comerme los mocos",
         "created_at": "2022-03-22 11:28:38.831686",
-        "updated_at": "2022-03-22 15:28:48.399000+00:00",
+        "updated_at": "2022-03-22 17:48:21.735684",
         "by": {
             "user_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
             "email": "ivan@example.com",
