@@ -1,7 +1,9 @@
 import { initializeApp } from 'firebase/app'
 import {
-    getFirestore, collection, getDocs,
-    addDoc, deleteDoc, doc
+    getFirestore, collection, onSnapshot,
+    addDoc, deleteDoc, doc, getDoc, updateDoc,
+    query, where,
+    orderBy, serverTimestamp
 } from 'firebase/firestore'
 
 const firebaseConfig = {
@@ -20,34 +22,83 @@ initializeApp(firebaseConfig);
 const db = getFirestore();
 
 // collection ref
-const colref = collection(db, 'books');
+const colRef = collection(db, 'books');
 
-//#region CRUD
+// queries
+
+const q = query(colRef, where("author", "==", "patrick rothfuss"), orderBy("createdAt"));//orderBy("title", 'desc')); // orderBy generates an exception the first time, to solve this enter the link of the exception and create index
+
 // get collection data
-getDocs(colref)
-.then((snapshot) =>{
-    // console.log(snapshot.docs)
+// getDocs(colRef)
+// .then((snapshot) =>{
+//     // console.log(snapshot.docs)
+//     let books = [];
+//     snapshot.docs.forEach((doc) => {
+    //         books.push({ ...doc.data(), id: doc.id});
+    //     });
+//     console.log(books);
+// });
+
+// real time collection data
+// onSnapshot(colRef, (snapshot) => { //with collection reference
+onSnapshot(q, (snapshot) => { //with query
     let books = [];
     snapshot.docs.forEach((doc) => {
         books.push({ ...doc.data(), id: doc.id});
     });
     console.log(books);
-});
+    
+})
 
+//#region CRUD
+
+//! Create
 // adding documents
 const addBookForm = document.querySelector('.add');
 addBookForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    addDoc(colref, {  //sending books as parameter
+    addDoc(colRef, {  //sending books as parameter
         title: addBookForm.title.value,
-        author: addBookForm.author.value
+        author: addBookForm.author.value,
+        createdAt: serverTimestamp()
     })
     .then(() => {
         addBookForm.reset();
     });
 })
 
-// adding documents
+//! Read
+// getting documents
+const docRef = doc(db, 'books', 'NiYucSWPFwLird685MPM');
+
+// getDoc(docRef)
+//     .then((doc) => {
+//         console.log(doc.data(), doc.id);
+// });
+
+// on real time
+onSnapshot(docRef, (doc) => {
+    console.log(doc.data(), doc.id);
+})
+
+//! Update
+// updating documents
+const updateBookForm = document.querySelector('.update');
+updateBookForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const docRef = doc(db, 'books', updateBookForm.id.value);
+
+    updateDoc(docRef, {
+        title: 'updated title'
+    })
+        .then(() => {
+            updateBookForm.reset();
+    });
+})
+
+//! Delete
+// deleting documents
 const deleteBookForm = document.querySelector('.delete');
 deleteBookForm.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -57,7 +108,7 @@ deleteBookForm.addEventListener('submit', (e) => {
     deleteDoc(docRef)
         .then(() => {
             deleteBookForm.reset();
-        });
+    });
 })
 
 //#endregion CRUD
