@@ -1,3 +1,4 @@
+//#region imports
 import { initializeApp } from 'firebase/app'
 import {
     getFirestore, collection, onSnapshot,
@@ -12,7 +13,9 @@ import {
     signInWithEmailAndPassword, signOut,
     onAuthStateChanged
 } from 'firebase/auth'
+//#endregion imports
 
+//#region variables
 const firebaseConfig = {
     apiKey: "AIzaSyB-DRZa_V8jOIbTL9CCE9NbjuFkdPsft4o",
     authDomain: "fir-9-dojo-dd19b.firebaseapp.com",
@@ -35,21 +38,23 @@ const colRef = collection(db, 'books');
 // queries
 
 const q = query(colRef, where("author", "==", "patrick rothfuss"), orderBy("createdAt"));//orderBy("title", 'desc')); // orderBy generates an exception the first time, to solve this enter the link of the exception and create index
+//#endregion variables
 
+//#region Subscribe
 // get collection data
 // getDocs(colRef)
 // .then((snapshot) =>{
-//     // console.log(snapshot.docs)
-//     let books = [];
-//     snapshot.docs.forEach((doc) => {
-    //         books.push({ ...doc.data(), id: doc.id});
+    //     // console.log(snapshot.docs)
+    //     let books = [];
+    //     snapshot.docs.forEach((doc) => {
+        //         books.push({ ...doc.data(), id: doc.id});
     //     });
-//     console.log(books);
-// });
-
-// real time collection data
-// onSnapshot(colRef, (snapshot) => { //with collection reference
-onSnapshot(q, (snapshot) => { //with query
+    //     console.log(books);
+    // });
+    
+    // real time collection data
+    // const unsubCol = onSnapshot(q, (snapshot) => { //with query
+    const unsubCol = onSnapshot(colRef, (snapshot) => { //with collection reference
     let books = [];
     snapshot.docs.forEach((doc) => {
         books.push({ ...doc.data(), id: doc.id});
@@ -57,6 +62,7 @@ onSnapshot(q, (snapshot) => { //with query
     console.log(books);
     
 });
+//#endregion Subscribe
 
 //#region CRUD
 
@@ -85,7 +91,7 @@ const docRef = doc(db, 'books', 'NiYucSWPFwLird685MPM');
 // });
 
 // on real time
-onSnapshot(docRef, (doc) => {
+const unsubDoc = onSnapshot(docRef, (doc) => {
     console.log(doc.data(), doc.id);
 });
 
@@ -164,8 +170,18 @@ logoutButton.addEventListener('click', () => {
 });
 
 // subscribing to auth changes
-onAuthStateChanged(auth, (user) => {
+const unsubAuth = onAuthStateChanged(auth, (user) => {
     console.log('user status changed: ', user)
 })
 
 //#endregion UserAuth
+
+//#region Unsubscribe
+const unsubButton = document.querySelector('.unsub');
+unsubButton.addEventListener('click', () => {
+    console.log('unsubscribing...');
+    Promise.all([unsubCol(),unsubDoc(),unsubAuth()]).then(() => {
+        console.log('unsubscribed!');
+    });
+});
+//#endregion Unsubscribe
