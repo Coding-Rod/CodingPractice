@@ -3,8 +3,15 @@ import {
     getFirestore, collection, onSnapshot,
     addDoc, deleteDoc, doc, getDoc, updateDoc,
     query, where,
-    orderBy, serverTimestamp
+    orderBy, serverTimestamp,
 } from 'firebase/firestore'
+
+import {
+    getAuth,
+    createUserWithEmailAndPassword,
+    signInWithEmailAndPassword, signOut,
+    onAuthStateChanged
+} from 'firebase/auth'
 
 const firebaseConfig = {
     apiKey: "AIzaSyB-DRZa_V8jOIbTL9CCE9NbjuFkdPsft4o",
@@ -20,6 +27,7 @@ initializeApp(firebaseConfig);
 
 // init services
 const db = getFirestore();
+const auth = getAuth();
 
 // collection ref
 const colRef = collection(db, 'books');
@@ -48,7 +56,7 @@ onSnapshot(q, (snapshot) => { //with query
     });
     console.log(books);
     
-})
+});
 
 //#region CRUD
 
@@ -65,7 +73,7 @@ addBookForm.addEventListener('submit', (e) => {
     .then(() => {
         addBookForm.reset();
     });
-})
+});
 
 //! Read
 // getting documents
@@ -79,7 +87,7 @@ const docRef = doc(db, 'books', 'NiYucSWPFwLird685MPM');
 // on real time
 onSnapshot(docRef, (doc) => {
     console.log(doc.data(), doc.id);
-})
+});
 
 //! Update
 // updating documents
@@ -95,7 +103,7 @@ updateBookForm.addEventListener('submit', (e) => {
         .then(() => {
             updateBookForm.reset();
     });
-})
+});
 
 //! Delete
 // deleting documents
@@ -109,6 +117,55 @@ deleteBookForm.addEventListener('submit', (e) => {
         .then(() => {
             deleteBookForm.reset();
     });
-})
+});
 
 //#endregion CRUD
+
+//#region UserAuth
+
+// sign up
+const signupForm = document.querySelector('.signup');
+signupForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    
+    createUserWithEmailAndPassword(auth, signupForm.email.value, signupForm.password.value)
+        .then((credential) =>{
+            // console.log("User created: ", credential.user);
+            signupForm.reset();
+        })
+        .catch((error) => {
+            console.error(error.message);
+    });
+});
+
+//log in
+const loginForm = document.querySelector('.login');
+loginForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    signInWithEmailAndPassword(auth, loginForm.email.value, loginForm.password.value)
+    .then((credential) =>{
+        // console.log("User logged in: ", credential.user);
+        loginForm.reset();
+    })
+    .catch((error) => {
+        console.error(error.message);
+});
+});
+
+//log out
+const logoutButton = document.querySelector('.logout');
+logoutButton.addEventListener('click', () => {
+    signOut(auth)
+        .then(() => {
+            // console.log('logged out');
+        })
+        .catch((error) => console.error(error.message));
+});
+
+// subscribing to auth changes
+onAuthStateChanged(auth, (user) => {
+    console.log('user status changed: ', user)
+})
+
+//#endregion UserAuth
