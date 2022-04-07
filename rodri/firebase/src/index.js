@@ -53,8 +53,8 @@ const q = query(colRef, where("author", "==", "patrick rothfuss"), orderBy("crea
     // });
     
     // real time collection data
-    // const unsubCol = onSnapshot(q, (snapshot) => { //with query
-    const unsubCol = onSnapshot(colRef, (snapshot) => { //with collection reference
+    // const unsubCol = onSnapshot(colRef, (snapshot) => { //with collection reference
+    const unsubCol = onSnapshot(q, (snapshot) => { //with query
     let books = [];
     snapshot.docs.forEach((doc) => {
         books.push({ ...doc.data(), id: doc.id});
