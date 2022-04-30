@@ -15,11 +15,19 @@
         const vm = Vue.createApp({
             data(){
                 return {
-                    attr: "src",
-                    img: "https://cdn.mos.cms.futurecdn.net/9QTpESGBXa32D29J77VR3d.jpg"
+                    counter: 0
                 };
             },
-            template: `<img v-bind:[attr]="img" v-bind:alt="img">`
+            methods: {
+                submit(e){
+                    this.counter++;
+                }
+            },
+            template: `
+                    <form v-on:submit.prevent="submit">
+                        <button>{{counter}}</button>
+                    </form>
+                    `
         }).mount("#app");
     </script>
 </body>
