@@ -8,15 +8,18 @@
 </head>
 <body>
     <script src="https://unpkg.com/vue@next"></script>
-    <div id="app"></div>
+    <div id="app">
+        
+    </div>
     <script>
         const vm = Vue.createApp({
             data(){
                 return {
-                    text: '<p>Hello Vue</p>'
+                    attr: "src",
+                    img: "https://cdn.mos.cms.futurecdn.net/9QTpESGBXa32D29J77VR3d.jpg"
                 };
             },
-            template: `<div v-html="text"></div>`
+            template: `<img v-bind:[attr]="img" v-bind:alt="img">`
         }).mount("#app");
     </script>
 </body>
