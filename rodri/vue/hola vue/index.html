@@ -4,6 +4,45 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        html, body {
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        #app, .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            width: 100%;
+            height: 100%;
+        }
+        button {
+            margin-top: 24px;
+            border: none;
+            background-color: white;
+            padding: 8px 24px;
+            border-radius: 12px;
+        }
+        .closed {
+            background-color: #eca1a6;
+        }
+        .open {
+            background-color: #b5e7a0;
+        }
+        .list{
+            display: flex;
+            flex-direction: column;
+        }
+        .item{
+            border: 1px solid black;
+        }
+        .title{
+            font-weight: bold;
+            font-size: 1.2rem,
+        }
+    </style>
     <title>Document</title>
 </head>
 <body>
@@ -15,20 +54,81 @@
         const vm = Vue.createApp({
             data(){
                 return {
-                    counter: 0
+                    text: "Accede a tu cuenta",
+                    open: false,
+                    username: "Rod",
+                    posts:[{
+                            title: "Titulo 1",
+                            description: "Descripción 1"
+                        },{
+                            title: "Titulo 2",
+                            description: "Descripción 2"
+                        },{
+                            title: "Titulo 3",
+                            description: "Descripción 3"
+                        },{
+                            title: "Titulo 4",
+                            description: "Descripción 4"
+                        },
+                    ],
+                    new_post: {
+                        title: "",
+                        description: ""
+                    }
                 };
             },
-            methods: {
-                submit(e){
-                    this.counter++;
+            methods:{
+                submit(){
+                    this.posts.push(this.new_post);
+                }
+            },
+            computed: {
+                buttonState(){
+                    return this.open ? "Close" : "Open";
                 }
             },
             template: `
-                    <form v-on:submit.prevent="submit">
-                        <button>{{counter}}</button>
-                    </form>
-                    `
+                <div class="container" :class="{'open':open, 'closed':!open}">
+                    <h2>{{ text }}</h2>
+                    <div v-if="open">
+                        <p>Hola, {{username}}</p>
+                        <div class="list" v-for="(post,index) in posts">
+                            <div class="item">
+                                <h4 class="title">{{post.title}}</h4>
+                                <p>{{post.description}}</p>
+                                <button 
+                                    type="button" 
+                                    @click="posts.splice(index, 1);"
+                                    >
+                                        Remove
+                                </button>
+                            </div>
+                        </div>
+                        <form class="post-form">
+                            <h2>Add new posts</h2>
+                            <label>Titulo</label>
+                            <input type="text" v-model="new_post.title">
+                            <label>Descripción</label>
+                            <input type="text" v-model="new_post.description">
+                            <button type="button" @click="submit">Postear</button>
+                        </form>
+                    </div>
+                    <div v-else>
+                        <div>{{username}}</div>
+                        <input type="text" v-model="username" placeholder="Username" />
+                    </div>
+                    <button 
+                        type="button"
+                        @click="open = !open"
+                        >
+                        <div v-if="!open">Login</div>
+                        <div v-else>Logout</div>
+                    </button>
+                </div>
+            `
         }).mount("#app");
+        // v-on = @
+        // v-bind = :
     </script>
 </body>
 </html>

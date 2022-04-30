@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://unpkg.com/vue@next"></script>
+    <div id="app">
+        
+    </div>
+    <script>
+        const vm = Vue.createApp({
+            data(){
+                return {
+                    text: "Door closed",
+                    open: false,
+                    items: [
+                        "Rodri",
+                        "Ivan",
+                        "Mariana",
+                        "Bairu"
+                    ]
+                };
+            },
+            watch:{
+                open(value){ // new value, old value
+                    // console.log("Watcher!", value, old);
+                    // console.log(this.text);
+                    this.text = value? "Door open" : "Door closed";
+                }
+            },
+            computed: {
+                buttonState(){
+                    return this.open ? "Close" : "Open";
+                }
+            },
+            template: `
+                <div>{{ text }}</div>
+                <button 
+                    type="button"
+                    @click="open = !open"
+                    >
+                        {{ buttonState }}
+                </button>
+                <ul v-for="item in items">
+                    <li>{{ item }}</li>
+                </ul>
+            `
+        }).mount("#app");
+        // v-on = @
+        // v-bind = :
+    </script>
+</body>
+</html>
