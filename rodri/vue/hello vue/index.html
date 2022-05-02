@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://unpkg.com/vue@next"></script>
+    <div id="app"></div>
+    <script>
+        const app= Vue.createApp({
+            data(){
+                return {
+                    text: "Hello vue",
+                }
+            },
+            template: `
+                <v-button ref="element" :label="text"></v-button>
+            `
+        });
+        
+        app.component("v-button",{
+            props: {
+                label: String
+            },
+            template: `
+                <button>{{label}}</button>
+            `
+        })
+
+        const vm = app.mount("#app");
+        // console.log(vm.$el);
+        // console.log(vm.$refs.element);
+    </script>
+</body>
+</html>

@@ -51,7 +51,7 @@
         
     </div>
     <script>
-        const vm = Vue.createApp({
+        const app = Vue.createApp({
             data(){
                 return {
                     text: "Accede a tu cuenta",
@@ -92,17 +92,14 @@
                     <h2>{{ text }}</h2>
                     <div v-if="open">
                         <p>Hola, {{username}}</p>
-                        <div class="list" v-for="(post,index) in posts">
-                            <div class="item">
-                                <h4 class="title">{{post.title}}</h4>
-                                <p>{{post.description}}</p>
-                                <button 
-                                    type="button" 
-                                    @click="posts.splice(index, 1);"
-                                    >
-                                        Remove
-                                </button>
-                            </div>
+                        <div class="list" >
+                            <item 
+                                v-for="(item,index) in posts" 
+                                :key="index"
+                                :post="item"
+                                :items="posts"
+                                :index="index"
+                            />
                         </div>
                         <form class="post-form">
                             <h2>Add new posts</h2>
@@ -126,7 +123,25 @@
                     </button>
                 </div>
             `
-        }).mount("#app");
+        });
+
+        const v_item = app.component('item', {
+            props: ["post","items","index"],
+            template: `
+                <div class="item">
+                    <h4 class="title">{{post.title}}</h4>
+                    <p>{{post.description}}</p>
+                    <button 
+                        type="button" 
+                        @click="items.splice(index, 1);"
+                        >   
+                            Remove
+                    </button>
+                </div>
+            `
+        });
+        
+        const vm = app.mount("#app");
         // v-on = @
         // v-bind = :
     </script>
