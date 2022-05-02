@@ -22,3 +22,8 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+### Install bootstrap for Vue 3
+```
+npm install bootstrap bootstrap-vue-3
+```
