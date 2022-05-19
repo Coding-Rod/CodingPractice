@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../public/css/tailwind.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <title>Platzi travel</title>
+</head>
+<body>
+    <!-- #region prework -->
+    <!-- <p>Hello world</p>
+    <div class="w-64 h-64 bg-red-200"></div> -->
+    <!-- <div class="w-64 h-64 bg-blue-600"></div> -->
+    <!-- <div class="w-32 h-96 bg-red-500"></div> -->
+    <!-- <div class="w-auto h-96 bg--sky-200 flex">
+        <div class="w-32 h-1/2 bg-sky-700"></div>
+        <div class="w-24 h-96 bg-cyan-400"></div>
+        <div class="w-1/4 h-32 bg-cyan-700"></div>
+        <div class="w-64 h-1/4 bg-cyan-900"></div>
+    </div> -->
+    <!-- <div class="w-96 h-96 bg-gray-100 p-10 m-20 flex flex-col space-y-4 justify-center items-center">
+        <div class="w-16 h-16 bg-red-300"></div>
+        <div class="w-16 h-16 bg-red-300"></div>
+        <div class="w-16 h-16 bg-red-300"></div>
+        <div class="w-16 h-16 bg-red-300"></div>
+    </div> -->
+    <!-- <p class="text-primary font-Montserrat text-xl">Hello World</p>
+    <div class="w-64 h-64 bg-tertiary"></div> -->
+    <!-- #endregion prework -->
+    <nav></nav>
+    <section class="w-full h-screen">
+        <div class="home">
+            <div class="w-full h-3/4">
+                <div class="w-full h-full flex flex-col absolute space-y-96 items-center">
+                    <input class="outline-none p-3 rounded-full shadow-sm  transition duration-300 focus-within:shadow-sm focus:ring-2 focus:w-11/12" type="search" placeholder="sanFrancisco">
+                    <button class="w-32 rounded-full bg-white text-xl text-primary font-semibold p-4 shadow-sm transition-all duration-500 ease-in-out hover:bg-primary hover:text-white transform hover:-translate-y-1" type="button">
+                        Explorar
+                    </button>
+                </div>
+                <div class="w-full h-full">
+                    <img src="./img/sanFrancisco.jpg" alt="San Francisco">
+                </div>
+            </div>
+        </div>
+        <div class="px-6 w-full h-full" id="recomendadas">
+            <p class="text-3xl text-primary font-semibold">Recomendados</p>
+            <div class="flex">
+                <div class="Card">
+                    <div class="w-full h-3/5 bg-norway bg-cover rounded-t-lg"></div>
+                    <div class="w-full h-2/5 bg-secondary rounded-b-lg">
+                        <p class="text-white text-bold text-xl px-4 py-2">Norway</p>
+                        <p class="text-white text-md px-4">Paisajes Increibles</p>
+                    </div>
+                </div>
+                <div class="Card">
+                    <div class="w-full h-3/5 bg-new_york bg-cover rounded-t-lg"></div>
+                    <div class="w-full h-2/5 bg-white rounded-b-lg">
+                        <p class="text-tertiary text-bold text-xl px-4 py-2">New York</p>
+                        <p class="text-tertiary text-md px-4">Jungla de concreto</p>
+                    </div>
+                </div>
+                <div class="Card">
+                    <div class="w-full h-3/5 bg-yosemite bg-cover rounded-t-lg"></div>
+                    <div class="w-full h-2/5 bg-secondary rounded-b-lg">
+                        <p class="text-white text-bold text-xl px-4 py-2"Yosemite</p>
+                        <p class="text-white text-md px-4">Un descanso del mundo</p>
+                    </div>
+                </div>
+                <div class="Card">
+                    <div class="w-full h-3/5 bg-seattle bg-cover rounded-t-lg"></div>
+                    <div class="w-full h-2/5 bg-white rounded-b-lg">
+                        <p class="text-tertiary text-bold text-xl px-4 py-2">Seattle</p>
+                        <p class="text-tertiary text-md px-4">Gran ciudad</p>
+                    </div>
+                </div>
+                <div class="Card">
+                    <div class="w-full h-3/5 bg-switzerland bg-cover rounded-t-lg"></div>
+                    <div class="w-full h-2/5 bg-secondary rounded-b-lg">
+                        <p class="text-white text-bold text-xl px-4 py-2">Switzerland</p>
+                        <p class="text-white text-md px-4">Gran ciudad</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="px-6 w-full h-full" id="rentas_destacadas">
+            <p class="text-3xl text-primary font-semibold pb-6 mt-6">Rentas Destacadas</p>
+            <div class="w-full h-full flex flex-col space-y-6 items-center justify-center">
+                <div class="w-full h-96 bg-chicago bg-cover rounded-xl">
+                    <p class="CardTitle">Chicago</p>
+                    <p class="text-sm pl-8 text-black mr-24">2 habitaciones, baño y cocina</p>
+                </div>
+                <div class="w-full h-96 bg-chicago bg-cover rounded-xl">
+                    <p class="CardTitle">Chicago</p>
+                    <p class="text-sm pl-8 text-black mr-24">2 habitaciones, baño y cocina</p>
+                </div>
+            </div>
+        </div>
+        <div class="w-full h-full" id="faqs">
+            <div class="w-full h-full px-6 flex flex-col space-y-4">
+                <p class="text-3xl text-primary font-semibold mt-6">FAQs</p>
+                <div>
+                    <p class="text-xl font-medium text-primary">Métodos de pago</p>
+                    <p class="text-md pt-2">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ullam id, repudiandae autem, hic corporis non quaerat distinctio sapiente accusamus quae, adipisci doloribus vel quo similique in! Eligendi dolores non esse!</p>
+                </div>
+                <div>
+                    <p class="text-xl font-medium text-primary">Métodos de pago</p>
+                    <p class="text-md pt-2">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ullam id, repudiandae autem, hic corporis non quaerat distinctio sapiente accusamus quae, adipisci doloribus vel quo similique in! Eligendi dolores non esse!</p>
+                </div>
+                <div>
+                    <p class="text-xl font-medium text-primary">Métodos de pago</p>
+                    <p class="text-md pt-2">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ullam id, repudiandae autem, hic corporis non quaerat distinctio sapiente accusamus quae, adipisci doloribus vel quo similique in! Eligendi dolores non esse!</p>
+                </div>
+                <div>
+                    <p class="text-xl font-medium text-primary">Métodos de pago</p>
+                    <p class="text-md pt-2">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ullam id, repudiandae autem, hic corporis non quaerat distinctio sapiente accusamus quae, adipisci doloribus vel quo similique in! Eligendi dolores non esse!</p>
+                </div>
+                <div>
+                    <p class="text-xl font-medium text-primary">Métodos de pago</p>
+                    <p class="text-md pt-2">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ullam id, repudiandae autem, hic corporis non quaerat distinctio sapiente accusamus quae, adipisci doloribus vel quo similique in! Eligendi dolores non esse!</p>
+                </div>
+            </div>
+        </div>
+        <footer class="w-full h-auto bg-gray-50 p-6 space-y-2">
+            <p class="text-lg text-gray-400">Acerca De</p>
+            <p class="text-sm text-gray-300">Acerca De</p>
+            <p class="text-sm text-gray-300">Inversionistas</p>
+            <p class="text-sm text-gray-300">Empleos</p>
+            <p class="text-sm text-gray-300">Términos</p>
+            <p class="text-sm text-gray-300">PLatzi Travel. inc.</p>
+        </footer>
+    </section>
+    <div class="w-full h-16 bg-white fixed left-0 bottom-0 shadow-md flex space-x-8 items-center justify-center" id="tab_bar">
+        <a href="">
+            <svg width="30" height="30" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path class="fill-current text-primary" d="M10.707 2.29303C10.5195 2.10556 10.2652 2.00024 10 2.00024C9.73488 2.00024 9.48057 2.10556 9.29304 2.29303L2.29304 9.29303C2.11088 9.48163 2.01009 9.73423 2.01237 9.99643C2.01465 10.2586 2.11981 10.5094 2.30522 10.6948C2.49063 10.8803 2.74144 10.9854 3.00364 10.9877C3.26584 10.99 3.51844 10.8892 3.70704 10.707L4.00004 10.414V17C4.00004 17.2652 4.1054 17.5196 4.29293 17.7071C4.48047 17.8947 4.73482 18 5.00004 18H7.00004C7.26526 18 7.51961 17.8947 7.70715 17.7071C7.89468 17.5196 8.00004 17.2652 8.00004 17V15C8.00004 14.7348 8.1054 14.4805 8.29293 14.2929C8.48047 14.1054 8.73482 14 9.00004 14H11C11.2653 14 11.5196 14.1054 11.7071 14.2929C11.8947 14.4805 12 14.7348 12 15V17C12 17.2652 12.1054 17.5196 12.2929 17.7071C12.4805 17.8947 12.7348 18 13 18H15C15.2653 18 15.5196 17.8947 15.7071 17.7071C15.8947 17.5196 16 17.2652 16 17V10.414L16.293 10.707C16.4816 10.8892 16.7342 10.99 16.9964 10.9877C17.2586 10.9854 17.5095 10.8803 17.6949 10.6948C17.8803 10.5094 17.9854 10.2586 17.9877 9.99643C17.99 9.73423 17.8892 9.48163 17.707 9.29303L10.707 2.29303Z" fill="#3F3F46"/>
+            </svg>
+        </a>
+        <a href="">
+            <svg width="30" height="30" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path class="fill-current text-principal" fill-rule="evenodd" clip-rule="evenodd" d="M8 3.99997C6.93913 3.99997 5.92172 4.4214 5.17157 5.17155C4.42143 5.92169 4 6.93911 4 7.99997C4 9.06084 4.42143 10.0783 5.17157 10.8284C5.92172 11.5785 6.93913 12 8 12C9.06087 12 10.0783 11.5785 10.8284 10.8284C11.5786 10.0783 12 9.06084 12 7.99997C12 6.93911 11.5786 5.92169 10.8284 5.17155C10.0783 4.4214 9.06087 3.99997 8 3.99997ZM2 7.99997C1.99988 7.05568 2.22264 6.12468 2.65017 5.28271C3.0777 4.44074 3.69792 3.71157 4.4604 3.1545C5.22287 2.59743 6.10606 2.22819 7.03815 2.07681C7.97023 1.92543 8.92488 1.99618 9.82446 2.28332C10.724 2.57046 11.5432 3.06587 12.2152 3.72927C12.8872 4.39266 13.3931 5.20531 13.6919 6.10111C13.9906 6.9969 14.0737 7.95056 13.9343 8.88452C13.795 9.81848 13.4372 10.7064 12.89 11.476L17.707 16.293C17.8892 16.4816 17.99 16.7342 17.9877 16.9964C17.9854 17.2586 17.8802 17.5094 17.6948 17.6948C17.5094 17.8802 17.2586 17.9854 16.9964 17.9876C16.7342 17.9899 16.4816 17.8891 16.293 17.707L11.477 12.891C10.5794 13.5293 9.52335 13.9081 8.42468 13.9861C7.326 14.0641 6.22707 13.8381 5.2483 13.3329C4.26953 12.8278 3.44869 12.063 2.87572 11.1223C2.30276 10.1816 1.99979 9.10141 2 7.99997Z" fill="#3F3F46"/>
+            </svg>
+        </a>
+    </div>
+</body>
+</html>
