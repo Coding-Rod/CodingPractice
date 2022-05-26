@@ -1,21 +1,22 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png" />
   <HelloWorld msg="Welcome to Your Vue.js App" />
-  <component :is="component_name"></component>
+  <!-- <component :is="component_name"></component> -->
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+//#region imports
+// import HelloWorld from "./components/HelloWorld.vue";
+import { defineAsyncComponent } from "vue";
+const HelloWorld = defineAsyncComponent(() =>
+  import("./components/HelloWorld.vue")
+);
+//#endregion imports
 
 export default {
   name: "App",
   components: {
     HelloWorld,
-  },
-  data() {
-    return {
-      component_name: "HelloWorld",
-    };
   },
 };
 </script>
