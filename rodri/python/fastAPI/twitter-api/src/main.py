@@ -5,6 +5,7 @@ from re import U
 from typing import List, Optional
 from enum import Enum
 from uuid import UUID
+from fastapi.middleware.cors import CORSMiddleware
 
 # Pylantic
 from pydantic import BaseModel, EmailStr, Field # type: ignore
@@ -16,6 +17,16 @@ from fastapi import status # HTTP status codes
 
 #! Instance
 app = FastAPI()
+
+origins = ["*"]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 #region Models
 
