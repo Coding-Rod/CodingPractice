@@ -1,15 +1,27 @@
-const URL = "https://api.thecatapi.com/v1/images/search";
-const limit = "3"
-const API_KEY = "cf5f08a7-26d8-42a4-9d4f-abbb4f0e87ba"
+//! Variables
+const API_URL = "https://api.thecatapi.com/v1/";
+const limit = "2";
+const API_KEY = "cf5f08a7-26d8-42a4-9d4f-abbb4f0e87ba";
 const button = document.querySelector("#get_cat");
+const save_button_1 = document.querySelector("#btn-1");
+const save_button_2 = document.querySelector("#btn-2");
 
+//! EventListeners
 button.addEventListener("click", (e) => {
     e.preventDefault();
-    for (let index = 0; index < 3; index++) {
-        reload_cat("#img"+(index+1));
+    for (let index = 0; index < 2; index++) {
+        loadRandomCat("#img"+(index+1));
     }
 })
 
+document.querySelector("body").addEventListener("click", (e) => {
+    e.preventDefault();
+    if (e.target === save_button_1 || e.target === save_button_2){
+        saveFavoriteCat(document.querySelector("#img"+e.target.id[e.target.id.length - 1]).alt.split(" ").at(-1));
+    }
+})
+
+//! Async functions
 // #region fetch
 // const reload = () => {
 //     fetch(URL)
@@ -22,17 +34,78 @@ button.addEventListener("click", (e) => {
 // }
 // #endregion fetch
 
-const reload_cat = async (element) => {
+const loadRandomCat = async (element) => {
     const response = await fetch(
-                                URL+"?"
+                                API_URL
+                                +"images/search?"
                                 +"limit="+limit
                                 +"&api_key="+API_KEY);
     const data = await response.json();
+    
     const img = document.querySelector(element);
-    // console.log(response.status);
-    img.src = data[parseInt(element[element.length-1]-1)].url;
+    img.src = data[parseInt(element[element.length-1]-1)].url
+    img.alt += " " + data[parseInt(element[element.length-1]-1)].id
 }
 
-reload_cat("#img1");
-reload_cat("#img2");
-reload_cat("#img3");
+const loadFavoriteCat = async () => {
+    const response = await fetch(API_URL
+                                +"favourites?"
+                                +"&api_key="+API_KEY);
+    const data = await response.json();
+        
+    const section_favorites = document.querySelector("#favoriteCats").querySelector("div");
+    data.forEach((element,index) => {
+        const article = document.createElement("article");
+        
+        let img = document.createElement("img");
+        img.id="img_fav"+(index+1);
+        img.src = element.image.url;
+        img.alt = "Foto de gato "+element.image.id;
+        img.width= "300";
+        article.appendChild(img);
+        
+        let button = document.createElement("button");
+        button.id="btn-"+(index+1);
+        button.innerHTML = "Quitar de favoritos"
+        article.appendChild(button);
+        
+        section_favorites.appendChild(article);
+    });
+    document.querySelector("#favoriteCats").appendChild(section_favorites);
+
+    if (response.status == 200){
+        console.log(data);
+    }else{
+        document.querySelector("#error").innerHTML = "ERROR: "+response.status+data.message;
+    }
+}
+
+const saveFavoriteCat = async (id) => {
+    const response = await fetch(
+        API_URL
+        +"favourites?"
+        +"&api_key="+API_KEY
+        ,{
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+                },
+            body: JSON.stringify({
+                image_id: id
+            })
+        }
+    );
+    console.log(response);
+    const data = await response.json();
+
+    if (response.status == 200){
+        console.log(data);
+    }else{
+        document.querySelector("#error").innerHTML = "ERROR: "+response.status+data.message;
+    }
+}
+
+//! First functions calls
+loadRandomCat("#img1");
+loadRandomCat("#img2");
+loadFavoriteCat();

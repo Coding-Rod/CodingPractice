@@ -5,16 +5,41 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gatos aleatorios</title>
+    <style>
+        article{
+            display: flex;
+            flex-direction: column;
+        }
+        article *{
+            width: 300px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Gatos aleatorios</h1>
+    <h1>Applicación de Gatos</h1>
+    
+    <span id="error"></span>
 
-    <div style="display: flex;">
-        <img id="img1" src="" alt="Foto de gato aleatorios">
-        <img id="img2" src="" alt="Foto de gato aleatorios">
-        <img id="img3" src="" alt="Foto de gato aleatorios">
-    </div>
-    <button width="150" id="get_cat">Get cat</button>
+    <h2>Gatos aleatorios</h2>
+    <section id="randomCats"2>
+        <div style="display: flex; flex-wrap: wrap">
+            <article>
+                <img width="300" id="img1" src="" alt="Foto de gato aleatorios">
+                <button id="btn-1">Guardar gato en favoritos</button>
+            </article>
+            <article>
+                <img width="300" id="img2" src="" alt="Foto de gato aleatorios">
+                <button id="btn-2">Guardar gato en favoritos</button>
+            </article>
+        </div>
+        <button width="300" id="get_cat">Actualizar gatos</button>
+    </section>
+
+    <h2>Gatos favoritos</h2>
+    <section id="favoriteCats">
+        <div style="display: flex; flex-wrap: wrap">
+        </div>
+    </section>
     <script src="main.js"></script>
 </body>
 </html>
