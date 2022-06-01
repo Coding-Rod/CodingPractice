@@ -1,0 +1,13 @@
+QLabel{
+    font-weight: 800;
+    background-color: rgb(63, 83, 148);
+    border: 1px solid rgb(24, 18, 110);
+    border-radius: 6px;
+    color: white;
+    padding: 2px 1px; 
+}
+
+QLabel:hover{
+    color: black;
+    background-color: aquamarine;
+}
