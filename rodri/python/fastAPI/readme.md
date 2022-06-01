@@ -203,3 +203,9 @@ Deprecar una pieza de código sucede cuando:
 ## Twitter API
 
 ![Twitter API Base](./assets/twitter_api.png)
+
+## Start server
+
+~~~bash
+uvicorn src.main:app --reload
+~~~

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gatos aleatorios</title>
+    <style>
+        article{
+            display: flex;
+            flex-direction: column;
+        }
+        article *{
+            width: 300px;
+        }
+        .favoriteCats-container{
+            display: flex;
+            flex-wrap: wrap;
+            max-height: 500px;
+            overflow-y: scroll;
+        }
+    </style>
+</head>
+<body>
+    <h1>Applicación de Gatos</h1>
+    
+    <span id="error"></span>
+    
+    <h2>Sube la foto de tu gato</h2>
+    <section id="uploadCatImage">
+        <form id="uploadingForm">
+            <input type="file" id="file" name="file">
+            <button id="upload-btn">Subir foto de gato</button>
+        </form>
+    </section>
+
+    <h2>Gatos aleatorios</h2>
+    <section id="randomCats"2>
+        <div style="display: flex; flex-wrap: wrap">
+            <article>
+                <img width="300" id="img1" src="" alt="Foto de gato aleatorios">
+                <button id="btn-1">Guardar gato en favoritos</button>
+            </article>
+            <article>
+                <img width="300" id="img2" src="" alt="Foto de gato aleatorios">
+                <button id="btn-2">Guardar gato en favoritos</button>
+            </article>
+        </div>
+        <button width="300" id="get_cat">Actualizar gatos</button>
+    </section>
+
+    <h2>Gatos favoritos</h2>
+    <section id="favoriteCats">
+        <div class="favoriteCats-container">
+        </div>
+    </section>
+    
+    <script src="main.js"></script>
+</body>
+</html>
