@@ -23,3 +23,4 @@ python -m PyQt5.uic.pyuic -x [FILENAME].ui -o [FILENAME].py
 5. Read css file (QLabel)
 6. print button
 7. QMessageBox
+8. Modificar UI
