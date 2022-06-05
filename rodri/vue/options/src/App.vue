@@ -15,21 +15,6 @@ export default {
       text: "Hola Vue",
     };
   },
-  beforeCreate() {
-    console.log("beforeCreate", this.$data, this.$el); // data and el does not exist
-  },
-  created() {
-    console.log("created", this.$data, this.$el); // el does not exist
-  },
-  mounted() {
-    console.log("mounted", this.$data, this.$el); // no problem here
-  },
-  beforeUnmount() {
-    console.log("beforeDestroy", this.$data, this.$el); // no problem here
-  },
-  unmounted() {
-    console.log("unmounted", this.$data, this.$el); // no problem here
-  },
 };
 </script>
 
