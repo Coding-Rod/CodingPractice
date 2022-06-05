@@ -1,14 +1,15 @@
 <template>
-  <div>{{ text }}</div>
-  <div>{{ algo }}</div>
+  <HomeComp></HomeComp>
 </template>
 
 <script>
-import base from "@/mixins/base.js";
+import HomeComp from "@/components/HomeComp.vue";
 
 export default {
   name: "App",
-  mixins: [base],
+  components: {
+    HomeComp,
+  },
   data() {
     return {
       text: "Hola Vue",
