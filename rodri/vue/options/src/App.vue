@@ -1,19 +1,33 @@
 <template>
-  <modal>Show modal</modal>
+  <div>{{ text }}</div>
+  <div>{{ algo }}</div>
 </template>
 
 <script>
-import ModalTemplate from "./components/ModalTemplate.vue";
+import base from "@/mixins/base.js";
 
 export default {
   name: "App",
-  components: {
-    modal: ModalTemplate,
-  },
+  mixins: [base],
   data() {
     return {
-      show: false,
+      text: "Hola Vue",
     };
+  },
+  beforeCreate() {
+    console.log("beforeCreate", this.$data, this.$el); // data and el does not exist
+  },
+  created() {
+    console.log("created", this.$data, this.$el); // el does not exist
+  },
+  mounted() {
+    console.log("mounted", this.$data, this.$el); // no problem here
+  },
+  beforeUnmount() {
+    console.log("beforeDestroy", this.$data, this.$el); // no problem here
+  },
+  unmounted() {
+    console.log("unmounted", this.$data, this.$el); // no problem here
   },
 };
 </script>
