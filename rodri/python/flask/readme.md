@@ -34,3 +34,33 @@ export FLASK_APP=main.py
 ~~~bash
 export FLASK_DEBUG=1
 ~~~
+
+### Configurar modo desarrollo / producción
+
+~~~bash
+export FLASK_ENV=development
+export FLASK_ENV=production
+~~~
+
+### Bootstrap flask
+
+~~~jinja
+ <!-- Using flask bootstrap alternative-->
+{% extends 'bootstrap/base.html' %}
+
+{% block head %}
+    {{ super() }}
+
+    <title>
+        {% block title %}Flask Platzi |{% endblock %}
+    </title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+{% endblock %}
+
+{% block body %}
+    {% block navbar %}
+        {% include 'navbar.html' %}
+    {% endblock %}
+    {% block content %}{% endblock %}
+{% endblock %}
+~~~
