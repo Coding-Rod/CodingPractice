@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% import 'macros.html' as macros %}
+
+{% block title %}
+    {{ super() }}
+    Bienvenido
+{% endblock %}
+
+{% block content %}
+    {% if user_ip %}
+    <div class="offcanvas offcanvas-start show" tabindex="-1" id="offcanvas" aria-labelledby="offcanvasLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasLabel">Hemos registrado tu ip</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          Tu ip es: {{ user_ip }}
+        </div>
+      </div>
+    {% else %}
+    <a href="{{ url_for('index') }}">Ir a inicio</a>
+    {% endif %}
+    <ul class="list-group">
+        {% for todo in todos %}
+        {{ macros.render_todo(todo) }}
+        {% endfor %}
+    </ul>
+{% endblock %}
