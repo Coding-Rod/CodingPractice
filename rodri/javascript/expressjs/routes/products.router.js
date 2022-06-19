@@ -6,19 +6,19 @@ const service = new ProductService(router);
 
 //! GET
 
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
   const { limit, offset } = req.query;
-  const products = service.find(limit,  offset);
+  const products = await service.find(limit,  offset);
   res.json(products);
 });
 
-router.get('/filter', (req, res) => {
+router.get('/filter', async (req, res) => {
   res.send("Hello, I am a filter!");
 });
 
-router.get('/:id', (req, res) => {
+router.get('/:id', async (req, res) => {
   const { id } = req.params;
-  const product = service.findOne(id);
+  const product = await service.findOne(id);
   console.log(product);
   res.json(product);
   product != undefined
@@ -26,9 +26,9 @@ router.get('/:id', (req, res) => {
 
 //! POST
 
-router.post('/', (req, res) => {
+router.post('/', async (req, res) => {
   const body = req.body;
-  const newProduct = service.create(body);
+  const newProduct = await service.create(body);
   res
   .status(201)
   .json({
@@ -40,20 +40,28 @@ router.post('/', (req, res) => {
 
 //! PATCH
 
-router.patch('/:id', (req, res) => {
-  const id = req.params.id;
-  const body = req.body;
-  const productUpdated = service.update(id, body);
-  res.json({
-    message: 'updated',
-    id: id,
-    data: productUpdated,
-  });
+router.patch('/:id', async (req, res) => {
+  try {
+    const id = req.params.id;
+    const body = req.body;
+    const productUpdated = await service.update(id, body);
+    res.json({
+      message: 'updated',
+      id: id,
+      data: productUpdated,
+    });
+  } catch (error) {
+    res
+    .status(404)
+    .json({
+      message: error.toString(),
+    })
+  }
 });
 
 //! DELETE
 
-router.delete('/:id', (req, res) => {
+router.delete('/:id', async (req, res) => {
   const { id } = req.params;
   res.json({
     message: 'deleted',
