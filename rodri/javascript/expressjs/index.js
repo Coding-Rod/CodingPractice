@@ -15,21 +15,6 @@ app.get('/nueva-ruta', (req, res) => {
 
 routerApi(app);
 
-// app.get('/categories/:categoryId/products/:productId', (req, res) => {
-//   const { categoryId, productId } = req.params;
-//   res.json({
-//     categoryId,
-//     productId
-//   });
-// });
-
-// app.get('/users', (req, res) => {
-//   const { limit, offset } = req.query;
-//   limit && offset ?
-//     res.json({ limit, offset }) :
-//     res.send('No hay parametros');
-// });
-
 app.listen(port, () => {
-  console.log("Mi port "+ port);
+  console.info("Server started on port " + port);
 });
