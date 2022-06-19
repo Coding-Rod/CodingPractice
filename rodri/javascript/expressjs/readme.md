@@ -22,4 +22,3 @@ Respresentational State Transfer
 |PATCH |No Apply  |Update        |
 |POST  |Create    |No apply      |
 |DELETE|Delete    |Delete        |
-
