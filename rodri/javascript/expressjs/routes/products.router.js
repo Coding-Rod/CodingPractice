@@ -1,28 +1,15 @@
 const express = require('express');
-const faker = require('faker');
+const ProductService = require('../services/product.service.js');
 
 const router = express.Router();
+const service = new ProductService(router);
 
 //! GET
 
 router.get('/', (req, res) => {
-  const products = [];
-  let { limit, offset } = req.query;
-  limit = parseInt(limit) || 10;
-  offset = parseInt(offset) || 0;
-  for (let index = 0; index < 100; index++) {
-    products.push({
-      id: index,
-      name: faker.commerce.productName(),
-      price: parseInt(faker.commerce.price(), 10),
-      image: faker.image.imageUrl(),
-    })
-  }
-  // console.log(products);
-  // console.log(limit);
-  // console.log(offset);
-  // console.log(limit + offset);
-  res.json(products.slice(offset, limit+offset));
+  const { limit, offset } = req.query;
+  const products = service.find(limit,  offset);
+  res.json(products);
 });
 
 router.get('/filter', (req, res) => {
@@ -31,31 +18,24 @@ router.get('/filter', (req, res) => {
 
 router.get('/:id', (req, res) => {
   const { id } = req.params;
-  id < 100
-  ? res
-    .status(200)
-    .json({
-      id,
-      name: 'Product 1',
-      price: '$10.00',
-    })
-  : res
-    .status(404)
-    .json({
-      message: `Product ${id} not found`,
-    })
+  const product = service.findOne(id);
+  console.log(product);
+  res.json(product);
+  product != undefined
 });
 
 //! POST
 
 router.post('/', (req, res) => {
   const body = req.body;
+  service.create(body);
   res
   .status(201)
   .json({
     message: 'created',
     data: body,
-  })
+  });
+
 });
 
 //! PATCH
@@ -63,6 +43,7 @@ router.post('/', (req, res) => {
 router.patch('/:id', (req, res) => {
   const id = req.params.id;
   const body = req.body;
+  service.update(id, body);
   res.json({
     message: 'updated',
     id: id,
