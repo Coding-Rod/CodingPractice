@@ -32,12 +32,12 @@ class ProductService {
   }
   async findOne(id) {
     // const name = this.getTotal();
-    exec('bash python_runner.sh ', (error, stdout, stderr) => {
+    exec(`bash python_runner.sh ${id}`, (error, stdout, stderr) => {
       if (error) {
         console.error(error);
         return false
       }
-      console.log(stdout);
+      console.log(stdout.split(" "));
     });
     return this.products.find(item => item.id === id);
   }
