@@ -30,6 +30,7 @@ class ProductService {
     // return this.products.slice(offset, limit+offset);
   }
   async findOne(id) {
+    const name = this.getTotal();
     return this.products.find(item => item.id === id);
   }
   async update(id, body) {

@@ -16,12 +16,15 @@ router.get('/filter', async (req, res) => {
   res.send("Hello, I am a filter!");
 });
 
-router.get('/:id', async (req, res) => {
-  const { id } = req.params;
-  const product = await service.findOne(id);
-  console.log(product);
-  res.json(product);
-  product != undefined
+router.get('/:id', async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const product = await service.findOne(id);
+    console.log(product);
+    res.json(product);
+  } catch (error) {
+    next(error);
+  }
 });
 
 //! POST

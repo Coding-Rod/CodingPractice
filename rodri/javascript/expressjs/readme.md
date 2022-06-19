@@ -22,3 +22,11 @@ Respresentational State Transfer
 |PATCH |No Apply  |Update        |
 |POST  |Create    |No apply      |
 |DELETE|Delete    |Delete        |
+
+## Middlewares
+
+- Funcionan como pipes
+- Validan datos
+- Capturan errores
+- Validan permisos
+- Controlan accesos
