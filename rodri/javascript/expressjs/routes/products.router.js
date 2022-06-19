@@ -28,12 +28,12 @@ router.get('/:id', (req, res) => {
 
 router.post('/', (req, res) => {
   const body = req.body;
-  service.create(body);
+  const newProduct = service.create(body);
   res
   .status(201)
   .json({
     message: 'created',
-    data: body,
+    data: newProduct,
   });
 
 });
@@ -43,11 +43,11 @@ router.post('/', (req, res) => {
 router.patch('/:id', (req, res) => {
   const id = req.params.id;
   const body = req.body;
-  service.update(id, body);
+  const productUpdated = service.update(id, body);
   res.json({
     message: 'updated',
     id: id,
-    data: body,
+    data: productUpdated,
   });
 });
 

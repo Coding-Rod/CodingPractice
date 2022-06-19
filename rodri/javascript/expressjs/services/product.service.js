@@ -16,27 +16,28 @@ class ProductService {
     }
     console.log(this.products)
   }
-
-  create(body){
+  create(body) {
     body['id'] = faker.datatype.uuid();
     this.products.push(body);
-    console.log(this.products);
+    return body;
   }
-  find(limit=this.products.length, offset=0){
+  find(limit=this.products.length, offset=0) {
     limit = parseInt(limit, 10);
     offset = parseInt(offset, 10);
     return this.products.slice(offset, limit+offset);
   }
-  findOne(id){
+  findOne(id) {
     return this.products.find(item => item.id === id);
   }
-  update(id, body){
+  update(id, body) {
     const index = this.products.findIndex(item => item.id === id);
-    console.log(this.products[index]);
-    Object.assign(this.products[index], body);
-    this.products;
+    if (index == -1)
+      throw new Error(' Product not found: ' + id)
+    else
+      Object.assign(this.products[index], body);
+    return this.products[index];
   }
-  delete(id){
+  delete(id) {
     this.products = this.products.filter(x=>x.id!=id)
   }
 }
