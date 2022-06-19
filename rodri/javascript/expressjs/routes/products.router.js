@@ -3,6 +3,8 @@ const faker = require('faker');
 
 const router = express.Router();
 
+//! GET
+
 router.get('/', (req, res) => {
   const products = [];
   let { limit, offset } = req.query;
@@ -33,6 +35,38 @@ router.get('/:id', (req, res) => {
     id,
     name: 'Product 1',
     price: '$10.00',
+  });
+});
+
+//! POST
+
+router.post('/', (req, res) => {
+  const body = req.body;
+  res.json({
+    message: 'created',
+    data: body,
+  })
+});
+
+//! PATCH
+
+router.patch('/:id', (req, res) => {
+  const id = req.params.id;
+  const body = req.body;
+  res.json({
+    message: 'updated',
+    id: id,
+    data: body,
+  });
+});
+
+//! DELETE
+
+router.delete('/:id', (req, res) => {
+  const { id } = req.params;
+  res.json({
+    message: 'deleted',
+    id,
   });
 });
 
