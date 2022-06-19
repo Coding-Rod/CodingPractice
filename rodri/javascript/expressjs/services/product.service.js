@@ -1,4 +1,5 @@
 const faker = require('faker');
+const { exec } = require('child_process');
 
 class ProductService {
   constructor() {
@@ -25,12 +26,19 @@ class ProductService {
     limit = parseInt(limit, 10);
     offset = parseInt(offset, 10);
     return new Promise((resolve, reject) => {
-      setTimeout(() => resolve(this.products.slice(offset, offset + limit)), 5000);
+      setTimeout(() => resolve(this.products.slice(offset, offset + limit)), 2000);
     })
     // return this.products.slice(offset, limit+offset);
   }
   async findOne(id) {
-    const name = this.getTotal();
+    // const name = this.getTotal();
+    exec('bash python_runner.sh ', (error, stdout, stderr) => {
+      if (error) {
+        console.error(error);
+        return false
+      }
+      console.log(stdout);
+    });
     return this.products.find(item => item.id === id);
   }
   async update(id, body) {
