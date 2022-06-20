@@ -16,7 +16,7 @@ class ProductService {
         isBlocked: faker.datatype.boolean()
       })
     }
-    console.log(this.products)
+    // console.log(this.products)
   }
   async create(body) {
     body['id'] = faker.datatype.uuid();
