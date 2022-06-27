@@ -30,7 +30,7 @@ router.post("/", (req, res) => {
 
     controller.addMessage(req.body.user, req.body.message)
     .then((message) => {
-        response.success(req, res, message);
+        response.success(req, res, message, 201);
     })
     .catch((err) => {
         response.error(req, res, "Información inválida", 400, err);
