@@ -1,9 +1,9 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const response = require("./www/response");
+const response = require("./utils/response");
 
 // const router = require("./components/messages/network");
-const router = require("./www/routes");
+const router = require("./utils/routes");
 
 var app = express();
 

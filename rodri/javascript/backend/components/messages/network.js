@@ -1,6 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const response = require("../../www/response");
+const response = require("../../utils/response");
 const controller = require("./controller");
 
 const router = express.Router();
