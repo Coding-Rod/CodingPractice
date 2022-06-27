@@ -6,11 +6,18 @@ const controller = require("./controller");
 const router = express.Router();
 
 router.get("/", (req, res) => {
-    console.log(req.headers);
-    res.header({
-        "custom-header": "custom-value"
-    });
-    response.success(req, res, "Lista de mensajes");
+    // console.log(req.headers);
+    // res.header({
+    //     "custom-header": "custom-value"
+    // });
+    // response.success(req, res, "Lista de mensajes");
+    controller.getMessages()
+        .then(messages => {
+            response.success(req, res, messages);
+        })
+        .catch(err => {
+            response.error(req, res, "Unexpected error", 500, err);
+        });
 });
 
 router.delete("/", (req, res) => {
@@ -20,8 +27,6 @@ router.delete("/", (req, res) => {
 });
 
 router.post("/", (req, res) => {
-    // console.log(req.body);
-    // console.log(req.query);
 
     controller.addMessage(req.body.user, req.body.message)
     .then((message) => {
@@ -30,10 +35,6 @@ router.post("/", (req, res) => {
     .catch((err) => {
         response.error(req, res, "Información inválida", 400, err);
     })
-
-    // req.query.error=="true"
-    // ? response.error(req, res, "Error al crear el mensaje", 400, "Es solo una simulacion")
-    // : response.success(req, res, "Created successfully", 201);
 });
 
 module.exports = router;
