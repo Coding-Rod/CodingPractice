@@ -39,10 +39,16 @@ router.patch("/:id", (req, res) => {
         });
 });
 
-router.delete("/", (req, res) => {
-    console.log(req.body);
-    console.log(req.query);
-    response.success(req, res, "Mensaje eliminado");
+router.delete("/:id", (req, res) => {
+    console.log(req.params.id);
+
+    controller.deleteMessage(req.params.id)
+        .then(message => {
+            response.success(req, res, message);
+        })
+        .catch(err => {
+            response.error(req, res, "Unexpected error", 500, err);
+        });
 });
 
 

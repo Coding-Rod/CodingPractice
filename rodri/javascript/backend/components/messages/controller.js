@@ -35,8 +35,25 @@ const updateMessage = (id, message) => {
     });
 };
 
+const deleteMessage = (id) => {
+    return new Promise((resolve, reject) => {
+        if (!id) {
+            reject("Faltan datos");
+            return false;
+        }
+        store.delete(id)
+            .then(() => {
+                resolve(`Mensaje ${id} eliminado`);
+            })
+            .catch(err => {
+                reject(err);
+            }); 
+    });
+};
+
 module.exports = {
     addMessage,
     getMessages,
-    updateMessage
+    updateMessage,
+    deleteMessage,
 }
