@@ -6,7 +6,7 @@ const router = express.Router();
 
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
-      cb(null, './uploads')
+      cb(null, './public/files')
     },
     filename: function (req, file, cb) {
       cb(null, file.originalname)
@@ -15,7 +15,10 @@ var storage = multer.diskStorage({
 var upload = multer({ storage: storage })
 
 router.post("/", upload.single('file'), (req, res) => {
-    controller.addMessage(req.body.chat, req.body.user, req.body.message)
+
+    console.log(req.file);
+
+    controller.addMessage(req.body.chat, req.body.user, req.body.message, req.file)
     .then((message) => {
         response.success(req, res, message, 201);
     })
