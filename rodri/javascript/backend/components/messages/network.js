@@ -17,17 +17,13 @@ router.post("/", (req, res) => {
 });
 
 router.get("/", (req, res) => {
-    // console.log(req.headers);
-    // res.header({
-    //     "custom-header": "custom-value"
-    // });
-    // response.success(req, res, "Lista de mensajes");
-    controller.getMessages()
+    const filterMessages = req.query.user || null;
+    controller.getMessages(filterMessages)
         .then(messages => {
             response.success(req, res, messages);
         })
         .catch(err => {
-            response.error(req, res, "Unexpected error", 500, err);
+            response.error(req, res, err.message, err.error, err);
         });
 });
 

@@ -16,8 +16,8 @@ const addMessage = (message) => {
   myMessage.save();
 };
 
-const getMessages = async () => {
-  const messages = await Model.find();
+const getMessages = async (filterUser) => {
+  const messages = await Model.find(filterUser ? {user: filterUser} : {});
   return messages;
 };
 

@@ -17,9 +17,9 @@ const addMessage = (user, message) => {
     });
 };
 
-const getMessages = () => {
+const getMessages = (filterUser) => {
     return new Promise((resolve, reject) => {
-        resolve(store.list());
+        resolve(store.list(filterUser));
     });
 }
 
