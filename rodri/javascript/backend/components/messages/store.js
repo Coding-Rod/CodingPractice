@@ -1,14 +1,8 @@
-const db = require('mongoose');
 const Model = require('./model');
+const db = require('../../data/db');
 
 const uri = "mongodb+srv://db_user_platzi_nodejs:LPNuNiFxlq5SbRSc@cluster0.ul3ff.mongodb.net/telegram";
-
-db.Promise = global.Promise;
-db.connect(uri, {
-    useNewUrlParser: true,
-});
-
-console.log("[database] Connected to MongoDB");
+db(uri);
 
 const addMessage = (message) => {
   console.log(message);
