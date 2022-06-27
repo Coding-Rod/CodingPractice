@@ -23,4 +23,14 @@ router.post('/', (req, res) => {
         );
 });
 
+router.delete('/:id', (req, res) => {
+    console.log(req.params.id);
+    controller.deleteUser(req.params.id)
+        .then((message) => {
+            response.success(req, res, message, 200);
+        }).catch((err) => {
+            response.error(req, res, "Información inválida", 400, err);
+        });
+});
+
 module.exports = router;

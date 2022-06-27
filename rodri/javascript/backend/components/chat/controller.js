@@ -12,11 +12,9 @@ const addChat = (user1, user2) => {
     });
 };
 
-const listChats = () => {
+const listChats = (id) => {
     return new Promise((resolve, reject) => {
-        store.list()
-            .then(resolve)
-            .catch(reject);
+        resolve(store.list(id));
     });
 }
 

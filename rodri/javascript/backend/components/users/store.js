@@ -10,7 +10,13 @@ const getUsers = async () => {
     return users;
 }
 
+const deleteUser = async (id) => {
+    const result = await Model.deleteOne({_id: id});
+    return result;
+}
+
 module.exports = {
     add: addUser,
     list: getUsers,
+    delete: deleteUser,
 }

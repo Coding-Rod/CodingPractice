@@ -20,7 +20,16 @@ const listUsers = () => {
     });
 };
 
+const deleteUser = (id) => {
+    return new Promise((resolve, reject) => {
+        store.delete(id)
+            .then(resolve)
+            .catch(reject);
+    });
+};
+
 module.exports = {
     addUser,
     listUsers,
+    deleteUser
 };

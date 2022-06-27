@@ -3,8 +3,8 @@ const response = require('../../utils/response');
 const controller = require('./controller');
 const router = express.Router();
 
-router.get('/', (req, res) => {
-    controller.listChats()
+router.get('/:userId', (req, res) => {
+    controller.listChats(req.params.userId)
         .then((messages) => {
             response.success(req, res, messages);
         }).catch((err) => {
@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-    controller.addChat(req.body.user1, req.body.user2)
+    controller.addChat(req.body.users[0], req.body.users[1])
         .then((message) => {
             response.success(req, res, message, 201);
         }).catch((err) => {

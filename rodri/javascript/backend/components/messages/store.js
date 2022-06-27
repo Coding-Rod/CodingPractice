@@ -41,5 +41,4 @@ module.exports = {
     list: getMessages,
     update: updateText,
     delete: deleteText,
-    //TODO: get
 }
