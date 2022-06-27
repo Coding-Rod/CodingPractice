@@ -1,45 +1,18 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const response = require("./network/response");
+const response = require("./www/response");
 
-const router = express.Router();
+// const router = require("./components/messages/network");
+const router = require("./www/routes");
 
 var app = express();
 
 app.use(bodyParser.json());
-app.use(router);
+// app.use(router);
 
-router.get("/message", (req, res) => {
-    console.log(req.headers);
-    res.header({
-        "custom-header": "custom-value"
-    });
-    response.success(req, res, "Lista de mensajes");
-});
+router(app);
 
-router.delete("/message", (req, res) => {
-    console.log(req.body);
-    console.log(req.query);
-    // res
-    // .status(201)
-    // .send({
-    //     error: "",
-    //     message: "Message deleted"
-    // });
-    response.success(req, res, "Mensaje eliminado");
-});
-
-router.post("/message", (req, res) => {
-    console.log(req.body);
-    console.log(req.query);
-    req.query.error=="true"
-    ? response.error(req, res, "Error al crear el mensaje", 400)
-    : response.success(req, res, "Created successfully", 201);
-});
-
-// app.use('/', (req, res) => {
-//     res.send('Hello World!');
-// });
+app.use('/app', express.static('public'));
 
 app.listen(3000);
 
