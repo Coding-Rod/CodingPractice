@@ -7,7 +7,7 @@ const router = express.Router();
 
 router.post("/", (req, res) => {
 
-    controller.addMessage(req.body.user, req.body.message)
+    controller.addMessage(req.body.chat, req.body.user, req.body.message)
     .then((message) => {
         response.success(req, res, message, 201);
     })
