@@ -1,12 +1,20 @@
 const express = require("express");
-const bodyParser = require("body-parser");
 const response = require("../../utils/response");
 const controller = require("./controller");
-
+const multer = require("multer");
 const router = express.Router();
 
-router.post("/", (req, res) => {
+var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, './uploads')
+    },
+    filename: function (req, file, cb) {
+      cb(null, file.originalname)
+    }
+})
+var upload = multer({ storage: storage })
 
+router.post("/", upload.single('file'), (req, res) => {
     controller.addMessage(req.body.chat, req.body.user, req.body.message)
     .then((message) => {
         response.success(req, res, message, 201);

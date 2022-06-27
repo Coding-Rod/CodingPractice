@@ -3,7 +3,7 @@ const store = require('./store');
 const addMessage = (chat, user, message) => {
     return new Promise((resolve, reject) => {
         if (!chat || !user || !message) {
-            reject("Faltan datos");
+            reject(`Falta: ${!chat ? 'chat' : !user ? 'user' : 'message'}`);
             return false;
         }
         const fullMessage = {
@@ -12,7 +12,6 @@ const addMessage = (chat, user, message) => {
             message: message,
             date: new Date()
         }
-        // console.log(fullMessage);
         store.add(fullMessage);
         resolve(fullMessage);
     });
