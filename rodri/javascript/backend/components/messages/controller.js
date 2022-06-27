@@ -23,7 +23,20 @@ const getMessages = () => {
     });
 }
 
+const updateMessage = (id, message) => {
+    return new Promise( async (resolve, reject) => {
+        if (!id || !message) {
+            reject("Faltan datos");
+            return false;
+        }
+        const result = await store.update(id, message);
+
+        resolve(message);
+    });
+};
+
 module.exports = {
     addMessage,
-    getMessages
+    getMessages,
+    updateMessage
 }

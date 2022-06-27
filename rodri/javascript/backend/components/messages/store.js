@@ -16,14 +16,21 @@ const addMessage = (message) => {
   myMessage.save();
 };
 
-const getMessages = () => {
-  
+const getMessages = async () => {
+  const messages = await Model.find();
+  return messages;
+};
+
+
+const updateText = async (id, message) => {
+  const result = await Model.updateOne({_id: id}, {message: message});
+  return result;
 };
 
 module.exports = {
     add: addMessage,
-    list: getMessages
+    list: getMessages,
+    update: updateText
     //TODO: get
-    //TODO: update
     //TODO: delete
 }
