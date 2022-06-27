@@ -22,5 +22,5 @@ const listUsers = () => {
 
 module.exports = {
     addUser,
-    list: listUsers,
+    listUsers,
 };

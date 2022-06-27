@@ -11,8 +11,18 @@ const addMessage = (message) => {
 };
 
 const getMessages = async (filterUser) => {
-  const messages = await Model.find(filterUser ? {user: filterUser} : {});
-  return messages;
+  return new Promise((resolve, reject) => {
+    let filter = {};
+    if (filterUser) {
+      filter = { user: filterUser };
+    }
+    const messages = Model.find(filter)
+      .populate('user', 'name')
+      .catch(err => {
+        reject(err)
+      });
+    resolve(messages);
+  });
 };
 
 
