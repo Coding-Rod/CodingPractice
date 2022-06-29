@@ -3,9 +3,13 @@
   "version": "1.0.0",
   "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "callback": "node src/callback/challenge.js"
   },
   "author": "ivansanguezax <ivansanguezax@gmail.com>",
   "license": "MIT",
-  "description": ""
+  "dependencies": {
+    "node-fetch": "^3.2.3",
+    "xmlhttprequest": "^1.8.0"
+  },
+  "type": "module"
 }
