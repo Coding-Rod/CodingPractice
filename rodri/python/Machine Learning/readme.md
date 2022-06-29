@@ -1,61 +1,69 @@
-# Machine Learning
+# Deep Learning
 
-## Definición
+## Introducción
 
-Capacidad de un algoritmo de adquirir conocimiento a partir de los datos recolectados para mejorar, describir y predecir resultados
+* Herramientas: pyTorch y TensorFlow
+* Subcategoría de ML que crea diferentes niveles, de abstracción que representa los datos.
+* Se usan tensores para representar estructuras de datos más complejas.
+* Neuronas: Capa de entrada, capas ocultas y capa de salida.
+* Para poder aprender se necesita una función de activación: ReLU: Permite el paso de todos los valores positivos sin cambiarlos, pero asigna todos los valores negativos a 0.
+* TensorFlow: Biblioteca de código abierto desarrollado por google, capaz de construir y entrenar redes neuronales.
 
-## Estrategias de Aprendizaje
+## TensorFlow
 
-* Aprendizaje Supervisado: Permite al algoritmo aprender a partir de datos previamente etiquetados.
-* Aprendizaje no Supervisado: El algoritmo aprende de datos sin etiquetas, es decir encuentra similitudes y relaciones, agrupando y clasificando los datos.
-* Aprendizaje Profundo (Deep Learning): Está basado en redes Neuronales
+Tensor Flow es una biblioteca de software de código abierto que permite construir y entrenar redes neuronales, permite detectar y descifrar patrones en los datos. Es un desarrollo de Google y que debido a su flexibilidad y extensa comunidad de programadores ha crecido rápidamente y se ha posicionado como la herramienta líder en el estudio del aprendizaje profundo o también conocido como Deep Learning.  
+Tensor Flow puede ser usado para ayudar al diagnóstico médico, detectar objetos, procesar imágenes, detección de emociones en el rostro, entre otras aplicaciones. En este curso usamos Tensor Flow para crear nuestra primera red neuronal y diseñar un clasificador de imágenes a partir de un conjunto de datos.
 
-## Importancia del ML
+### Importar la biblioteca
 
-Permite a los algoritmos aprender a partir de datos históricos recolectados por las empresas permitiendo así tomar mejores decisiones.
+```python
+import tensorflow as tf
+```
 
-### Pasos a Seguir para Desarrollar un modelo en ML
+### Importar el modelo
 
-* Definición del Problema: Es necesario definir previamente el problema que va a resolver nuestro algoritmo
-* Construcción de un modelo y Evaluación: Una vez definido el problema procedemos a tratar los datos y a entrenar nuestro modelo que debe tener una evaluación cercana al 100%
-* Deploy y mejoras: El algoritmo es llevado a producción (aplicación o entorno para el que fue creado), en este entorno podemos realizar las mejoras pertinentes de acuerdo al comportamiento con los usuario e incluso aprovechando los datos generados en esta interacción
+```python
+from tensorflow import keras
+```
 
-## Árboles de decisión
+### Cargar conjunto de datos de Tensor Flow
 
-### Ventajas
+```python
+fashion_mnist = keras.datasets.fashion_mnist
+(train_images, train_labels), (test_images, test_labels) = fashion_mnist.load_data()
+```
 
-* Claridad en los datos
-* Tolerantes al ruido y datos faltantes
-* Las reglas extraídas permiten hacer extracciones
+### Crear modelo secuencial
 
-### Desventajas
+```python
+model = keras.Sequential([keras.layers.Flatten(input_shape = (28, 28)), keras.layers.Dense(128, activation = tf.nn.relu), keras.layers.Dense(10, activation = tf.nn.softmax)])
+```
 
-* Criterio de división es deficiente
-* Sobreajuste-overfitting
-* Ramas poco significativas
+### Compilación del modelo
 
-### Optimización del modelo
+```python
+model.compile(optimizer = tf.optimizers.Adam(), loss = ‘sparse_categorical_crossentropy’, metrics = [‘accuracy’])
+```
 
-* Evitar sobreajuste
-* Selección efectiva de los atributos
-* Campos nulos
+### Entrenamiento
 
-## K - Means
+```python
+model.fit(train_images, train_labels, epochs = 5)
+```
 
-* Algoritmo no supervisado.
-* Crea K grupos a partir de observaciones de un set de datos.
-* Trata información que no tiene etiquetas asignadas.
-* Agrupa información basada en sus características.
-* K = centroides
-* Aproximación a K: método del codo
-* Aplicaciones:
-* Segmentación por comportamiento:
-* por historial de compras
-* actividad en una aplicación móvil, web
-* Definir personas basadas en sus intereses.
-* Crear perfiles basado en el monitoreo de actividad.
-* Ordenando medidas de sensores:
-* Detecta tipos de actividades en sensores de movimiento.
-* Grupos de imágenes.
-* Separar audio.
-* Identificar grupos en monitoreo de salud.
+### Evaluación del modelo
+
+```python
+test_loss, test_acc = model.evaluate( test_images, test_labels )
+```
+
+### Predicción del modelo
+
+```python
+model.predict(test_images)
+```
+
+## Red neuronal convolucional
+
+* Modelan de forma consecutiva pequeñas piezas de información, al final combinan información en las capas más profundas de la red.
+* Ésta red es especial para trabajar imágenes y audios.
