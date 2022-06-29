@@ -24,3 +24,16 @@ python -m PyQt5.uic.pyuic -x [FILENAME].ui -o [FILENAME].py
 6. print button
 7. QMessageBox
 8. Modificar UI
+
+## QMessageBox
+
+~~~python3
+from PyQt5.QtWidgets import QMessageBox
+
+msg = QMessageBox()
+msg.setIcon(QMessageBox.Information)
+msg.setText(f"Text: {self.lineEdit.text()}\n"+f"Checkbox: {self.checkBox.isChecked()}")
+# msg.setInformativeText('More information')
+msg.setWindowTitle("Información")
+msg.exec_()
+~~~

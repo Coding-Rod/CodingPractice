@@ -1,12 +1,11 @@
 function logErrors(error, request, response, next) {
-  console.error(error);
-  console.log("🚀 ~ file: error.handler.js ~ line 3 ~ logErrors ~ error", error)
+  // console.error(error);
   next(error);
 }
 
 function errorHandler(error, request, response, next) {
-  console.log("🚀 ~ file: error.handler.js ~ line 8 ~ errorHandler ~ error", error)
-  request
+  // console.log("🚀 ~ file: error.handler.js ~ line 8 ~ errorHandler ~ error", error)
+  response
     .status(500)
     .json({
       message: error.message,
@@ -14,4 +13,15 @@ function errorHandler(error, request, response, next) {
     });
 }
 
-module.exports = { logErrors, errorHandler };
+function boomErrorHandler(error, request, response, next) {
+  if (error.isBoom){
+    const { output } = error;
+    response
+      .status(output.statusCode)
+      .json(output.payload);
+  }
+  else
+    next(error);
+}
+
+module.exports = { logErrors, errorHandler, boomErrorHandler };
