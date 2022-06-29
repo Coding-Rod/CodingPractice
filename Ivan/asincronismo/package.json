@@ -1,20 +1,11 @@
 {
-  "name": "async",
+  "name": "asincronismo",
   "version": "1.0.0",
-  "description": "Work with async on Javascript",
   "main": "src/index.js",
   "scripts": {
-    "callback": "node src/callback/index.js",
-    "challenge": "node src/callback/challenge.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [
-    "callbacks",
-    "promise",
-    "async"
-  ],
-  "author": "Rodrigo Fernandez",
-  "license": "ISC",
-  "dependencies": {
-    "xmlhttprequest": "^1.8.0"
-  }
+  "author": "ivansanguezax <ivansanguezax@gmail.com>",
+  "license": "MIT",
+  "description": ""
 }
