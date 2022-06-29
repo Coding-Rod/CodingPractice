@@ -1,8 +1,4 @@
 const Model = require('./model');
-const db = require('../../data/db');
-
-const uri = "mongodb+srv://db_user_platzi_nodejs:LPNuNiFxlq5SbRSc@cluster0.ul3ff.mongodb.net/telegram";
-db(uri);
 
 const addMessage = (message) => {
   console.log(message);
