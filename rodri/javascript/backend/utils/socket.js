@@ -3,9 +3,9 @@ const socket = {};
 
 const connect = (server) => {
     socket.io = socketIO(server);
-}
+};
 
 module.exports = {
     connect,
     socket
-}
+};
