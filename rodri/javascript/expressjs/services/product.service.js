@@ -1,4 +1,5 @@
 const faker = require('faker');
+const { exec } = require('child_process');
 const boom = require('@hapi/boom');
 
 class ProductService {
