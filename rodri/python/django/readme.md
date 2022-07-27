@@ -10,6 +10,9 @@ django-admin startproject __project_name__
 
 ~~~bash
 python manage.py runserver
+# If you want to run server over wifi
+python manage.py runserver __machine_ip__
+
 ~~~
 
 ## Crear una app de Django
