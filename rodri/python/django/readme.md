@@ -32,3 +32,18 @@ python manage.py makemigrations __app_name__
 ~~~bash
 python manage.py migrate
 ~~~
+
+## Ejemplos desde los modelos
+
+### Crear una pregunta
+
+~~~python
+>>> import datetime
+>>> from django.utils import timezone
+>>> from polls.models import Question
+>>> q = Question(question_text="¿Quién es el mejor Course Director de Platzi?", pub_date=timezone.now() + datetime.timedelta(days=30)) # Esta pregunta se crea con la fecha 30 días en el futuro
+~~~
+
+## Testing
+
+![Pasos para hacer testing](assets/test.png)
