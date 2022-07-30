@@ -10,9 +10,9 @@ class GeeksModelAdmin(admin.ModelAdmin):
 
 @admin.register(InputModel)
 class GeeksModelAdmin(admin.ModelAdmin):
-    fields = ['first_name', 'last_name', 'roll_number', 'password']
-    list_display = ['roll_number', 'first_name', 'last_name']
-    list_filter = ['roll_number']
+    fields = ['first_name', 'last_name', 'roll_number', 'email', 'password', 'student', 'subjects']
+    list_display = ['roll_number', 'first_name', 'last_name', 'student', 'subjects']
+    list_filter = ['roll_number', 'start_date']
     search_fields = ["first_name", "last_name"]
 
 
