@@ -1,0 +1,77 @@
+{% extends "modular/base.html" %} // Inherits all the components from base template, including the header and footer 
+
+{% block content %}
+<div class="main_content">
+  <div class="container">
+    <div class="row">
+      <div class="col d-flex justify-content-center align-items-center">
+        <button
+          onclick="const toastLiveExample = document.getElementById('liveToast');
+                   const toast = new bootstrap.Toast(toastLiveExample);
+                   toast.show();"
+          type="button"
+          class="btn btn-primary"
+          id="liveToastBtn"
+        >
+          Show live toast
+        </button>
+        <button
+          onclick="const toastLiveExample = document.getElementById('liveToast 2');
+                   const toast = new bootstrap.Toast(toastLiveExample);
+                   toast.show();"
+          type="button"
+          class="btn btn-primary"
+          id="liveToastBtn"
+        >
+          Show live toast 2
+        </button>
+
+        <div class="toast-container position-fixed bottom-0 end-0 p-3">
+          <div
+            id="liveToast"
+            class="toast"
+            role="alert"
+            aria-live="assertive"
+            aria-atomic="true"
+          >
+            <div class="toast-header">
+              <img src="..." class="rounded me-2" alt="..." />
+              <strong class="me-auto">Bootstrap</strong>
+              <small>11 mins ago</small>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="toast"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="toast-body">Hello, world! This is a toast message.</div>
+          </div>
+        </div>
+        <div class="toast-container position-fixed bottom-0 end-0 p-3">
+          <div
+            id="liveToast 2"
+            class="toast"
+            role="alert"
+            aria-live="assertive"
+            aria-atomic="true"
+          >
+            <div class="toast-header">
+              <img src="..." class="rounded me-2" alt="..." />
+              <strong class="me-auto">Bootstrap</strong>
+              <small>11 mins ago</small>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="toast"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="toast-body">Hello, world! This is a toast message 2.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
