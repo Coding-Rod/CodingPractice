@@ -11,9 +11,10 @@ def home_view(request):
     context ={}
     context['form']= GeeksForm()
     if request.method == 'POST':
-        form = GeeksForm(request.POST)
-        GeeksModel.objects.create(
-            title=request.POST['title'], description=request.POST['description'], img=request.POST['img']
-        )
-        return HttpResponseRedirect('/')
+        form = GeeksForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()      
+            return HttpResponseRedirect('/')
+        else:
+            print(form.errors.as_data())
     return render(request, "projectApp/home.html", context)
