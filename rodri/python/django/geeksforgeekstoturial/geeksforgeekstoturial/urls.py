@@ -23,6 +23,7 @@ from .views import hello_geek
 
 urlpatterns = [
     path('', include('projectApp.urls')),
+    path('modular/', include('modular.urls')),
     path('geek/', hello_geek),
     path('admin/', admin.site.urls),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
