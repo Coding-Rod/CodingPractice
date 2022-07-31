@@ -20,7 +20,7 @@
 </head>
 <body>
     <h1>{{ title }}</h1>
-    <section class="container">
+    <section class="container-fluid container-lg">
         <div class="row">
         <main class="col-lg-8 col-12 mb-3">
             {% block content %}
@@ -33,7 +33,7 @@
                                 <p> {{ item.description }}</p>
                             {% endif %}
                             {% if item.deadline %}
-                                <span> <i class="bi bi-calendar me-1"></i>{{ item.deadline }}</span>
+                                <span class="datetime"> <i class="bi bi-calendar me-1"></i>{{ item.deadline }}</span>
                             {% endif %}
                         </div>
                     <a href="{{item.pk}}/delete/" class="btn btn-primary badge bg-primary rounded-pill"><i class="bi-trash"></i></a>
@@ -58,11 +58,12 @@
                     {{ form.deadline }}
                     <label for="deadline">Deadline</label>
                 </div>
-                <button type="submit" class="btn btn-primary offset-0 col-lg-3 col-12">Submit</button>
+                <button type="submit" class="btn btn-primary offset-lg-9 col-lg-3 col-12 p-1">Submit</button>
             </form>
         </aside>
         </div>
     </section>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js" integrity="sha512-CryKbMe7sjSCDPl18jtJI5DR5jtkUWxPXWaLCst6QjH8wxDexfRJic2WRmRXmstr2Y8SxDDWuBO6CQC6IE4KTA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
         const tx = document.getElementsByTagName("textarea");
             for (let i = 0; i < tx.length; i++) {
@@ -74,6 +75,7 @@
             this.style.height = "auto";
             this.style.height = (this.scrollHeight) + "px";
             }
+        // TODO: Implement text-danger when it is in the past
     </script>
 </body>
 </html>

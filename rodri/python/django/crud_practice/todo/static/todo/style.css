@@ -1,0 +1,14 @@
+h1 {
+    width: 100%;
+    margin: 0 auto;
+    background-color: darkslategray;
+    color: white;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+form{
+    border: 1px solid grey;
+    padding: 15px;
+    border-radius: 10px;
+}
