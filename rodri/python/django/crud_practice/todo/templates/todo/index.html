@@ -29,9 +29,14 @@
                     <li class="list-group-item d-flex justify-content-between align-items-start">
                         <div class="ms-2 me-auto">
                             <div class="fw-bold"> {{item.title}}</div>
-                            <p> {{ item.description }}</p>
+                            {% if item.description %}
+                                <p> {{ item.description }}</p>
+                            {% endif %}
+                            {% if item.deadline %}
+                                <span> <i class="bi bi-calendar me-1"></i>{{ item.deadline }}</span>
+                            {% endif %}
                         </div>
-                    <button class="badge bg-primary rounded-pill"><i class="bi-trash"></i></button>
+                    <a href="{{item.pk}}/delete/" class="btn btn-primary badge bg-primary rounded-pill"><i class="bi-trash"></i></a>
                   </li>
                 {% endfor %}
             </div>
@@ -49,7 +54,11 @@
                     {{ form.description }}
                     <label for="description">Description</label>
                 </div>
-                <button type="submit" class="btn btn-primary offset-lg-9 offset-0 col-lg-3 col-12">Submit</button>
+                <div class="form-floating mb-3">
+                    {{ form.deadline }}
+                    <label for="deadline">Deadline</label>
+                </div>
+                <button type="submit" class="btn btn-primary offset-0 col-lg-3 col-12">Submit</button>
             </form>
         </aside>
         </div>

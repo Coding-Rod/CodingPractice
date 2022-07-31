@@ -9,4 +9,5 @@ class TodoForm(forms.ModelForm):
         widgets = {
             "title": forms.TextInput(attrs={"type":"text", "class":"form-control", "id":"titleInput", "placeholder":"Title"}),
             "description": forms.Textarea(attrs={"type":"text", "class":"form-control", "id":"descriptionInput", "placeholder":"Description", "rows":"3"}),
+            "deadline": forms.DateTimeInput(attrs={"type":"datetime-local", "class":"form-control", "id":"deadlineInput", "placeholder":"Deadline"}),
         }

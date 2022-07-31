@@ -11,8 +11,8 @@ class Todo(models.Model):
     #     verbose_name = _("Todo")
     #     verbose_name_plural = _("Todos")
 
-    def __str__(self):
-        return self.title
+    # def __str__(self):
+    #     return self.title
 
-    def get_absolute_url(self):
-        return reverse("Todo_detail", kwargs={"pk": self.pk})
+    # def get_absolute_url(self):
+    #     return reverse("Todo_detail", kwargs={"pk": self.pk})
