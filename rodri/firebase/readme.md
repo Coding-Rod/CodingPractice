@@ -21,4 +21,5 @@ npm i webpack webpack-cli -D
 ~~~bash
 npm install firebase
 ~~~
+
 6. import necessary functions. Example: initializeApp
