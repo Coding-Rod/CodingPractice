@@ -2,24 +2,43 @@
   <div class="movements">
     <h2 class="title">Historial</h2>
     <div class="content">
-      <div v-for="movement in movements" :key="movement.id">
+      <Movement
+        v-for="{ id, title, description, amount } in movements"
+        :key="id"
+        :id="id"
+        :title="title"
+        :description="description"
+        :amount="amount"
+        @remove="remove"
+      />
+      <!-- <div v-for="movement in movements" :key="movement.id">
         {{ movement.title }}
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
 
 <script setup>
 import { toRefs, defineProps } from "vue";
+import Movement from "@/components/Movements/Movement.vue";
+
+console.log("Index imported");
 
 const props = defineProps({
   movements: {
     type: Array,
     default: () => [],
   },
+  components: {
+    Movement,
+  },
 });
 
 const { movements } = toRefs(props);
+
+const remove = (id) => {
+  console.log("remove", id);
+};
 </script>
 
 <style scoped>
