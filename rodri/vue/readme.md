@@ -36,3 +36,51 @@ Es el que introduce cambios en la vista.
 
 View -> input -> ViewModel -> Model -> ViewModel -> state -> View
 Vue tiene Two-way data binding, el modelo y la vista están sincronizados.
+
+## Virtual DOM
+
+Capa intermedia en JavaScript que utiliza para mejorar el rendimiento, es una copia del DOM que se encuentra en memoria ram, este objeto se puede cambiar mucho más rápido que hacerlo con Javascript vanilla.
+
+## Ciclo de vida de los componentes
+
+### First
+
+    ~~~javascript
+        app = Vue.createApp(options)
+        app.mount(el)
+    ~~~
+  
+- (init) events & lifecicle -> beforeCreate
+- (init) injections & reactivity -> created
+
+### Second
+
+    ~~~javascript
+    'Has template option' == 'true' ? 'compile template insto render function' : 'compile el's innerHTML as template'
+    ~~~
+
+beforeMount -> Create.app.$el and appendt it to el
+
+### Third
+
+mounted -> Mounted (state), when mounted:
+
+    ~~~javascript
+    while (true){
+        if (dataChanges()){
+            beforeUpdate();
+            virtualDOMReRenderAndPatch();
+            updated();
+        }
+    }
+    ~~~
+
+### Forth
+
+    ~~~javascript
+    if(app.unmount()){
+        beforeUnmount();
+        unMounted();
+        unMounted(); // after unmount function
+    }
+    ~~~
