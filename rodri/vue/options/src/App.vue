@@ -1,4 +1,5 @@
 <template>
+<<<<<<< Updated upstream
   <HomeComp></HomeComp>
 </template>
 
@@ -10,6 +11,25 @@ export default {
   components: {
     HomeComp,
   },
+=======
+  <!-- <img alt="Vue logo" src="./assets/logo.png" />
+  <HelloWorld msg="Welcome to Your Vue.js App" /> -->
+  <!-- <component :is="component_name"></component> -->
+  <button @click="show = !show">Menu</button>
+</template>
+
+<script>
+//#region imports
+// import HelloWorld from "./components/HelloWorld.vue";
+// import { defineAsyncComponent } from "vue";
+// const HelloWorld = defineAsyncComponent(() =>
+//   import("./components/HelloWorld.vue")
+// );
+//#endregion imports
+
+export default {
+  name: "App",
+>>>>>>> Stashed changes
   data() {
     return {
       text: "Hola Vue",
