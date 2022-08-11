@@ -98,6 +98,7 @@ Es un trabajo de CI automatizado con Jenkins que nos conecta Jenkins con GitLab
 Cuando tenemos multiples trabajos que se deben ejecutar en Jenkins y estos no son muy exigentes con respecto a recursos computacionales podemos optar por utilizar slaves
 
 ![Jenkins slaves](https://static.platzi.com/media/user_upload/configurando%20un%20Slaves-4eecf814-e22b-4707-a2a9-3455b2a2b812.jpg)
+
 ## Docker
 
 Se recomienda usar docker debido a:
