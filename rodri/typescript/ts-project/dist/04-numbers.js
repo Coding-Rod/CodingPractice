@@ -6,7 +6,7 @@
     let custumerAge = 32;
     custumerAge += 1;
     console.log('custumerAge', custumerAge);
-    let productInStock;
+    let productInStock = 10;
     console.log('productInStock', productInStock);
     let discount = parseInt('100');
     console.log('discount', discount);

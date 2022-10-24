@@ -8,7 +8,7 @@
   custumerAge += 1 ;
   console.log('custumerAge', custumerAge);
 
-  let productInStock: number;
+  let productInStock: number = 10;
   console.log('productInStock', productInStock); // Error
   // if (productInStock > 10) { // Error
   //   console.log('productInStock', productInStock);
