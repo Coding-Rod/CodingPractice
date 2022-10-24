@@ -1,8 +1,8 @@
 (async ()=> {
   const myCart = [];
-  const products = [];
+  const products:any = [];
   const limit = 2;
-  
+
   async function getProducts() {
     const rta = await fetch('http://api.escuelajs.co/api/v1/products', {
       method: 'GET'
@@ -17,7 +17,7 @@
     }
     return total;
   }
-  function addProduct(index) {
+  function addProduct(index:number) {
     if (getTotal() <= limit) {
       myCart.push(products[index]);
     }
