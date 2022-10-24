@@ -42,6 +42,4 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         name: 'Nicolas',
         lastName: 'Molina'
     };
-    // const rta = person + limit;
-    // console.log(rta);
 }));
