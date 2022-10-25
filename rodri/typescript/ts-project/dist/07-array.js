@@ -10,8 +10,4 @@
     mixed.push(false);
     mixed.push({});
     mixed.push([]);
-
-    let numbers = [1, 2, 3, 4, 5];
-    // let numbers = ['numbers']; // Error
-    numbers.map(item => item * 2);
 })();
