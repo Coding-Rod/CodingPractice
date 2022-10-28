@@ -1,16 +1,18 @@
-import { addProduct } from './products/product.service';
+import { faker } from '@faker-js/faker';
+
+import { addProduct, products } from './products/product.service';
 
 addProduct({
-  id: 1,
-  name: 'T-Shirt',
-  createdAt: new Date(),
-  updatedAt: new Date(),
-  stock: 10,
-  size: 'M',
-  category: {
-    id: 1,
-    name: 'Clothes',
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  }
+  description: faker.commerce.productDescription(),
+  image: faker.image.imageUrl(),
+  color: faker.commerce.color(),
+  size: faker.helpers.arrayElement(['S', 'M', 'L', 'XL']),
+  price: parseInt(faker.commerce.price(), 10),
+  isNew: faker.datatype.boolean(),
+  tags: faker.helpers.arrayElements(),
+  name: faker.commerce.productName(),
+  stock: faker.datatype.number({ min: 0, max: 100 }),
+  categoryId: faker.datatype.uuid(),
 });
+
+console.log(products);
