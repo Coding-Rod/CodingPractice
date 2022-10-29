@@ -1,6 +1,6 @@
 import { faker } from '@faker-js/faker';
 
-import { addProduct, products } from './products/product.service';
+import { addProduct, updateProduct, findProducts, products } from './products/product.service';
 
 addProduct({
   description: faker.commerce.productDescription(),
@@ -16,3 +16,16 @@ addProduct({
 });
 
 console.log(products);
+const product = products[0];
+updateProduct(product.id, {
+  name: 'New name',
+  stock: 80
+});
+
+findProducts({
+  stock: 10,
+  color: 'red',
+  createdAt: new Date(),
+  isNew: true,
+  tags: ['tag1', 'tag2'],
+});
