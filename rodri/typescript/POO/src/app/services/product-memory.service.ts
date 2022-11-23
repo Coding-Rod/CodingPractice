@@ -2,15 +2,16 @@ import { faker } from '@faker-js/faker';
 
 import { Product } from '../models/product.model';
 import { CreateProductDTO, UpdateProductDTO } from '../dtos/product.dto';
+import { ProductService } from '../models/product-service.model';
 
-export class ProductMemoryService {
+export class ProductMemoryService implements ProductService{
   private products: Product[] = [];
 
   getAll(): Product[] {
     return this.products;
   }
 
-  create(data: CreateProductDTO):void {
+  create(data: CreateProductDTO): Product {
     const newProduct = {
       ...data,
       id: faker.datatype.number(),
@@ -21,6 +22,7 @@ export class ProductMemoryService {
       }
     }
     this.products.push(newProduct);
+    return newProduct;
   }
 
   add(product: Product){
@@ -41,7 +43,7 @@ export class ProductMemoryService {
   }
 
   findOne(id: Product['id']): Product | undefined {
-    return this.products.find(item => item.id === id);
+    return this.products.find(item => item.id === id) as Product;
   }
 }
 
