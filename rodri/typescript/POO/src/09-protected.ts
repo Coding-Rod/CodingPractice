@@ -1,4 +1,4 @@
-export class Animal{
+export abstract class Animal{
     constructor(protected name: string) {}
 
     move(): void {
@@ -33,9 +33,9 @@ export class Dog extends Animal{
     }
 }
 
-const fifi = new Animal('Fifi');
-fifi.move();
-console.log(fifi.gretting());
+// const fifi = new Animal('Fifi'); // Error: Cannot create an instance of an abstract class.
+// fifi.move();
+// console.log(fifi.gretting());
 
 const sparkie = new Dog('Sparkie', 'Rodrigo');
 sparkie.move();
