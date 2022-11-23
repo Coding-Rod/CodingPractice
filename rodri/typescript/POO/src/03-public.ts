@@ -17,7 +17,7 @@ export class MyDate{
     if(type === 'day'){
       this.day += amount;
     } else if(type === 'month'){
-      this.month += amount;
+      // this.month += amount; // Error: Cannot assign to 'month' because it is a read-only property.
     } else {
       this.year += amount;
     }
