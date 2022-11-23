@@ -20,7 +20,7 @@ export class Dog extends Animal{
         super(name);
     }
 
-    bark(times: number): void {
+    bark(times: number = 2): void {
         for (let i = 0; i < times; i++) {
             console.log('Woof! '+ this.name);
         }
