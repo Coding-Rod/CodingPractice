@@ -6,6 +6,10 @@ import { CreateProductDTO, UpdateProductDTO } from '../dtos/product.dto';
 export class ProductMemoryService {
   private products: Product[] = [];
 
+  getAll(): Product[] {
+    return this.products;
+  }
+
   create(data: CreateProductDTO):void {
     const newProduct = {
       ...data,
@@ -24,7 +28,7 @@ export class ProductMemoryService {
     return product;
   }
 
-  updateProduct = (id: Product['id'], changes: UpdateProductDTO): Product => {
+  update = (id: Product['id'], changes: UpdateProductDTO): Product => {
     const productIndex = this.products.findIndex(p => p.id === id);
     if (productIndex === -1) {
       throw new Error('Product not found');
