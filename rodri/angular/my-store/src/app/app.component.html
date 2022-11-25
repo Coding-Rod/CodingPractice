@@ -1,3 +1,11 @@
+<h1>NgModel</h1>
+<p>Nombre</p>
+<!-- ngModel is the same as v-model from Vue.js -->
+<input type="text" required [(ngModel)]="person.name" #nameInput="ngModel">
+<p>Valid: {{ nameInput.valid }}</p>
+<input type="number" min="10" max="25" [(ngModel)]="person.age" #ageInput="ngModel">
+<p>Valid: {{ ageInput.valid }}</p>
+
 <h1>Eventos</h1>
 <button [disabled]="btnDisabled">Enviar</button>
 <button (click)="toggleButton()">Toggle Button</button>
