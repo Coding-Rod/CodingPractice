@@ -6,5 +6,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.sass']
 })
 export class AppComponent {
-  title = 'my-store';
+  _name = 'Rodrigo';
+  _age = 22;
+  img = 'https://source.unsplash.com/random';
+
+  get name() {
+    return this._name;
+  }
+
+  get age() {
+    return this._age;
+  }
 }
