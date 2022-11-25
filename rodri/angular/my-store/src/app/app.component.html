@@ -1,3 +1,27 @@
+<h1>Class & Style</h1>
+<input type="text" required [(ngModel)]="person.name" #nameInput2="ngModel" />
+<p class="message-error" [class.invalid]="nameInput2.invalid">
+  El campo es requerido
+</p>
+<label for="">Nombre </label>
+<input type="text" required [(ngModel)]="person.name" #nameInput3="ngModel" />
+<p [style.color]="nameInput3.invalid ? 'red' : 'green'">
+  El campo es requerido
+</p>
+
+<div class="container">
+  <div>
+    <label for="">Image Width: {{ widthImg }} %</label>
+    <br />
+    <input type="range" [(ngModel)]="widthImg" min="1" max="100" />
+  </div>
+  <div>
+    <!-- <img [src]="person.img" [alt]="person.name" [style.width.px]="widthImg" /> -->
+    <img [src]="person.img" [alt]="person.name" [style.width.%]="widthImg" />
+  </div>
+</div>
+<hr />
+
 <h1>*ngSwitch</h1>
 <input type="text" required [(ngModel)]="person.name" />
 <div [ngSwitch]="person.name">
@@ -12,7 +36,7 @@
 <div class="products--grid">
   <div *ngFor="let product of products">
     <img [src]="product.image" alt="image" width="200">
-    <h2>{{ product.price }}</h2>
+    <h2>${{ product.price.toFixed(2) }}</h2>
     <p>{{ product.name }}</p>
   </div>
 </div>

@@ -22,6 +22,25 @@
       margin: 0
       padding: 1rem
 
+.message-error
+  color: red
+  background: #f8d7da
+  border: 1px solid #f5c6cb
+  border-radius: 5px
+  padding: 1rem
+  opacity: 0
+  transition: opacity 0.5s ease-in-out
+  &.invalid
+    opacity: 1
+
+.container
+  display: flex
+  flex-direction: row
+  justify-content: space-around
+  div
+    width: 50%
+    text-align: center
+
 @media (min-width: 30em) and (max-width: 40em)
     .product--grid
         display: grid

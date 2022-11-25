@@ -7,6 +7,7 @@ import { Product } from './product.model';
 })
 
 export class AppComponent {
+  widthImg = 50;
   name = 'Sergio';
   age = 22;
   img = 'https://source.unsplash.com/random';
