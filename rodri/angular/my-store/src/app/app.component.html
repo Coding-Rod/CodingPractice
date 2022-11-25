@@ -1,23 +1,59 @@
+<h1>Formulario</h1>
+<form #myForm="ngForm" (ngSubmit)="onRegister()">
+  <div class="input-group">
+    <div>
+      <label for="name">Nombre </label>
+      <input required id="name" name="name" type="text" [(ngModel)]="register.name" />
+      <p>Mensajes de error</p>
+    </div>
+    <div>
+      <label for="mail">Email </label>
+      <input required id="mail" name="mail" type="email" [(ngModel)]="register.email" />
+      <p>Mensajes de error</p>
+    </div>
+    <div>
+      <label for="pass">Contraseña </label>
+      <input required id="pass" name="pass" type="password" [(ngModel)]="register.password" />
+      <p>Mensajes de error</p>
+    </div>
+  </div>
+  <button [disabled]="myForm.invalid" type="submit">Registrar</button>
+  <button type="button">Acción</button>
+</form>
+
 <h1>NgClass & NgStyle</h1>
 <input type="text" required [(ngModel)]="person.name" #nameInput4="ngModel" />
-<hr class="line-error"
+<hr
+  class="line-error"
   [ngClass]="{
-    'invalid': nameInput4.invalid,
-    'valid': nameInput4.valid
+    invalid: nameInput4.invalid,
+    valid: nameInput4.valid
   }"
 />
-<p class="message-error" [class.invalid]="nameInput2.invalid">
+<p class="message-error" [class.invalid]="nameInput4.invalid">
   El campo es requerido
 </p>
 
 <div class="container">
   <div>
     <label for="boxWidth">Width</label>
-    <input name="boxWidth" type="range" [(ngModel)]="box.width" min="0" max="100" />
-    <br>
+    <input
+      name="boxWidth"
+      type="range"
+      [(ngModel)]="box.width"
+      min="0"
+      max="100"
+    />
+    <br />
     <label for="boxHeight">Height</label>
-    <input name="boxHeight" type="range" [(ngModel)]="box.height" min="0" max="400" />
-    <br>
+    <input
+      name="boxHeight"
+      type="range"
+      [(ngModel)]="box.height"
+      min="0"
+      max="400"
+    />
+    <br />
     <label for="boxColor">Color</label>
     <input name="boxColor" type="color" [(ngModel)]="box.background" />
   </div>
@@ -72,7 +108,7 @@
 <h1>*ngFor Objs</h1>
 <div class="products--grid">
   <div *ngFor="let product of products">
-    <img [src]="product.image" alt="image" width="200">
+    <img [src]="product.image" alt="image" width="200" />
     <h2>${{ product.price.toFixed(2) }}</h2>
     <p>{{ product.name }}</p>
   </div>
