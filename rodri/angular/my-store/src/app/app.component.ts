@@ -17,6 +17,9 @@ export class AppComponent {
     age: 22,
     img: 'https://source.unsplash.com/random',
   }
+  
+  names: string[] = ['Sergio', 'Juan', 'Pedro', 'Maria'];
+  newName = ''
 
   toggleButton() {
     this.btnDisabled = !this.btnDisabled;
@@ -34,5 +37,14 @@ export class AppComponent {
   onKeyUp(event: KeyboardEvent) {
     const element = event.target as HTMLInputElement;
     this.person.name = element.value;
+  }
+
+  addName() {
+    this.names.push(this.newName);
+    this.newName = '';
+  }
+
+  removeName(index: number) {
+    this.names.splice(index, 1);
   }
 }
