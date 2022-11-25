@@ -1,3 +1,39 @@
+<h1>NgClass & NgStyle</h1>
+<input type="text" required [(ngModel)]="person.name" #nameInput4="ngModel" />
+<hr class="line-error"
+  [ngClass]="{
+    'invalid': nameInput4.invalid,
+    'valid': nameInput4.valid
+  }"
+/>
+<p class="message-error" [class.invalid]="nameInput2.invalid">
+  El campo es requerido
+</p>
+
+<div class="container">
+  <div>
+    <label for="boxWidth">Width</label>
+    <input name="boxWidth" type="range" [(ngModel)]="box.width" min="0" max="100" />
+    <br>
+    <label for="boxHeight">Height</label>
+    <input name="boxHeight" type="range" [(ngModel)]="box.height" min="0" max="400" />
+    <br>
+    <label for="boxColor">Color</label>
+    <input name="boxColor" type="color" [(ngModel)]="box.background" />
+  </div>
+  <div>
+    <div
+      [ngStyle]="{
+        width: box.width + '%',
+        height: box.height + 'px',
+        background: box.background,
+        display: 'inline-block'
+      }"
+    ></div>
+  </div>
+</div>
+<hr />
+
 <h1>Class & Style</h1>
 <input type="text" required [(ngModel)]="person.name" #nameInput2="ngModel" />
 <p class="message-error" [class.invalid]="nameInput2.invalid">
@@ -8,6 +44,7 @@
 <p [style.color]="nameInput3.invalid ? 'red' : 'green'">
   El campo es requerido
 </p>
+<hr />
 
 <div class="container">
   <div>

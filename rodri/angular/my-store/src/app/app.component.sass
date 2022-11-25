@@ -41,6 +41,16 @@
     width: 50%
     text-align: center
 
+.line-error
+  height: 0
+  border-bottom: 2px solid
+  &.invalid
+    height: 1px
+    border-color: red
+  &.valid
+    height: 1px
+    border-color: green
+
 @media (min-width: 30em) and (max-width: 40em)
     .product--grid
         display: grid
