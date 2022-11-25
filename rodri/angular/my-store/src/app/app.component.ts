@@ -5,6 +5,7 @@ import { Component } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.sass']
 })
+
 export class AppComponent {
   name = 'Sergio';
   age = 22;
@@ -15,5 +16,13 @@ export class AppComponent {
     name: 'Sergio',
     age: 22,
     img: 'https://source.unsplash.com/random',
+  }
+
+  toggleButton() {
+    this.btnDisabled = !this.btnDisabled;
+  }
+
+  ageIncrease(){
+    this.person.age++;
   }
 }
