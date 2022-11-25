@@ -3,3 +3,33 @@
     width: 200px
     overflow-y: scroll
     background-color: red
+
+.products--grid
+  display: grid
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr))
+  grid-gap: 1rem
+
+  div
+    background-color: #fff
+    border: 1px solid #ccc
+    border-radius: 10px
+
+    img
+      width: 100%
+      border-top-left-radius: 10px
+      border-top-right-radius: 10px
+    h2, p
+      margin: 0
+      padding: 1rem
+
+@media (min-width: 30em) and (max-width: 40em)
+    .product--grid
+        display: grid
+        grid-template-columns: repeat(4, 1fr)
+        grid-gap: 15px
+
+@media screen and (min-width: 40em)
+    .product--grid
+        display: grid
+        grid-template-columns: repeat(5, 1fr)
+        grid-gap: 15px

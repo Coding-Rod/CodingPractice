@@ -1,5 +1,15 @@
+<h1>*ngSwitch</h1>
+<input type="text" required [(ngModel)]="person.name" />
+<div [ngSwitch]="person.name">
+  <div *ngSwitchCase="'Sergio'">Bienvenido, Sergio</div>
+  <div *ngSwitchCase="'Rodrigo'">Bienvenido, Rodrigo</div>
+  <div *ngSwitchCase="'Ivan'">Bienvenido, Ivan</div>
+  <div *ngSwitchDefault>No eres admin</div>
+</div>
+<hr />
+
 <h1>*ngFor Objs</h1>
-<div>
+<div class="products--grid">
   <div *ngFor="let product of products">
     <img [src]="product.image" alt="image" width="200">
     <h2>{{ product.price }}</h2>
