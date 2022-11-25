@@ -1,4 +1,14 @@
-<h1>+ngFor</h1>
+<h1>*ngFor Objs</h1>
+<div>
+  <div *ngFor="let product of products">
+    <img [src]="product.image" alt="image" width="200">
+    <h2>{{ product.price }}</h2>
+    <p>{{ product.name }}</p>
+  </div>
+</div>
+<hr />
+
+<h1>*ngFor</h1>
 <input type="text" [(ngModel)]="newName" (onKeyup.enter)="addName()" />
 <button (click)="addName()">Add name</button>
 <ul>
