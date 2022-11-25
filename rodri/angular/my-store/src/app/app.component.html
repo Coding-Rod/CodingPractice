@@ -1,3 +1,12 @@
+<h1>+ngIf</h1>
+<input type="text" required [(ngModel)]="person.name">
+<p *ngIf="person.name=='Rodrigo;'">Soy Rodrigo</p>
+<p *ngIf="person.name=='Sergio' && person.age >= 18; else elseTemplate  ">Soy Sergio</p>
+<ng-template #elseTemplate>
+  <p>No soy Sergio</p>
+</ng-template>
+<hr />
+
 <h1>NgModel</h1>
 <p>Nombre</p>
 <!-- ngModel is the same as v-model from Vue.js -->
@@ -5,17 +14,20 @@
 <p>Valid: {{ nameInput.valid }}</p>
 <input type="number" min="10" max="25" [(ngModel)]="person.age" #ageInput="ngModel">
 <p>Valid: {{ ageInput.valid }}</p>
+<hr />
 
 <h1>Eventos</h1>
 <button [disabled]="btnDisabled">Enviar</button>
 <button (click)="toggleButton()">Toggle Button</button>
 <p>Edad: {{ person.age }}</p>
 <button (click)="ageIncrease()">Age ++</button>
+<hr />
 
 <div class="box" (scroll)="onScroll($event)">
   <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cum temporibus, veniam ratione soluta corrupti tempora minima, aut porro asperiores omnis fugiat non accusantium deleniti eos laboriosam itaque, laudantium atque rem.</p>
 </div>
 <input type="text" [value]="person.name" (keyup)="onKeyUp($event)" />
+<hr />
 
 <h1>Propiedades</h1>
 <button [disabled]="btnDisabled">Enviar</button>
