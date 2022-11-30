@@ -62,7 +62,12 @@ Debemos deshabilitar el servidor, cn el segundo comnado, para liberar el localho
 
 ## Operadores aritméticos
 
-Los operadores aritméticos en PHP son los mismos operadores que laos operadores de Python
+Los operadores aritméticos son iguales a los de JavaScript, exceptuando el de concatenación, el cual es:
+
+~~~php
+$string1 = "Hello,";
+$string1 .= "World!";
+~~~
 
 ## Operadores relacionales
 
