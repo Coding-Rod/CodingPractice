@@ -32,3 +32,8 @@ sudo a2enmod php8.1
 ~~~
 
 Debemos deshabilitar el servidor, cn el segundo comnado, para liberar el localhost
+
+## Name convention
+
+- Varibles = camel case
+- Classes = underscore case
