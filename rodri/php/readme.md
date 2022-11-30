@@ -37,3 +37,25 @@ Debemos deshabilitar el servidor, cn el segundo comnado, para liberar el localho
 
 - Varibles = camel case
 - Classes = underscore case
+
+## Tipos de datos
+
+### Numéricos
+
+- Integer: Número sin decimales.
+- Float: Número con punto flotante o punto decimal.
+- Double: Decimales con valores más precisos, con más decimales que float.
+
+### Cadenas ded caracteres
+
+- Chart: Un solo una letra o un simbolo.
+- String: Una cadena de caracteres.
+
+### Booleanos
+
+- Bool: Verdadero o falso.
+
+### Sin valor
+
+- Null: No hay valor.
+- Undefined: Hay una variable pero no tiene ningun valor.
