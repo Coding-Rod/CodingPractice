@@ -59,3 +59,23 @@ Debemos deshabilitar el servidor, cn el segundo comnado, para liberar el localho
 
 - Null: No hay valor.
 - Undefined: Hay una variable pero no tiene ningun valor.
+
+## Operadores aritméticos
+
+Los operadores aritméticos en PHP son los mismos operadores que laos operadores de Python
+
+## Operadores relacionales
+
+|Operador|Descripción|
+|--------|-------------------|
+|`==`    |_Igual a_          |
+|`===`   |_Idéntico a_       |
+|`!=`    |_Diferente de_     |
+|`<>`    |_Diferente de_     |
+|`!==`   |_No idéntico a_    |
+|`>`     |_Mayor que_        |
+|`>=`    |_Mayor o igual que_|
+|`<`     |_Menor que_        |
+|`<=`    |_Menor o igual que_|
+|`<=>`   |_Nave espacial_    |
+|`??`    |_Fusión de null_   |
