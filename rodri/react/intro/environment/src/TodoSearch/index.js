@@ -1,5 +1,5 @@
 import React from "react";
-import '../styles/TodoSearch.css';
+import './TodoSearch.css';
 
 function TodoSearch({searchValue, setSearchValue}) {
 
@@ -11,7 +11,7 @@ function TodoSearch({searchValue, setSearchValue}) {
     return (
         <input 
             className="TodoSearch" 
-            placeholder="frontend" 
+            placeholder="react" 
             onChange={onSearchValueChange}
         />
     );

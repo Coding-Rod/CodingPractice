@@ -1,9 +1,5 @@
 import React from 'react';
-import { TodoCounter } from './components/TodoCounter';
-import { TodoSearch } from './components/TodoSearch';
-import { TodoItem } from './components/TodoItem';
-import { TodoList } from './components/TodoList';
-import { CreateTodoButton } from './components/CreateTodoButton';
+import { AppUi } from './AppUi';
 
 // import './App.css';
 
@@ -11,6 +7,7 @@ const defaultTodos = [
   { id: 1, text: 'Learn React', completed: true },
   { id: 2, text: 'Learn Firebase', completed: false },
   { id: 3, text: 'Learn GraphQL', completed: false },
+  { id: 4, text: 'Learn React Native', completed: false },
 ];
 
 function App() {
@@ -47,28 +44,15 @@ function App() {
   };
 
   return (
-    <React.Fragment>
-      <TodoCounter completedTodos={completedTodos} totalTodos={totalTodos} />
-
-      <TodoSearch
-        searchValue={searchValue}
-        setSearchValue={setSearchValue}
-      />
-
-      <TodoList>
-        {searchedTodos.map(todo => (
-          <TodoItem 
-            text={todo.text} 
-            key={todo.id} 
-            completed={todo.completed} 
-            onComplete={() => completeTodo(todo.id)}
-            onDelete={() => deleteTodo(todo.id)}
-          />
-        ))}
-      </TodoList>
-      <CreateTodoButton />
-
-    </React.Fragment>
+    <AppUi
+      totalTodos={totalTodos}
+      completedTodos={completedTodos}
+      searchValue={searchValue}
+      setSearchValue={setSearchValue}
+      completeTodo={completeTodo}
+      deleteTodo={deleteTodo}
+      searchedTodos={searchedTodos}
+    />
   );
 }
 
