@@ -7,7 +7,7 @@ function TodoItem(props) {
   };
 
   const onDelete = () => {
-    alert('Eliminado');
+    props.onDelete(props.id);
   };
 
   return (
