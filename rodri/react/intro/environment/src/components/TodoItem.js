@@ -3,7 +3,7 @@ import '../styles/TodoItem.css';
 
 function TodoItem(props) {
   const onComplete = () => {
-    alert('Completado');
+    props.onComplete(props.id);
   };
 
   const onDelete = () => {
