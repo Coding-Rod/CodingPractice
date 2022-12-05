@@ -1,8 +1,9 @@
 import React from "react";
+import '../styles/TodoItem.css';
 
 function TodoItem(props) {
     return (
-        <li>
+        <li className="TodoItem" >
             <span>C</span>
             <p>{props.text}</p>
             <span>X</span>
