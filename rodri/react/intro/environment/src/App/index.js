@@ -1,26 +1,18 @@
 import React from 'react';
 import { AppUi } from './AppUi';
+import { UseLocalStorage } from '../utils/UseLocalStorage';
 
 // import './App.css';
 
-const defaultTodos = [
-  { id: 1, text: 'Learn React', completed: true },
-  { id: 2, text: 'Learn Firebase', completed: false },
-  { id: 3, text: 'Learn GraphQL', completed: false },
-];
+// const defaultTodos = [
+//   { id: 1, text: 'Learn React', completed: true },
+//   { id: 2, text: 'Learn Firebase', completed: false },
+//   { id: 3, text: 'Learn GraphQL', completed: false },
+// ];
 
 function App() {
-  const localStorageTodos = localStorage.getItem('TODOS_V1');
-  let parsedTodos;
-
-  if (!localStorageTodos) {
-    localStorage.setItem('TODOS_V1', JSON.stringify(defaultTodos));
-    parsedTodos = defaultTodos;
-  } else {
-    parsedTodos = JSON.parse(localStorageTodos);
-  }
-
-  const [todos, setTodos] = React.useState(parsedTodos);
+  const [todos, saveTodos] = UseLocalStorage('TODOS_V1', []);
+  
   const [searchValue, setSearchValue] = React.useState('');
 
   const completedTodos = todos.filter(todo => !!todo.completed).length;
@@ -38,17 +30,12 @@ function App() {
     });
   }
 
-  const saveTodos = (newTodos) => {
-    const stringifiedTodos = JSON.stringify(newTodos);
-    localStorage.setItem('TODOS_V1', stringifiedTodos);
-    setTodos(newTodos);
-  }
+  
 
   const completeTodo = (id) => {
     const todoIndex = todos.findIndex(todo => todo.id === id);
     const newTodos = [...todos];
     newTodos[todoIndex].completed = !newTodos[todoIndex].completed;
-    setTodos(newTodos);
     saveTodos(newTodos);
   };
 
@@ -56,7 +43,6 @@ function App() {
     const todoIndex = todos.findIndex(todo => todo.id === id);
     const newTodos = [...todos];
     newTodos.splice(todoIndex, 1);
-    setTodos(newTodos);
     saveTodos(newTodos);
   };
 
