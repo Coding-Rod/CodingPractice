@@ -1,5 +1,11 @@
 import React from "react";
 
+// const defaultTodos = [
+//   { id: 1, text: 'Learn React', completed: true },
+//   { id: 2, text: 'Learn Firebase', completed: false },
+//   { id: 3, text: 'Learn GraphQL', completed: false },
+// ];
+
 function UseLocalStorage(itemName, defaultTodos) {
     const localStorageTodos = localStorage.getItem(itemName);
     let parsedTodos;
@@ -12,15 +18,15 @@ function UseLocalStorage(itemName, defaultTodos) {
         parsedTodos = JSON.parse(localStorageTodos);
     }
 
-    const [todos, setTodos] = React.useState(parsedTodos);
+    const [items, saveItem] = React.useState(parsedTodos);
 
     const saveTodos = (newTodos) => {
         const stringifiedTodos = JSON.stringify(newTodos);
         localStorage.setItem('TODOS_V1', stringifiedTodos);
-        setTodos(newTodos);
+        saveItem(newTodos);
       }
 
-    return [todos, saveTodos];
+    return [items, saveTodos];
 }
 
 export { UseLocalStorage };
