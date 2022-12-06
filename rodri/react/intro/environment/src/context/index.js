@@ -4,9 +4,9 @@ import { UseLocalStorage } from "./UseLocalStorage";
 const TodoContext = React.createContext();
 
 function TodoProvider({ children }) {
-    const {items: todos, saveItems: saveTodos, loading, error} = UseLocalStorage('TODOS_V1', []);
-  
+  const { items: todos, saveItems: saveTodos, loading, error } = UseLocalStorage('TODOS_V1', []);
 
+  const [openModal, setOpenModal] = React.useState(false);
   const [searchValue, setSearchValue] = React.useState('');
 
   const completedTodos = todos.filter(todo => !!todo.completed).length;
@@ -42,21 +42,23 @@ function TodoProvider({ children }) {
     console.log('items', totalTodos);
   }, [totalTodos]); // This will run every time items changes
 
-    return (
-        <TodoContext.Provider value={{ 
-            loading,
-            error,
-            totalTodos,
-            completedTodos,
-            searchValue,
-            setSearchValue,
-            completeTodo,
-            deleteTodo,
-            searchedTodos
-        }}>
-            {children}
-        </TodoContext.Provider>
-    );
+  return (
+    <TodoContext.Provider value={{
+      loading,
+      error,
+      totalTodos,
+      completedTodos,
+      searchValue,
+      setSearchValue,
+      completeTodo,
+      deleteTodo,
+      searchedTodos,
+      openModal,
+      setOpenModal
+    }}>
+      {children}
+    </TodoContext.Provider>
+  );
 }
 
 export { TodoContext, TodoProvider };
