@@ -6,27 +6,49 @@ import React from "react";
 //   { id: 3, text: 'Learn GraphQL', completed: false },
 // ];
 
-function UseLocalStorage(itemName, defaultTodos) {
-    const localStorageTodos = localStorage.getItem(itemName);
-    let parsedTodos;
+function UseLocalStorage(itemName, defaultItem) {
+    const [error, setError] = React.useState(false);
+    const [loading, setLoading] = React.useState(true);
+    const [items, setItem] = React.useState(defaultItem);
+    
+    React.useEffect(() => {
+        setTimeout(() => {
+            try {
+                const localStorageItem = localStorage.getItem(itemName);
+                let parsedItem;
     
     
-    if (!localStorageTodos) {
-        localStorage.setItem('TODOS_V1', JSON.stringify(defaultTodos));
-        parsedTodos = defaultTodos;
-    } else {
-        parsedTodos = JSON.parse(localStorageTodos);
+                if (!localStorageItem) {
+                    localStorage.setItem('TODOS_V1', JSON.stringify(defaultItem));
+                    parsedItem = defaultItem;
+                } else {
+                    parsedItem = JSON.parse(localStorageItem);
+                }
+                
+                setItem(parsedItem);
+                setLoading(false);
+            } catch (error) {
+                setError(error);               
+            }
+        }, 1000);
+    });
+
+    const saveItems = (newTodos) => {
+        try {
+            const stringifiedTodos = JSON.stringify(newTodos);
+            localStorage.setItem('TODOS_V1', stringifiedTodos);
+            setItem(newTodos);
+        } catch (error) {
+            setError(error);
+        }
     }
-
-    const [items, saveItem] = React.useState(parsedTodos);
-
-    const saveTodos = (newTodos) => {
-        const stringifiedTodos = JSON.stringify(newTodos);
-        localStorage.setItem('TODOS_V1', stringifiedTodos);
-        saveItem(newTodos);
-      }
-
-    return [items, saveTodos];
+    return {
+        items, 
+        saveItems,
+        loading,
+        error
+    };
 }
+
 
 export { UseLocalStorage };

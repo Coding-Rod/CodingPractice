@@ -3,43 +3,48 @@ import { AppUi } from './AppUi';
 import { UseLocalStorage } from '../utils/UseLocalStorage';
 
 function App() {
-  const [items, saveItem] = UseLocalStorage('TODOS_V1', []);
+  const {items: todos, saveItems: saveTodos, loading, error} = UseLocalStorage('TODOS_V1', []);
   
+
   const [searchValue, setSearchValue] = React.useState('');
 
-  const completedTodos = items.filter(item => !!item.completed).length;
-  const totalTodos = items.length;
+  const completedTodos = todos.filter(todo => !!todo.completed).length;
+  const totalTodos = todos.length;
 
   let searchedTodos = [];
 
   if (!searchValue.length >= 1) {
-    searchedTodos = items;
+    searchedTodos = todos;
   } else {
-    searchedTodos = items.filter(item => {
-      const todoText = item.text.toLowerCase();
+    searchedTodos = todos.filter(todo => {
+      const todoText = todo.text.toLowerCase();
       const searchText = searchValue.toLowerCase();
       return todoText.includes(searchText);
     });
   }
 
-  
-
   const completeTodo = (id) => {
-    const todoIndex = items.findIndex(item => item.id === id);
-    const newTodos = [...items];
+    const todoIndex = todos.findIndex(todo => todo.id === id);
+    const newTodos = [...todos];
     newTodos[todoIndex].completed = !newTodos[todoIndex].completed;
-    saveItem(newTodos);
+    saveTodos(newTodos);
   };
 
   const deleteTodo = (id) => {
-    const todoIndex = items.findIndex(todo => todo.id === id);
-    const newTodos = [...items];
+    const todoIndex = todos.findIndex(todo => todo.id === id);
+    const newTodos = [...todos];
     newTodos.splice(todoIndex, 1);
-    saveItem(newTodos);
+    saveTodos(newTodos);
   };
+
+  React.useEffect(() => {
+    console.log('items', totalTodos);
+  }, [totalTodos]); // This will run every time items changes
 
   return (
     <AppUi
+      loading={loading}
+      error={error}
       totalTodos={totalTodos}
       completedTodos={completedTodos}
       searchValue={searchValue}
