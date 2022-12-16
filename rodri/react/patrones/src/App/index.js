@@ -11,6 +11,7 @@ import { TodoForm } from '../TodoForm';
 import { CreateTodoButton } from '../CreateTodoButton';
 import { Modal } from '../Modal';
 import { TodoHeader } from '../TodoHeader';
+import { EmptySearchResults } from '../EmptySearchResults';
 
 function App() {
 
@@ -25,7 +26,7 @@ function App() {
     completeTodo,
     deleteTodo,
     openModal,
-    setOpenModal
+    setOpenModal,
   } = useTodos();
 
 
@@ -40,10 +41,12 @@ function App() {
         error={error}
         loading={loading}
         searchedTodos={searchedTodos}
+        searchValue={searchValue}
 
         onError = {() => <TodosError />}
         onLoading = {() => <TodosLoading />}
         onEmptyTodos = {() => <EmptyTodos />}
+        onEmptySearchResults = {searchValue => <EmptySearchResults searchValue={searchValue} />}
         render = {todo => (
             <TodoItem
               key={todo.text}
