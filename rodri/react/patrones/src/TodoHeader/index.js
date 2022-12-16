@@ -1,10 +1,11 @@
 import React from "react";
 
-function TodoHeader({ children }) {
+function TodoHeader({ children, loading }) {
     return (
         <header>
             <h1>Todo App</h1>
-            {children}
+            {React.cloneElement(children, { loading })}
+            {/* {children} */}
         </header>
     );
 }

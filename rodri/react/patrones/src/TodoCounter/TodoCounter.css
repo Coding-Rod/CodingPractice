@@ -4,3 +4,20 @@
   margin: 0;
   padding: 48px;
 }
+
+.TodoCounter--loading {
+  animation: fade 1s infinite;
+}
+
+/* infinite fade animation */
+@keyframes fade {
+  0% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}
