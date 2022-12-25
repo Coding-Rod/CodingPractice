@@ -2,10 +2,33 @@ import React from "react";
 import { Container } from "@mui/material";
 import Searcher from "./components/Searcher";
 
+import { getGitHubUser } from "./services/users";
+
 const App = () => {
 
   const [inputUser, setInputUser] = React.useState("octocat");
   const [userState, setUserState] = React.useState('userState');
+
+  React.useEffect(() => {
+    getGitHubUser(inputUser)
+    .then((response) => {
+      setUserState(response);
+      localStorage.setItem("user", JSON.stringify(response));
+      
+      console.log(response);
+
+    }).catch((error) => {
+
+      const user = JSON.parse(localStorage.getItem("user"));
+      setUserState(user);
+
+      console.log("Error");
+      console.log(error);
+      console.log(userState);
+
+    });
+
+  }, [inputUser]);
 
 
   return(
