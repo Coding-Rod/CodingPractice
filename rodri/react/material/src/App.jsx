@@ -1,6 +1,7 @@
 import React from "react";
 import { Container } from "@mui/material";
 import Searcher from "./components/Searcher";
+import UserCard from "./containers/UserCard";
 
 import { getGitHubUser } from "./services/users";
 
@@ -15,16 +16,16 @@ const App = () => {
       setUserState(response);
       localStorage.setItem("user", JSON.stringify(response));
       
-      console.log(response);
+      // console.log(response);
 
-    }).catch((error) => {
+    }).catch(() => {
 
       const user = JSON.parse(localStorage.getItem("user"));
       setUserState(user);
 
-      console.log("Error");
-      console.log(error);
-      console.log(userState);
+      // console.log("Error");
+      // console.log(error);
+      // console.log(userState);
 
     });
 
@@ -44,6 +45,7 @@ const App = () => {
         alignItems: "center",
     }}>
         <Searcher setInputUser={setInputUser} />
+        <UserCard userState={userState} />
     </Container>
   )
 };

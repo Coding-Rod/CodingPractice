@@ -10,7 +10,8 @@ module.exports = {
         'arrow-body-style': 'off',
         'react/jsx-fragments': ['error','element'],
         'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'], }], 
-        'import/no-extraneous-dependencies': 'off', 
+        'import/no-extraneous-dependencies': 'off',
+        "react/prop-types": "off",
         'react/function-component-definition': [
             'error', 
             { namedComponents: 'arrow-function', },
