@@ -19,10 +19,10 @@ class ClassState extends React.Component {
     componentDidUpdate() {
         if (this.state.loading) {
             setTimeout(() => {
-                this.state.value === SECURITY_CODE 
-                    ? this.setState({ error: false }) 
-                    : this.setState({ error: true });
-                this.setState({ loading: false });
+                this.setState({ 
+                    error: this.state.value !== SECURITY_CODE, 
+                    loading: false 
+                });
             }, 2000);
         }
     }

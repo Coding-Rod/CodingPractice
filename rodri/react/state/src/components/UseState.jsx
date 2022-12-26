@@ -2,40 +2,42 @@ import React from "react";
 import { SECURITY_CODE } from "../constants";
 
 const UseState = ({ name }) => {
-    const [value, setValue] = React.useState('');
-    const [error, setError] = React.useState(false);
-    const [loading, setLoading] = React.useState(false);
+    const [state, setState] = React.useState({
+        value: '',
+        error: false,
+        loading: false
+    });
 
     React.useEffect(() => {
-        if (loading) {
+        if (state.loading) {
             setTimeout(() => {
-                value === SECURITY_CODE 
-                    ? setError(false) 
-                    : setError(true);
-                setLoading(false);
+                setState({
+                    ...state,
+                    error: state.value !== SECURITY_CODE,
+                    loading: false 
+                });
             }, 2000);
         }
-    }, [loading, value]);
+    }, [state.loading, state]);
 
     return <div>
         <h2>Remove { name }</h2>
 
         <p>Please, write your security code:</p>
 
-        { !loading && error && <p>Invalid security code</p> }
-        { loading && <p>Loading...</p> }
+        { !state.loading && state.error && <p>Invalid security code</p> }
+        { state.loading && <p>Loading...</p> }
 
         <input 
             type="text" 
             name="securityCode"
-            value={value}
+            value={state.value}
             onChange={(e) => {
-                setError(false);
-                setValue(e.target.value);
+                setState({ ...state, error: false, value: e.target.value });
         }} />
         <button
             onClick={() => {
-                setLoading(true);
+                setState({ ...state, loading: true });
             }}
         >Verify
         </button>
