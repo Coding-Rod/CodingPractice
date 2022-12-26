@@ -5,7 +5,9 @@ const UseState = ({ name }) => {
     const [state, setState] = React.useState({
         value: '',
         error: false,
-        loading: false
+        loading: false,
+        deleted: false,
+        confirmed: false
     });
 
     React.useEffect(() => {
@@ -14,13 +16,15 @@ const UseState = ({ name }) => {
                 setState({
                     ...state,
                     error: state.value !== SECURITY_CODE,
-                    loading: false 
+                    loading: false,
+                    confirmed: state.value === SECURITY_CODE,
                 });
             }, 2000);
         }
     }, [state.loading, state]);
 
-    return <div>
+    if (!state.deleted && !state.confirmed) { // Normal state
+        return <div>
         <h2>Remove { name }</h2>
 
         <p>Please, write your security code:</p>
@@ -42,6 +46,35 @@ const UseState = ({ name }) => {
         >Verify
         </button>
     </div>;
+    } else if (!state.deleted && !!state.confirmed){ // Confirm deletion
+        return <div>
+            <h2>Remove { name }</h2>
+            <p>Are you sure you want to remove { name }?</p>
+            <button
+                onClick={() => {
+                    setState({ ...state, deleted: true });
+                }}
+            >Yes
+            </button>
+            <button
+                onClick={() => {
+                    setState({ ...state, confirmed: false });
+                }}
+            >No
+            </button>
+        </div>; 
+    } else { // Deleted
+        return <div>
+            <h2>Remove { name }</h2>
+            <p>{ name } has been removed</p>
+            <button
+                onClick={() => {
+                    setState({ ...state, deleted: false, confirmed: false });
+                }}
+            >Undo</button>
+        </div>;   
+    }
+    
 }
 
 export { UseState };
