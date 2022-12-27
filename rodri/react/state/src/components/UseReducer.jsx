@@ -9,24 +9,36 @@ const initialState = {
     confirmed: false
 };
 
+const actionTypes = {
+    error: 'ERROR',
+    loading: 'LOADING',
+    confirm: 'CONFIRM',
+    deleted: 'DELETED',
+    write: 'WRITE',
+    default: 'DEFAULT'
+}
+
 const reducerObject = (state, payload) => ({
-    'ERROR': { ...state, error: true, loading: false },
-    'LOADING': { ...state, loading: true },
-    'CONFIRMED': { ...state, confirmed: true, loading: false, error: false },
-    'DELETED': { ...state, deleted: true },
-    'WRITE': { ...state, value: payload },
-    'DEFAULT': { ...state, loading: false, confirmed: false, deleted: false }
+    [actionTypes.error]: { ...state, error: true, loading: false },
+    [actionTypes.loading]: { ...state, loading: true },
+    [actionTypes.confirm]: { ...state, confirmed: true, loading: false, error: false },
+    [actionTypes.deleted]: { ...state, deleted: true },
+    [actionTypes.write]: { ...state, value: payload },
+    [actionTypes.default]: { ...state, loading: false, confirmed: false, deleted: false }
 });
+
 
 const reducer = (state, action) => reducerObject(state, action.payload)[action.type] || reducerObject(state)['DEFAULT'];
 
 const UseReducer = ({ name }) => {
     const [state, dispatch] = React.useReducer(reducer, initialState);
 
+
     React.useEffect(() => {
         if (state.loading) {
             setTimeout(() => {
-                dispatch({type: state.value === SECURITY_CODE ? 'CONFIRMED' : 'ERROR'});
+                // If the security code is correct, confirm action is triggered else error action is triggered
+                dispatch({type: state.value === SECURITY_CODE ? actionTypes.confirm : actionTypes.error});
             }, 2000);
         }
     }, [state.loading, state]);
@@ -45,11 +57,13 @@ const UseReducer = ({ name }) => {
             name="securityCode"
             value={state.value}
             onChange={(e) => {
-                dispatch({type: 'WRITE', payload: e.target.value});
+                // Every time the user writes something, the write action is triggered
+                dispatch({type: actionTypes.write, payload: e.target.value});
         }} />
         <button
             onClick={() => {
-                dispatch({type: 'LOADING'});
+                // When the user clicks the button, the loading action is triggered
+                dispatch({type: actionTypes.loading});
             }}
         >Verify
         </button>
@@ -60,13 +74,15 @@ const UseReducer = ({ name }) => {
             <p>Are you sure you want to remove { name }?</p>
             <button
                 onClick={() => {
-                    dispatch({type: 'DELETED'});
+                    // When the user clicks the button, the deleted action is triggered
+                    dispatch({type: actionTypes.deleted});
                 }}
             >Yes
             </button>
             <button
                 onClick={() => {
-                    dispatch({type: 'DEFAULT'});
+                    // When the user clicks the button, the default action is triggered
+                    dispatch({type: actionTypes.default});
                 }}
             >No
             </button>
@@ -77,7 +93,8 @@ const UseReducer = ({ name }) => {
             <p>{ name } has been removed</p>
             <button
                 onClick={() => {
-                    dispatch({type: 'DEFAULT'});
+                    // When the user clicks the button, the default action is triggered
+                    dispatch({type: actionTypes.default});
                 }}
             >Undo</button>
         </div>;   
