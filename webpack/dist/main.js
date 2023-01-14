@@ -71,7 +71,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extr
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
-eval("module.exports = __webpack_require__.p + \"9c4faee7513f87e9b3b3.png\";\n\n//# sourceURL=webpack://js-portfolio/./src/assets/images/github.png?");
+eval("module.exports = __webpack_require__.p + \"assets/images/9c4faee7513f87e9b3b3.png\";\n\n//# sourceURL=webpack://js-portfolio/./src/assets/images/github.png?");
 
 /***/ }),
 
@@ -82,7 +82,7 @@ eval("module.exports = __webpack_require__.p + \"9c4faee7513f87e9b3b3.png\";\n\n
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
-eval("module.exports = __webpack_require__.p + \"8932205d8701217166c9.png\";\n\n//# sourceURL=webpack://js-portfolio/./src/assets/images/instagram.png?");
+eval("module.exports = __webpack_require__.p + \"assets/images/8932205d8701217166c9.png\";\n\n//# sourceURL=webpack://js-portfolio/./src/assets/images/instagram.png?");
 
 /***/ }),
 
@@ -93,7 +93,7 @@ eval("module.exports = __webpack_require__.p + \"8932205d8701217166c9.png\";\n\n
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
-eval("module.exports = __webpack_require__.p + \"a4a49dfe20c4a1a2c681.png\";\n\n//# sourceURL=webpack://js-portfolio/./src/assets/images/twitter.png?");
+eval("module.exports = __webpack_require__.p + \"assets/images/a4a49dfe20c4a1a2c681.png\";\n\n//# sourceURL=webpack://js-portfolio/./src/assets/images/twitter.png?");
 
 /***/ }),
 
