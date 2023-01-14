@@ -23,6 +23,10 @@
   },
   "homepage": "https://github.com/gndx/js-portfolio#readme",
   "dependencies": {
+    "@babel/core": "^7.20.12",
+    "@babel/plugin-transform-runtime": "^7.19.6",
+    "@babel/preset-env": "^7.20.2",
+    "babel-loader": "^9.1.2",
     "webpack": "^5.75.0",
     "webpack-cli": "^5.0.1"
   }
