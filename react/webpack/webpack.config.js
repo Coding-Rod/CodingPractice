@@ -1,4 +1,5 @@
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     entry: './src/index.js',
@@ -20,11 +21,25 @@ module.exports = {
                         presets: ['@babel/preset-env', '@babel/preset-react']
                     }
                 }
+            },
+            {
+                test: /\.html$/,
+                use: [
+                    {
+                        loader: 'html-loader'
+                    }
+                ]
             }
         ]
     },
+    plugins: [
+        new HtmlWebpackPlugin({
+            template: './public/index.html',
+            filename: './index.html'
+        })
+    ],
     devServer: {
-        contentBase: path.join(__dirname, 'dist'),
+        static: path.join(__dirname, 'dist'),
         compress: true,
         port: 3006
     }
