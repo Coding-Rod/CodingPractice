@@ -58,3 +58,10 @@ Los loaders lo que hacen es decirle a webpack como tiene que transformar el cód
 
 Nos van a ayudar a extender las funcionalidades con los loaders, añadir otras configuraciones.  
 Ejemplo : hay un modulo llamado HTMLWebpackPlugin que este se encarga de crear un HTML personalizado que le inyecta todos los bundles finales que compilamos.
+
+### Commandos utilizados
+
+~~~bash
+npx webpack --profile --json > stats.json
+npx webpack-bundle-analyzer stats.json
+~~~
