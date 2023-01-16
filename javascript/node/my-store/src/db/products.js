@@ -4,7 +4,7 @@ const product_gen = (size = 100) => {
   const products = [];
   for (let i = 0; i < size; i++) {
     products.push({
-      id: i,
+      id: parseInt(i),
       name: faker.commerce.productName(),
       price: faker.commerce.price(),
       image: faker.image.image(),

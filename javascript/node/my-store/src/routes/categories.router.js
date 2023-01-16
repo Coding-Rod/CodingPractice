@@ -1,11 +1,10 @@
 const express = require('express');
-const users_gen = require('../db/users');
-
 const router = express.Router();
+const categories_gen = require('../db/categories');
 
 router.get('/', (req, res) => {
-  const { limit, offset } = req.query;
-  res.json(users_gen(limit, offset));
+  const { size } = req.query;
+  res.json(categories_gen(size));
 });
 
 module.exports = router;
