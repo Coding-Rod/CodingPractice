@@ -1,10 +1,14 @@
 const express = require('express');
-const router = express.Router();
-const categories_gen = require('../db/categories');
 
-router.get('/', (req, res) => {
-  const { size } = req.query;
-  res.json(categories_gen(size));
-});
+const router = express.Router();
+
+router.get('/:categoryId/products/:productId', (req, res) => {
+  const { categoryId, productId } = req.params;
+  res.json({
+    categoryId,
+    productId,
+  });
+})
+
 
 module.exports = router;
