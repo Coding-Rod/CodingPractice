@@ -1,20 +1,6 @@
 const express = require('express');
-const faker = require('faker');
-
 const router = express.Router();
-
-const product_gen = (size = 100) => {
-  const products = [];
-  for (let i = 0; i < size; i++) {
-    products.push({
-      id: i,
-      name: faker.commerce.productName(),
-      price: faker.commerce.price(),
-      image: faker.image.image(),
-    });
-  }
-  return products;
-};
+const product_gen = require('../db/products');
 
 router.get('/', (req, res) => {
   const { size } = req.query;
