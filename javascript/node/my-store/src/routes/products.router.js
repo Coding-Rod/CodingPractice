@@ -23,4 +23,18 @@ router.get('/:id', (req, res) => {
   res.json(product);
 });
 
+router.post('/', (req, res) => {
+  const { name, price, image } = req.body;
+  const product = {
+    id: product_gen().length,
+    name,
+    price,
+    image,
+  };
+  res.json({
+    message: 'Product created successfully',
+    product,
+  });
+});
+
 module.exports = router;

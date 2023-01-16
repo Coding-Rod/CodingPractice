@@ -9,7 +9,6 @@ const users_gen = (limit = 10, offset = 0) => {
       email: faker.internet.email(),
     });
   }
-  console.table(users);
   return users;
 };
 
