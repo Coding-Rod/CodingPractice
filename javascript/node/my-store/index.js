@@ -23,6 +23,14 @@ app.get('/products', (req, res) => {
   res.json(product_gen(size));
 });
 
+app.get('/products/filter', (req, res) => {
+  // This endpoint will return products with price less than the given price
+  const { size, max_price } = req.query;
+  const products = product_gen(size);
+  const filtered = products.filter((p) => p.price < parseInt(max_price || 100));
+  res.json(filtered);
+});
+
 app.get('/products/:id', (req, res) => {
   const { id } = req.params;
   const product = product_gen(parseInt(id) + 1).find(
