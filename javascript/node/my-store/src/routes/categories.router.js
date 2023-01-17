@@ -8,7 +8,6 @@ router.get('/:categoryId/products/:productId', (req, res) => {
     categoryId,
     productId,
   });
-})
-
+});
 
 module.exports = router;
