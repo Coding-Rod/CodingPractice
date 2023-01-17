@@ -8,3 +8,12 @@ Los Middlewares se pueden utilizar como pipes, es decir la salida de uno es la e
 - Capturar errores
 - Validar permisos
 - Controlar accesos
+
+## Consideraciones para producción
+
+- Cors
+- Https
+- Procesos de Build
+- Remover logs
+- Seguridad (Helmet)
+- Testing
