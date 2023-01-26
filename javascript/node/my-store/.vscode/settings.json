@@ -1,0 +1,15 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "server": "172.18.0.2",
+            "port": 5432,
+            "askForPassword": true,
+            "driver": "PostgreSQL",
+            "name": "MyStore",
+            "group": "Servers",
+            "database": "my_store",
+            "username": "rodri"
+        }
+    ]
+}
