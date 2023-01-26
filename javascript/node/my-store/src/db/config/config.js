@@ -1,4 +1,4 @@
-const URI = require('../utils/uri');
+const URI = require('../../utils/uri');
 
 module.exports = {
   development: {
