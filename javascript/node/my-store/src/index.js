@@ -6,6 +6,7 @@ const {
   logErrors,
   errorHandler,
   boomErrorHandler,
+  queryErrorHandler,
 } = require('./middlewares/error.handler');
 
 // Startup config
@@ -45,6 +46,7 @@ routerApi(app);
 
 // Middlewares for errors
 app.use(logErrors);
+app.use(queryErrorHandler);
 app.use(boomErrorHandler);
 app.use(errorHandler);
 
