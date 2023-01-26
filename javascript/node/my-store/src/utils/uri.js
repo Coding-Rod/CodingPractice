@@ -1,5 +1,3 @@
-const { Pool } = require('pg');
-
 const { config } = require('../config/config');
 
 const USER = encodeURIComponent(config.dbUser);
@@ -16,8 +14,4 @@ const URI =
   '/' +
   config.dbName;
 
-const pool = new Pool({
-  connectionString: URI,
-});
-
-module.exports = pool;
+module.exports = URI;
