@@ -10,6 +10,6 @@ const sequelize = new Sequelize(URI, {
 
 setupModels(sequelize);
 
-sequelize.sync();
+// sequelize.sync(); // Do not use in production
 
 module.exports = sequelize;
