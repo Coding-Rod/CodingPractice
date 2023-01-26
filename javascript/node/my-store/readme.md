@@ -75,3 +75,30 @@ sudo chmod +x /usr/local/bin/docker-compose
 ```bash
 docker-compose up -d <servicio> #: (postgres "en este caso")
 ```
+
+### Serverless
+
+> 💡Es un tipo de arquitectura que nos permite descentralizar los diferentes recursos existentes de nuestra aplicación.
+
+.  
+En ocasiones, a serverless se le denomina sistemas distribuidos ya que permite, abstraer desde servidores hasta módulos denominados cloud functions.  
+.  
+Una de las principales ventajas de implementar serverless es la creación de arquitecturas como **cliente-servidor**, **micro-servicios**, entre otros.  
+.
+
+### Clean Architecture
+
+> 💡Es un conjunto de principios cuya finalidad principal es ocultar los detalles de implementación a la lógica de dominio de la aplicación.
+
+.  
+Las principal característica de Clean Architecture frente a otras arquitecturas es la **regla de dependencia**.  
+.  
+En Clean Architecture, una aplicación se divide en responsabilidades y cada una de estas responsabilidades se representa en forma de capa.  
+.
+
+### Definición de arquitectura
+
+ℹ️Repositorio: [https://github.com/roremdev/thingst](https://github.com/roremdev/thingst)  
+ℹ️Commit: [https://github.com/roremdev/thingst/commit/ead31629469e5a3b923efc42b8b8eb5b18159b97](https://github.com/roremdev/thingst/commit/ead31629469e5a3b923efc42b8b8eb5b18159b97)
+
+> libs - directorio de drivers connection

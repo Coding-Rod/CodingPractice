@@ -16,19 +16,20 @@ const port = 3000;
 app.use(express.json());
 
 // CORS config
-const whitelist = [
-  'http://localhost:3000',
-  'http://127.0.0.1:5500',
-  'http://127.0.0.1:8000',
-];
-const corsOptions = {
-  origin: (origin, callback) => {
-    whitelist.includes(origin)
-      ? callback(null, true)
-      : callback(new Error('Not allowed by CORS'));
-  },
-};
-app.use(cors(corsOptions));
+// const whitelist = [
+//   'http://localhost:3000',
+//   'http://127.0.0.1:5500',
+//   'http://127.0.0.1:8000',
+// ];
+// const corsOptions = {
+//   origin: (origin, callback) => {
+//     whitelist.includes(origin)
+//       ? callback(null, true)
+//       : callback(new Error('Not allowed by CORS'));
+//   },
+// };
+// app.use(cors(corsOptions));
+app.use(cors());
 
 // Main routes
 app.get('/', (req, res) => {
