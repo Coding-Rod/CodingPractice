@@ -11,7 +11,9 @@ class UserService {
 
   async find() {
     const rows = await (
-      await models.UserModel.findAll()
+      await models.UserModel.findAll({
+        include: ['customer'],
+      })
     ).sort((a, b) => {
       if (a.id > b.id) return 1;
       if (a.id < b.id) return -1;

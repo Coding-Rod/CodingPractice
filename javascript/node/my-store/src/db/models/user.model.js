@@ -40,6 +40,13 @@ class UserModel extends Model {
       timestamps: false,
     };
   }
+
+  static associate(models) {
+    this.hasOne(models.CustomerModel, {
+      as: 'customer',
+      foreignKey: 'user_id',
+    });
+  }
 }
 
 module.exports = {

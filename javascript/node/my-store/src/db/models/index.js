@@ -10,6 +10,9 @@ const setupModels = (sequelize) => {
   CategoryModel.init(CategorySchema, CategoryModel.config(sequelize));
   OrderModel.init(OrderSchema, OrderModel.config(sequelize));
   CustomerModel.init(CustomerSchema, CustomerModel.config(sequelize));
+
+  UserModel.associate(sequelize.models);
+  CustomerModel.associate(sequelize.models);  
 };
 
 module.exports = setupModels;
