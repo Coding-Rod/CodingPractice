@@ -12,6 +12,11 @@ const CategorySchema = {
   name: {
     type: DataTypes.STRING,
     allowNull: false,
+    unique: true,
+  },
+  image: {
+    type: DataTypes.STRING,
+    allowNull: false,
   },
   createdAt: {
     type: DataTypes.DATE,
@@ -32,7 +37,8 @@ class CategoryModel extends Model {
   }
   static associate(models) {
     this.hasMany(models.ProductModel, {
-      foreignKey: 'category_id',
+      foreignKey: 'categoryId',
+      as: 'products',
     });
   }
 }
