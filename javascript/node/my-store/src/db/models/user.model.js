@@ -40,13 +40,6 @@ class UserModel extends Model {
       timestamps: false,
     };
   }
-
-  static associate(models) {
-    this.hasMany(models.TaskModel, {
-      foreignKey: 'userId',
-      as: 'tasks',
-    });
-  }
 }
 
 module.exports = {

@@ -20,6 +20,7 @@ const boomErrorHandler = (err, req, res, next) => {
     next(err);
   }
   const { output } = err;
+  console.log(output);
   res.status(output.statusCode).json(output.payload);
 };
 
