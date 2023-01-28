@@ -4,47 +4,46 @@ const CATEGORY_TABLE = 'categories';
 
 const CategorySchema = {
   id: {
-    type: DataTypes.INTEGER,
+    allowNull: false,
     autoIncrement: true,
     primaryKey: true,
-    allowNull: false,
+    type: DataTypes.INTEGER
   },
   name: {
     type: DataTypes.STRING,
-    allowNull: false,
     unique: true,
+    allowNull: false,
   },
   image: {
     type: DataTypes.STRING,
     allowNull: false,
   },
   createdAt: {
-    type: DataTypes.DATE,
     allowNull: false,
-    defaultValue: Sequelize.NOW,
+    type: DataTypes.DATE,
     field: 'created_at',
+    defaultValue: Sequelize.NOW,
   },
-};
+}
 
-class CategoryModel extends Model {
+
+class Category extends Model {
+
+  static associate(models) {
+    this.hasMany(models.Product, {
+      as: 'products',
+      foreignKey: 'categoryId'
+    });
+  }
+
   static config(sequelize) {
     return {
       sequelize,
       tableName: CATEGORY_TABLE,
-      modelName: 'CategoryModel',
-      timestamps: false,
-    };
-  }
-  static associate(models) {
-    this.hasMany(models.ProductModel, {
-      foreignKey: 'category_id',
-      as: 'products',
-    });
+      modelName: 'Category',
+      timestamps: false
+    }
   }
 }
 
-module.exports = {
-  CATEGORY_TABLE,
-  CategorySchema,
-  CategoryModel,
-};
+module.exports = { Category, CategorySchema, CATEGORY_TABLE };

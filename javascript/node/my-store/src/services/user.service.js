@@ -1,43 +1,40 @@
 const boom = require('@hapi/boom');
-const { models } = require('../libraries/sequelize');
+
+const { models } = require('./../libs/sequelize');
 
 class UserService {
   constructor() {}
 
   async create(data) {
-    const user = await models.UserModel.create(data);
-    return user;
+    const newUser = await models.User.create(data);
+    return newUser;
   }
 
   async find() {
-    const rows = await (
-      await models.UserModel.findAll({
-        include: ['customer'],
-      })
-    ).sort((a, b) => {
-      if (a.id > b.id) return 1;
-      if (a.id < b.id) return -1;
-      return 0;
+    const rta = await models.User.findAll({
+      include: ['customer']
     });
-    return rows;
+    return rta;
   }
 
   async findOne(id) {
-    const user = await models.UserModel.findByPk(id);
-    if (!user) throw boom.notFound('User not found');
+    const user = await models.User.findByPk(id);
+    if (!user) {
+      throw boom.notFound('user not found');
+    }
     return user;
   }
 
   async update(id, changes) {
     const user = await this.findOne(id);
-    const updatedUser = await user.update(changes);
-    return updatedUser;
+    const rta = await user.update(changes);
+    return rta;
   }
 
   async delete(id) {
     const user = await this.findOne(id);
-    const deletedUser = await user.destroy();
-    return deletedUser;
+    await user.destroy();
+    return { id };
   }
 }
 

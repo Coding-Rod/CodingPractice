@@ -1,38 +1,26 @@
 const express = require('express');
-const routerApi = require('./routes');
 const cors = require('cors');
+const routerApi = require('./routes');
 
-const {
-  logErrors,
-  errorHandler,
-  boomErrorHandler,
-  queryErrorHandler,
-} = require('./middlewares/error.handler');
+const { logErrors, errorHandler, boomErrorHandler, ormErrorHandler } = require('./middlewares/error.handler');
 
-// Startup config
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
-// Middleware for body parser
 app.use(express.json());
 
-// CORS config
-// const whitelist = [
-//   'http://localhost:3000',
-//   'http://127.0.0.1:5500',
-//   'http://127.0.0.1:8000',
-// ];
-// const corsOptions = {
-//   origin: (origin, callback) => {
-//     whitelist.includes(origin)
-//       ? callback(null, true)
-//       : callback(new Error('Not allowed by CORS'));
-//   },
-// };
-// app.use(cors(corsOptions));
-app.use(cors());
+const whitelist = ['http://localhost:8080', 'https://myapp.co'];
+const options = {
+  origin: (origin, callback) => {
+    if (whitelist.includes(origin) || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error('no permitido'));
+    }
+  }
+}
+app.use(cors(options));
 
-// Main routes
 app.get('/', (req, res) => {
   res.send('Hola mi server en express');
 });
@@ -41,14 +29,14 @@ app.get('/nueva-ruta', (req, res) => {
   res.send('Hola, soy una nueva ruta');
 });
 
-// Router
 routerApi(app);
 
-// Middlewares for errors
 app.use(logErrors);
-app.use(queryErrorHandler);
+app.use(ormErrorHandler);
 app.use(boomErrorHandler);
 app.use(errorHandler);
 
-// Port listener
-app.listen(port);
+
+app.listen(port, () => {
+  console.log('Mi port' +  port);
+});

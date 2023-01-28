@@ -4,53 +4,50 @@ const USER_TABLE = 'users';
 
 const UserSchema = {
   id: {
-    type: DataTypes.INTEGER,
+    allowNull: false,
     autoIncrement: true,
     primaryKey: true,
-    allowNull: false,
+    type: DataTypes.INTEGER
   },
   email: {
-    type: DataTypes.STRING,
     allowNull: false,
+    type: DataTypes.STRING,
     unique: true,
   },
   password: {
-    type: DataTypes.STRING,
     allowNull: false,
+    type: DataTypes.STRING
   },
   role: {
-    type: DataTypes.STRING,
     allowNull: false,
-    defaultValue: 'customer',
+    type: DataTypes.STRING,
+    defaultValue: 'customer'
   },
   createdAt: {
-    type: DataTypes.DATE,
     allowNull: false,
-    defaultValue: Sequelize.NOW,
-    field: 'created_at',
-  },
-};
+    type: DataTypes.DATE,
+    field: 'create_at',
+    defaultValue: Sequelize.NOW
+  }
+}
 
-class UserModel extends Model {
+class User extends Model {
+  static associate(models) {
+    this.hasOne(models.Customer, {
+      as: 'customer',
+      foreignKey: 'userId'
+    });
+  }
+
   static config(sequelize) {
     return {
       sequelize,
       tableName: USER_TABLE,
-      modelName: 'UserModel',
-      timestamps: false,
-    };
-  }
-
-  static associate(models) {
-    this.hasOne(models.CustomerModel, {
-      as: 'customer',
-      foreignKey: 'user_id',
-    });
+      modelName: 'User',
+      timestamps: false
+    }
   }
 }
 
-module.exports = {
-  USER_TABLE,
-  UserSchema,
-  UserModel,
-};
+
+module.exports = { USER_TABLE, UserSchema, User }

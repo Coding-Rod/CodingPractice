@@ -6,12 +6,16 @@ const PRODUCT_TABLE = 'products';
 
 const ProductSchema = {
   id: {
-    type: DataTypes.INTEGER,
+    allowNull: false,
     autoIncrement: true,
     primaryKey: true,
-    allowNull: false,
+    type: DataTypes.INTEGER,
   },
   name: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  image: {
     type: DataTypes.STRING,
     allowNull: false,
   },
@@ -23,14 +27,16 @@ const ProductSchema = {
     type: DataTypes.INTEGER,
     allowNull: false,
   },
-  image: {
-    type: DataTypes.STRING,
+  createdAt: {
     allowNull: false,
+    type: DataTypes.DATE,
+    field: 'created_at',
+    defaultValue: Sequelize.NOW,
   },
   categoryId: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
     field: 'category_id',
+    allowNull: false,
+    type: DataTypes.INTEGER,
     references: {
       model: CATEGORY_TABLE,
       key: 'id',
@@ -38,33 +44,21 @@ const ProductSchema = {
     onUpdate: 'CASCADE',
     onDelete: 'SET NULL',
   },
-  createdAt: {
-    type: DataTypes.DATE,
-    allowNull: false,
-    defaultValue: Sequelize.NOW,
-    field: 'created_at',
-  },
 };
 
-class ProductModel extends Model {
+class Product extends Model {
+  static associate(models) {
+    this.belongsTo(models.Category, { as: 'category' });
+  }
+
   static config(sequelize) {
     return {
       sequelize,
       tableName: PRODUCT_TABLE,
-      modelName: 'ProductModel',
+      modelName: 'Product',
       timestamps: false,
     };
   }
-  static associate(models) {
-    this.belongsTo(models.CategoryModel, {
-      as: 'category',
-      foreignKey: 'category_id',
-    });
-  }
 }
 
-module.exports = {
-  PRODUCT_TABLE,
-  ProductSchema,
-  ProductModel,
-};
+module.exports = { Product, ProductSchema, PRODUCT_TABLE };
