@@ -46,7 +46,7 @@ const ProductSchema = {
   },
 };
 
-class Product extends Model {
+class ProductModel extends Model {
   static associate(models) {
     this.belongsTo(models.Category, { as: 'category' });
   }
@@ -61,4 +61,4 @@ class Product extends Model {
   }
 }
 
-module.exports = { Product, ProductSchema, PRODUCT_TABLE };
+module.exports = { ProductModel, ProductSchema, PRODUCT_TABLE };

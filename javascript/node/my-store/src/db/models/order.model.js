@@ -29,7 +29,7 @@ const OrderSchema = {
   },
 };
 
-class Order extends Model {
+class OrderModel extends Model {
   static associate(models) {
     this.belongsTo(models.Customer, {
       as: 'customer',
@@ -46,4 +46,4 @@ class Order extends Model {
   }
 }
 
-module.exports = { Order, OrderSchema, ORDER_TABLE };
+module.exports = { OrderModel, OrderSchema, ORDER_TABLE };
