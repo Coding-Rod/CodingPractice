@@ -5,7 +5,8 @@ const sequelize = require('./../libraries/sequelize');
 class CategoryService {
   constructor() {}
   async create(data) {
-    return data;
+    const category = await sequelize.models.CategoryModel.create(data);
+    return category;
   }
 
   async find() {

@@ -8,7 +8,7 @@ class ProductsService {
 
   async create(data) {
     const newProduct = {
-      id: faker.datatype.uuid(),
+      id: faker.datatype.number(),
       ...data,
     };
     this.products.push(newProduct);

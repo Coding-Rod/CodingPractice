@@ -16,7 +16,7 @@ const ProductSchema = {
     allowNull: false,
   },
   description: {
-    type: DataTypes.STRING,
+    type: DataTypes.TEXT,
     allowNull: false,
   },
   price: {
@@ -58,6 +58,7 @@ class ProductModel extends Model {
   static associate(models) {
     this.belongsTo(models.CategoryModel, {
       as: 'category',
+      foreignKey: 'category_id',
     });
   }
 }
