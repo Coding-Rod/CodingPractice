@@ -8,7 +8,7 @@ GET http://localhost:3000/api/v1/customers/
 GET http://localhost:3000/api/v1/orders/1
 
 ### Products
-GET http://localhost:3000/api/v1/products/
+GET http://localhost:3000/api/v1/products/?limit=10&offset=10
 
 ### Users
 GET http://localhost:3000/api/v1/users/
