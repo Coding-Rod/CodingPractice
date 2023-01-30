@@ -1,0 +1,10 @@
+insert into categories (id, name, image, created_at) values (1, 'Miscellaneous', 'http://dummyimage.com/143x100.png/dddddd/000000', '2/9/2022');
+insert into categories (id, name, image, created_at) values (2, 'Consumer Non-Durables', 'http://dummyimage.com/116x100.png/5fa2dd/ffffff', '10/8/2022');
+insert into categories (id, name, image, created_at) values (3, 'Consumer Durables', 'http://dummyimage.com/209x100.png/cc0000/ffffff', '12/11/2022');
+insert into categories (id, name, image, created_at) values (4, 'Finance', 'http://dummyimage.com/191x100.png/dddddd/000000', '12/6/2022');
+insert into categories (id, name, image, created_at) values (5, 'n/a', 'http://dummyimage.com/187x100.png/5fa2dd/ffffff', '5/6/2022');
+insert into categories (id, name, image, created_at) values (6, 'Transportation', 'http://dummyimage.com/201x100.png/5fa2dd/ffffff', '4/22/2022');
+insert into categories (id, name, image, created_at) values (7, 'Consumer Durables 2', 'http://dummyimage.com/237x100.png/dddddd/000000', '3/28/2022');
+insert into categories (id, name, image, created_at) values (8, 'Consumer Non-Durables 2', 'http://dummyimage.com/148x100.png/cc0000/ffffff', '10/10/2022');
+insert into categories (id, name, image, created_at) values (9, 'Finance 2', 'http://dummyimage.com/223x100.png/cc0000/ffffff', '1/14/2023');
+insert into categories (id, name, image, created_at) values (10, 'Miscellaneous 2', 'http://dummyimage.com/125x100.png/ff4444/ffffff', '6/7/2022');
