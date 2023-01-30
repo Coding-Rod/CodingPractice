@@ -18,3 +18,37 @@ console.log(tags2);
 // With flatMap
 const tags3 = users.flatMap((user) => user.tags);
 console.log(tags3);
+
+// # Excercise 1: Calendars
+
+const calendars = {
+    primaryCalendar: [
+        {
+            start: '2020-01-01',
+            end: '2020-01-02',
+            title: 'New Year',
+        },
+        {
+            start: '2020-01-03',
+            end: '2020-01-04',
+            title: 'Birthday',
+        },
+    ],
+    secondaryCalendar: [
+        {
+            start: '2020-01-01',
+            end: '2020-01-02',
+            title: 'New Year',
+        },
+        {
+            start: '2020-01-03',
+            end: '2020-01-04',
+            title: 'Birthday',
+        },
+    ],
+};
+
+const startDates = Object.values(calendars)
+                        .flatMap((calendar) => calendar
+                            .map((event) => event.start));
+console.log(startDates);
