@@ -7,8 +7,14 @@ GET http://localhost:3000/api/v1/customers/
 ### Orders
 GET http://localhost:3000/api/v1/orders/1
 
-### Products
+### Products filter by price
+GET http://localhost:3000/api/v1/products/?price=680
+
+### Products with limit and offset
 GET http://localhost:3000/api/v1/products/?limit=10&offset=10
+
+### Products with min and max price
+GET http://localhost:3000/api/v1/products/?price_min=680&price_max=700
 
 ### Users
 GET http://localhost:3000/api/v1/users/
