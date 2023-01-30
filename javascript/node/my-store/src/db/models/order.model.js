@@ -27,6 +27,15 @@ const OrderSchema = {
     field: 'created_at',
     defaultValue: Sequelize.NOW,
   },
+  // This is not a column in the database, user for small calculations
+  total: {
+    type: DataTypes.VIRTUAL,
+    get() {
+      return this.items.reduce((total, item) => {
+        return total + item.price * item.OrderProduct.amount;
+      }, 0);
+    },
+  },
 };
 
 class OrderModel extends Model {
