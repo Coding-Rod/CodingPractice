@@ -1,0 +1,41 @@
+### New user
+POST http://localhost:3000/api/v1/users HTTP/1.1
+Content-Type: application/json
+
+{
+  "email": "mail1@mail.com",
+  "password": "1d18932hd82",
+  "role": "customer"
+}
+
+### New customer
+POST http://localhost:3000/api/v1/customers HTTP/1.1
+Content-Type: application/json
+
+{
+  "name": "John",
+  "lastName": "Doe",
+  "phone": "123456789",
+  "user": {
+    "email": "mail3@mail.com",
+    "password": "1d18932hd82"
+  }
+}
+
+### New order
+POST http://localhost:3000/api/v1/orders HTTP/1.1
+Content-Type: application/json
+
+{
+  "customerId": 7
+}
+
+### New item
+POST http://localhost:3000/api/v1/orders/add-item HTTP/1.1
+Content-Type: application/json
+
+{
+  "orderId": 1,
+  "productId": 20,
+  "amount": 4
+}

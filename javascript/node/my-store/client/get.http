@@ -1,0 +1,14 @@
+### Categories
+GET http://localhost:3000/api/v1/categories/
+
+### Customers
+GET http://localhost:3000/api/v1/customers/
+
+### Orders
+GET http://localhost:3000/api/v1/orders/1
+
+### Products
+GET http://localhost:3000/api/v1/products/
+
+### Users
+GET http://localhost:3000/api/v1/users/
