@@ -1,5 +1,7 @@
 const express = require('express');
 const cors = require('cors');
+const swaggerUi = require('swagger-ui-express');
+const swaggerFile = require('./swagger_output.json');
 const routerApi = require('./routes');
 
 const {
@@ -31,6 +33,10 @@ app.get('/', (req, res) => {
 });
 
 routerApi(app);
+
+app.use(express.json());
+app.use('/person', routerApi);
+app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
 app.use(logErrors);
 app.use(ormErrorHandler);
