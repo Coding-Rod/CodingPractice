@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="3"/>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+  </SyntheticProperties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Container class="javax.swing.JPanel" name="jPanel1">
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="1" attributes="0">
+                  <Component id="jScrollPane1" min="-2" pref="375" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="jButton2" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace pref="13" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="jScrollPane1" min="-2" pref="275" max="-2" attributes="0"/>
+                      <Component id="jButton2" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Component class="javax.swing.JButton" name="jButton2">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="3b" green="39" red="c8" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Back"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+          </Events>
+        </Component>
+        <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+          <AuxValues>
+            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+          </AuxValues>
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+          <SubComponents>
+            <Component class="javax.swing.JTable" name="jTable1">
+              <Properties>
+                <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="model" type="code"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jTable1FocusGained"/>
+              </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JTable()"/>
+                <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="//#region Read csv&#xa;String inputFileName;&#xa;File inputFile;&#xa;String firstRow;&#xa;Vector&lt;Vector&lt;String&gt;&gt; vectorVectorStringsData = new Vector&lt;Vector&lt;String&gt;&gt;();&#xa;Vector&lt;String&gt; vectorStrings = new Vector&lt;String&gt;();&#xa;Vector&lt;String&gt; vectorColumnIdentifiers = new Vector&lt;String&gt;();&#xa;String[] columnIdentifiers;&#xa;DefaultTableModel model = new DefaultTableModel();&#xa;&#xa;inputFileName = &quot;/home/rodri/NetBeansProjects/talks_register/files/register.csv&quot;;&#xa;inputFile = new File(inputFileName);&#xa;try (FileReader fr = new FileReader(inputFile);&#xa;    BufferedReader br = new BufferedReader(fr)) &#xa;{&#xa;    firstRow = br.readLine().trim();&#xa;    if (firstRow != null) {&#xa;        // headers:&#xa;        columnIdentifiers = firstRow.split(&quot;,&quot;);&#xa;&#xa;        vectorColumnIdentifiers = new Vector&lt;String&gt;();&#xa;        for (int j =0; j &lt; columnIdentifiers.length; j++) {&#xa;            vectorColumnIdentifiers.add(columnIdentifiers[j]);&#xa;        }&#xa;    }&#xa;    // rows&#xa;    Object[] tableLines = br.lines().toArray();&#xa;    // data rows&#xa;    for (int i = 0; i &lt; tableLines.length; i++) {&#xa;        System.out.println(&quot;4&quot;);&#xa;        String line = tableLines[i].toString().trim();&#xa;        String[] dataRow = line.split(&quot;,&quot;);&#xa;        vectorStrings = new Vector&lt;String&gt;();&#xa;        for (int j =0; j &lt; dataRow.length; j++) {&#xa;            vectorStrings.add(dataRow[j]);&#xa;        }&#xa;        vectorVectorStringsData.add(vectorStrings);&#xa;    }&#xa;&#xa;    fr.close();&#xa;}&#xa;catch (IOException ioe) {&#xa;    System.out.println(&quot;error: &quot; + ioe.getMessage());&#xa;}&#xa;&#xa;model.setDataVector(vectorVectorStringsData, vectorColumnIdentifiers);&#xa;//#endregion Read csv"/>
+              </AuxValues>
+            </Component>
+          </SubComponents>
+        </Container>
+      </SubComponents>
+    </Container>
+  </SubComponents>
+</Form>
