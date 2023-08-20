@@ -94,4 +94,158 @@ Algunos ejemplos de servicios de transferencia de datos son:
 - AWS DataSync: Servicio que simplifica y automatiza la transferencia de datos entre sistemas de almacenamiento local y AWS.
 - AWS Transfer Family: Servicio totalmente administrado que permite transferir archivos a AWS a través de FTP, FTPS, SFTP y otros protocolos de transferencia de archivos.
 
+## Explorando Amazon S3
 
+### Clases de almacenamiento
+
+- Amazon S3 Standard: Almacenamiento de objetos de uso general.
+- Amazon S3 Standard-Infrequent Access (Amazon S3 Standard-IA): Almacenamiento de objetos de uso general que se accede con menos frecuencia.
+- Amazon S3 One Zone-Infrequent Access (Amazon S3 One Zone-IA): Almacenamiento de objetos de uso general que se accede con menos frecuencia y que se almacena en una sola zona de disponibilidad.
+- Amazon S3 Glacier: Almacenamiento de objetos de uso general que se accede con poca frecuencia y que se almacena en Amazon S3 Glacier.
+- Amazon S3 Glacier Deep Archive: Almacenamiento de objetos de uso general que se accede con poca frecuencia y que se almacena en Amazon S3 Glacier Deep Archive.
+- Amazon S3 Intelligent-Tiering: Almacenamiento de objetos de uso general que se accede con poca frecuencia y que se almacena en Amazon S3 Intelligent-Tiering.
+- Recordar que un nuevo archivo puede ser un nuevo costo aunque fuese versionado.
+
+### Amazon S3 Glacier
+
+- Archivos de datos y copias de seguridad a largo plazo.
+- $1 por TB por mes.
+- Tiempo de recuperación de 1 a 12 horas.
+- Funcionabilidad de consulta limitada.
+
+## Amazon EFS
+
+- EFS es un servicio de almacenamiento de archivos administrado y escalable para cargas de trabajo basadas en Linux.
+
+- Viene de las siglas en inglés de Amazon Elastic File System.
+- Se utiliza para almacenar archivos de forma persistente.
+- Es altamente disponible y duradero.
+- Incorpora protección contra una interrupción de zona de disponibilidad.
+- Crece y se reduce automáticamente.
+- Se encuentra encriptado en reposo y en tránsito.
+
+### Clases de almacenamiento
+
+- EFS Standard: Almacenamiento de archivos de uso general.
+- EFS Infrequent Access (EFS IA): Almacenamiento de archivos de uso general que se accede con menos frecuencia.
+
+Se puede programar una fecha de caducidad para los archivos almacenados en EFS IA. Si se elimina un archivo antes de la fecha de caducidad, se aplica una tarifa de acceso anticipado.
+
+## Amazon Storage Gateway
+
+- Es un servicio que conecta aplicaciones locales con almacenamiento en la nube.
+- Se puede utilizar para almacenar copias de seguridad, archivos y datos de aplicaciones en AWS.
+
+### File Gateway
+
+- Se utiliza para almacenar archivos en Amazon S3.
+- Se puede acceder a los archivos a través de un punto de enlace de Amazon S3.
+- Se puede acceder a los archivos a través de un sistema de archivos de red (NFS) o un sistema de archivos de servidor de mensajes (SMB).
+
+### Tape Gateway
+
+- Se utiliza para almacenar copias de seguridad en Amazon S3 Glacier.
+- Se puede acceder a los datos a través de un sistema de archivos de red (NFS) o un sistema de archivos de servidor de mensajes (SMB).
+- Compatible con la mayoría de las aplicaciones de copia de seguridad.
+
+### Volume Gateway
+
+- Es un servicio que permite almacenar datos en Amazon S3 o Amazon EBS.
+- Se puede acceder a los datos a través de un sistema de archivos de red (NFS) o un sistema de archivos de servidor de mensajes (SMB).
+- Se puede utilizar para almacenar copias de seguridad, archivos y datos de aplicaciones en AWS.
+- Los datos se almacenan de forma local y se replican de forma asíncrona en AWS.
+- Se utiliza en sistemas de nube híbrida.
+
+## Configuración de políticas de AWS
+
+Se utilizan las políticas de AWS para definir los permisos que se aplican a los usuarios, grupos y roles de AWS. Se puede utilizar la herramienta [AWS Policy Generator](https://awspolicygen.s3.amazonaws.com/policygen.html) para crear políticas de AWS.
+
+### Políticas en un Bucket de S3
+
+1. Crear un Bucket de S3.
+2. Subir uno o más archivos al Bucket.
+3. Acceder a la pestaña Permissions.
+4. Acceder a la sección Bucket Policy.
+5. Editar la política del Bucket.
+6. Copiar el ARN del Bucket.
+7. Editar la política en la herramienta AWS Policy Generator.
+8. Generar la política.
+9. Copiar y pegar la política en el Bucket de S3.
+10. Guardar la política.
+
+Ejemplo de política:
+
+~~~json
+{
+  "Id": "Policy1692488482768",
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "Stmt1692488481102",
+      "Action": [
+        "s3:GetObject"
+      ],
+      "Effect": "Allow",
+      "Resource": "arn:aws:s3:::test-rod-5919/*",
+      "Principal": "*"
+    }
+  ]
+}
+~~~
+
+> NOTA: Esta política permite que cualquier usuario pueda descargar los archivos del Bucket.
+
+## Bases de datos
+
+### Bases de datos relacionales
+
+- Amazon Aurora: Base de datos relacional compatible con MySQL y PostgreSQL.
+- Amazon Relational Database Service (Amazon RDS): Base de datos relacional administrada.
+- Amazon Redshift: Base de datos de almacén de datos.
+
+#### Servicio de RDS (Relational Database Service)
+
+Existen 6 motores de bases de datos relacionales:
+
+- Amazon Aurora
+- PostgreSQL
+- MySQL
+- MariaDB
+- Oracle
+- Microsoft SQL Server
+
+Ventajas:
+
+- Fácil de configurar.
+- Servicio completamente administrado.
+- Altamente escalable.
+- Copias de seguridad automáticas.
+- Rentable: Se paga por el tiempo de ejecución de la instancia.
+
+### Bases de datos clave-valor
+
+- Amazon DynamoDB: Base de datos clave-valor administrada.
+  - Base de datos estilo clave-valor.
+  - Rendimiento rápido.
+  - Completamente administrada.
+  - Funciona en múltiples regiones.
+  - Posee: seguridad, copias de seguridad, cifrado, etc.
+  - Admite picos de 200M de solicitudes por segundo.
+  - Rentable
+  - Casos de uso: juegos, aplicaciones móviles, etc.
+
+### Bases de datos en memoria
+
+- Amazon ElastiCache: Almacén de datos en memoria. Se utiliza para mejorar el rendimiento de las aplicaciones.
+  - Es una base de datos en memoria.
+  - Rendimiento rápido.
+  - Latencia de un solo dígito.
+  - Motores: Redis y Memcached.
+
+### Bases de datos de documentos
+
+- Amazon DocumentDB: Base de datos de documentos compatible con MongoDB.
+
+### Bases de datos de gráficos
+
+- Amazon Neptune: Base de datos de gráficos.
