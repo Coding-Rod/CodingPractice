@@ -1,0 +1,19 @@
+{% extends "base.html" %} {% block title %} Hello, {{ name }}! {% endblock %} 
+{% block content %} 
+<div class="container">
+    {% if user_ip %}
+        <h1 class="text-success">Hello, {{ name }}! your IP is {{ user_ip }}</h1>
+    {% else %}
+        <h1 class="text-danger">Hello, {{ name }}! your IP is unknown</h1>
+    {% endif %}
+
+    <ul class="list-group">
+        {% for todo in todos %}
+            <li class="list-group-item">
+                {{ todo }}
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+
+{% endblock %} ```
