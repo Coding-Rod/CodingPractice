@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        background-image: url("https://www.w3schools.com/css/img_5terre.jpg");
+        background-repeat: repeat-y;
+        background-size: cover;
+      }
+      .hello {
+        border-style: solid;
+        border-color: red;
+        border-width: 2px;
+        outline-style: solid;
+        outline-color: green;
+        outline-width: 2px;
+        width: 200px;
+        padding: 2px;
+      }
+      .hello span {
+        border-style: solid;
+        border-color: blue;
+        border-width: 2px;
+      }
+      .list-container {
+        background-color: rgba(255, 255, 255, 0.5);
+        padding: 2px;
+      }
+      .unordered-list {
+        list-style-image: url("https://www.w3schools.com/css/img_tree.gif");
+      }
+      li {
+        margin-left: 200px;
+        background-color: rgba(255, 255, 255, 0.5);
+        padding: 2px;
+      }
+      li::marker {
+        width: 10px;
+        height: 10px;
+      }
+
+      .table-container {
+        background-color: rgba(255, 255, 255, 0.5);
+        padding: 2px;
+      }
+
+      table {
+        border-collapse: collapse;
+      }
+
+      table,
+      th,
+      td {
+        border: 1px solid green;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="hello">Hello, <span>World</span></div>
+    <div class="list-container">
+      <ul class="unordered-list">
+        <li>Item #1</li>
+        <li>Item #2</li>
+        <li>Item #3</li>
+      </ul>
+    </div>
+    <div class="table-container">
+      <table>
+        <tr>
+          <th>Firstname</th>
+          <th>Lastname</th>
+        </tr>
+        <tr>
+          <td>Peter</td>
+          <td>Griffin</td>
+        </tr>
+        <tr>
+          <td>Lois</td>
+          <td>Griffin</td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>
