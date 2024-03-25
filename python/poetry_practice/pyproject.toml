@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "poetry-practice"
+version = "0.1.0"
+description = ""
+authors = ["Rodrigo Fernandez <sergiorodrigofernandeztesta@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+flask = "^3.0.2"
+gunicorn = "^21.2.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
