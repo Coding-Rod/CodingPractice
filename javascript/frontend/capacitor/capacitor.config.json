@@ -1,0 +1,8 @@
+{
+  "appId": "com.capacitor",
+  "appName": "capacitor",
+  "webDir": "dist",
+  "server": {
+    "androidScheme": "https"
+  }
+}
