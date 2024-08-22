@@ -55,9 +55,9 @@ main {
 }
 
 .card hr {
-    width: 110%;
+    width: calc(100% + 32px);
     border: 1px solid #E5E5E5;
-    margin: 0 -16px 16px;
+    margin: 0 -16px 16px -16px;
 }
 
 .card-author {
