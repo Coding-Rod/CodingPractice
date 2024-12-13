@@ -1,4 +1,4 @@
-# Project configuration
+# JavaScript project template
 
 ## EsLint
 
