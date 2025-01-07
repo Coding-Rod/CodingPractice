@@ -1,6 +1,6 @@
 # JavaScript project template
 
-## EsLint
+## EsLint configuration
 
 Add the EsLint extension to your vscode.  
 Terminal command to install EsLint:
@@ -13,7 +13,7 @@ pnpm create @eslint/config@latest
 pnpm i eslint-plugin-jest -D
 ```
 
-## Prettier
+## Prettier configuration
 
 Add the Prettier extension to your vscode.
 
