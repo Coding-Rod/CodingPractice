@@ -39,3 +39,19 @@ test('number to be greater than', () => {
   expect(2 + 2).toBeGreaterThan(3);
 });
 ```
+
+## SUT (System Under Test)
+
+El SUT es el sistema que se está probando. Es decir, el código que se está probando.
+
+## Validar vs Verificar
+
+- Validar: Se refiere a que se está comprobando que el código hace lo que se espera que haga.
+- Verificar: Se refiere a que se está comprobando que el código hace lo que se espera que haga, pero también se está comprobando que el código no hace lo que no se espera que haga.
+
+## Requirements
+
+1. SUT: Requerimientos
+2. Ejecución: Manuales
+3. Objetivo: Validar
+4. Herramienta: Inspección
