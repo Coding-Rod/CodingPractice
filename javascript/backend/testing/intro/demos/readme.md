@@ -115,14 +115,11 @@ El SUT es el sistema que se está probando. Es decir, el código que se está pr
 ### Dummies
 
 - Doubles
-  - Dummy
-  - Fake
-  - Stub
-  - Spy
-  - Mock
-- Test doubles
-  - Sinon
-  - Jest
+  - Dummy -> Son datos ficticios y se usan para rellenar información
+  - Fake -> Simulan el comportamiento de un objeto real o suplantan ciertos datos.
+  - Stub -> Son objetos que tienen implementaciones de métodos que devuelven valores predefinidos.
+  - Spy -> Son objetos que tienen implementaciones de métodos que devuelven valores predefinidos y además pueden llevar un registro de las llamadas que se hacen a sus métodos.
+  - Mock -> Son objetos que tienen implementaciones de métodos que devuelven valores predefinidos y además pueden llevar un registro de las llamadas que se hacen a sus métodos y pueden verificar que se hicieron las llamadas esperadas.
 
 ### Pruebas de caja negra y caja blanca
 
