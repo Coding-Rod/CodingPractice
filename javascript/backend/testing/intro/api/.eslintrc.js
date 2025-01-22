@@ -13,6 +13,9 @@ module.exports = {
     ecmaVersion: 'latest',
   },
   rules: {
-    'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
+    'import/no-extraneous-dependencies': ['error', {
+      devDependencies:
+        ['**/*.test.js', '**/*.spec.js', '**/*.test.ts', '**/*.spec.ts'],
+    }],
   },
 };
