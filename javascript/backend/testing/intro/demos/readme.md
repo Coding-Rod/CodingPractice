@@ -109,3 +109,34 @@ El SUT es el sistema que se está probando. Es decir, el código que se está pr
 
 - Iniciar con pruebas unitarias
 - Refactorizar el código para que sea testeable
+
+## Unit testing
+
+### Dummies
+
+- Doubles
+  - Dummy
+  - Fake
+  - Stub
+  - Spy
+  - Mock
+- Test doubles
+  - Sinon
+  - Jest
+
+### Pruebas de caja negra y caja blanca
+
+- Puerbas de caja negra -> Son pruebas que se hacen sin saber cómo está implementado el código
+- Pruebas de caja blanca -> Son pruebas que se hacen sabiendo cómo está implementado el código
+
+### Qué es la unidad?
+
+- La unidad es la parte más pequeña de un sistema que se puede probar de forma aislada
+- La unidad puede ser una función, un método, una clase, un módulo, un componente, etc.
+- La unidad debe ser independiente de otras unidades
+
+### Coverage report
+
+- Es un reporte que muestra cuánto código ha sido probado
+- Se mide en porcentaje
+- Se puede medir por líneas, funciones, sentencias y branches
