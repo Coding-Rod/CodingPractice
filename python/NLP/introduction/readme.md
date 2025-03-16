@@ -20,7 +20,7 @@
 
 ## Evolución de NLP
 
-![Evolución de NLP](Evo_NLP.png)
+![Evolución de NLP](assets/Evo_NLP.png)
 
 ## Avances del NLP
 
@@ -39,7 +39,7 @@
 
 ## ¿Qué vamos a estudiar?
 
-![Programa](Programa.png)
+![Programa](assets/Programa.png)
 
 ## Roadmap
 
@@ -48,3 +48,33 @@
 3. NLP en la industria
 4. NLP Avanzado
 
+## Lingüística computacional
+
+El lenguaje se encuentra entre medio del NLP y la LC que son áreas de estudio que se ocupan de la interacción entre el lenguaje humano y las computadoras. ¿Qué hacen?
+
+1. El NLP: ¿Qué y Cómo Computan las máquinas? - Ingeniería
+  - Se ocupa de la interacción entre las computadoras y el lenguaje humano.
+  - Incluye tareas como el análisis de texto, la traducción automática, la generación de lenguaje natural y más.
+  - Se basa en técnicas de aprendizaje automático y procesamiento del lenguaje natural para analizar y comprender el lenguaje humano.
+2. La LC: ¿Qué y Cómo Computan las personas? - Ciencia
+  - Se ocupa del estudio de los lenguajes naturales y su representación computacional.
+  - Incluye el estudio de la gramática, la semántica, la fonética y la morfología, entre otros aspectos del lenguaje.
+  - Se basa en teorías lingüísticas y modelos formales para representar y analizar el lenguaje humano.
+
+## Normalización de texto
+
+Este va a ser el pipeline básico que vamos a seguir para normalizar el texto, que es un estándar actualmente en NLP. Este pipeline se puede dividir en 3 partes:
+1. Tokenización 
+  - Separar el texto en palabras o tokens.  
+  - Ejemplo: "Hola, ¿cómo estás?" se convierte en ["Hola", "¿cómo", "estás", "?"].
+2. Lematización
+  - Reducir las palabras a su forma base o lema.
+  - Ejemplo: "corriendo" se convierte en "correr".
+3. Segmentación
+  - Dividir el texto en oraciones o párrafos.
+  - Ejemplo: "Hola. ¿Cómo estás?" se convierte en ["Hola.", "¿Cómo estás?"].
+
+## Conceptos clave
+
+- **Corpus**: Conjunto de textos utilizados para entrenar modelos de NLP.
+- **Corpora**: Conjunto de conjuntos de textos.
