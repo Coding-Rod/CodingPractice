@@ -78,3 +78,52 @@ Este va a ser el pipeline básico que vamos a seguir para normalizar el texto, q
 
 - **Corpus**: Conjunto de textos utilizados para entrenar modelos de NLP.
 - **Corpora**: Conjunto de conjuntos de textos.
+
+## N-grams
+
+Los N-gramas son secuencias de N elementos consecutivos de un texto. Se utilizan para analizar la frecuencia de palabras o frases en un corpus. Los N-gramas pueden ser unigrama (1 palabra), bigrama (2 palabras), trigramas (3 palabras), etc.
+
+- **Unigrama**: "Hola"
+- **Bigrama**: "Hola mundo"
+- **Trigrama**: "Hola mundo cruel"
+- ...
+
+## Colocaciones
+
+Las colocaciones son combinaciones de palabras que aparecen juntas con frecuencia en un corpus. Estas combinaciones pueden ser adjetivos y sustantivos, verbos y sustantivos, etc. Las colocaciones son importantes para entender el significado del lenguaje natural y se utilizan en tareas como la traducción automática y la generación de lenguaje natural.
+- Ejemplo: "hacer una pregunta" es una colocación común en español.
+
+## Recursos Léxicos
+
+Un recurso léxico es una colección de palabras o frases que puede o no contener metadatos o información de cada uno de los elementos de esa colección. 
+
+### ¿Por qué son importantes?
+
+- Proporcionan información sobre el significado y uso de las palabras.
+- Ayudan a mejorar la precisión de los modelos de NLP.
+- Facilitan la creación de aplicaciones de NLP al proporcionar datos estructurados.
+
+Se utilizan cuando una palabra tiene más de un significado o cuando una palabra tiene un significado diferente en diferentes contextos.
+Ejemplo: 
+
+- "Calle" [Verbo] -> Le puedes decir que se calle o me va a enloquecer...
+- "Calle" [Sustantivo] -> Ten cuidado al cruzar la calle porque el semáforo no funciona...
+
+Recursos léxicos utilizados:
+
+| Entrada léxica | Categoría | Significado |
+|----------------|-----------|-------------|
+| Calle | Verbo | Conjugación del verbo "callar" en español. |
+| Calle | Sustantivo | Referencia al espacio público por donde hay tránsito |
+
+## WordNet
+
+### Synsets
+
+Un synset es un conjunto de sinónimos que representan un único concepto. Cada synset tiene un identificador único y puede contener múltiples palabras o frases que tienen el mismo significado. Los synsets se utilizan para organizar y clasificar el vocabulario de un idioma, facilitando la búsqueda y recuperación de información relacionada con un concepto específico.
+- Ejemplo: El synset "perro" puede incluir palabras como "canino", "perrito" y "perra", todas relacionadas con el concepto de un perro.
+
+### Jerarquía de synsets
+
+- Hiperónimo: Palabra que tiene un significado más general que otra palabra. Por ejemplo, "animal" es un hiperónimo de "perro".
+- Hipónimo: Palabra que tiene un significado más específico que otra palabra. Por ejemplo, "perro" es un hipónimo de "animal".
