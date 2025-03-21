@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auth con JWT</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        h1 {
+            color: #007BFF;
+        }
+
+        input {
+            display: block;
+            margin: 10px 0;
+            padding: 10px;
+            width: 100%;
+            max-width: 300px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .credentials {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 5px;
+            max-width: 300px;
+            margin-top: 20px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+        }
+
+        .modal-content button {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Login</h1>
+    <input type="text" id="username" placeholder="Usuario">
+    <input type="password" id="password" placeholder="Contraseña">
+    <button onclick="login()">Iniciar sesión</button>
+
+    <h3>Ejemplo de Credenciales</h3>
+    <div class="credentials">
+        <p><strong>Usuario:</strong> <span style="color: #007BFF;">admin</span></p>
+        <p><strong>Contraseña:</strong> <span style="color: #007BFF;">12345</span></p>
+    </div>
+
+    <h1>Zona Protegida</h1>
+    <button onclick="getProtectedResource()">Acceder</button>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <p id="modal-message"></p>
+            <button onclick="closeModal()">Cerrar</button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        async function login() {
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+
+            try {
+                const res = await fetch("http://localhost:3000/login", {
+                    method: "POST",
+                    credentials: "include",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ username, password })
+                });
+
+                const data = await res.json();
+                if (!res.ok) {
+                    throw new Error(data.message || "Error al iniciar sesión");
+                }
+                showModal(data.message);
+            } catch (error) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: error.message,
+                });
+            }
+        }
+
+        async function getProtectedResource() {
+            try {
+                let res = await fetch("http://localhost:3000/protected", { credentials: "include" });
+
+                if (res.status === 401 || res.status === 403) {
+                    console.log("Intentando refrescar token...");
+                    await refreshToken();
+                    res = await fetch("http://localhost:3000/protected", { credentials: "include" });
+                }
+
+                const data = await res.json();
+                if (!res.ok) {
+                    throw new Error(data.message || "Error al acceder a la zona protegida");
+                }
+                showModal(data.message);
+            } catch (error) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: error.message,
+                });
+            }
+        }
+
+        async function refreshToken() {
+            try {
+                await fetch("http://localhost:3000/refresh", { method: "POST", credentials: "include" });
+            } catch (error) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: "Error al refrescar el token",
+                });
+            }
+        }
+
+        function showModal(message) {
+            const modal = document.getElementById("modal");
+            const modalMessage = document.getElementById("modal-message");
+            modalMessage.textContent = message;
+            modal.style.display = "flex";
+        }
+
+        function closeModal() {
+            const modal = document.getElementById("modal");
+            modal.style.display = "none";
+        }
+    </script>
+</body>
+</html>
